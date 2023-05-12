@@ -1,0 +1,704 @@
+definitions:
+  main.EjudgeRun:
+    properties:
+      contest_id:
+        type: integer
+      duration:
+        type: integer
+      eoln_type:
+        type: integer
+      ip:
+        type: string
+      ipv6_flag:
+        type: boolean
+      is_checked:
+        type: boolean
+      is_hidden:
+        type: boolean
+      is_imported:
+        type: boolean
+      is_marked:
+        type: boolean
+      is_readonly:
+        type: boolean
+      is_saved:
+        type: boolean
+      is_vcs:
+        type: boolean
+      judge_id:
+        type: integer
+      judge_uuid:
+        type: string
+      lang_id:
+        type: integer
+      lang_name:
+        type: string
+      last_change_us:
+        type: integer
+      locale_id:
+        type: integer
+      mime_type:
+        type: string
+      nsec:
+        type: integer
+      pages:
+        type: integer
+      passed_mode:
+        type: boolean
+      prob_id:
+        type: integer
+      prob_internal_name:
+        type: string
+      prob_name:
+        type: string
+      prob_uuid:
+        type: string
+      raw_score:
+        type: integer
+      raw_variant:
+        type: integer
+      run_id:
+        type: integer
+      run_time:
+        type: integer
+      run_time_us:
+        type: integer
+      run_uuid:
+        type: string
+      saved_score:
+        type: integer
+      saved_status:
+        type: integer
+      saved_status_str:
+        type: string
+      saved_test:
+        type: integer
+      score:
+        type: integer
+      score_adj:
+        type: integer
+      score_str:
+        type: string
+      serial_id:
+        type: integer
+      sha1:
+        type: string
+      sha256:
+        type: string
+      size:
+        type: integer
+      ssl_flag:
+        type: boolean
+      status:
+        type: integer
+      status_str:
+        type: string
+      store_flags:
+        type: integer
+      test:
+        type: integer
+      tests_passed:
+        type: integer
+      token_count:
+        type: integer
+      token_flags:
+        type: integer
+      user_id:
+        type: integer
+      user_login:
+        type: string
+      user_name:
+        type: string
+      variant:
+        type: integer
+      verdict_bits:
+        type: integer
+    type: object
+  main.EjudgeSubmit:
+    properties:
+      compiler_output:
+        type: string
+      contest_id:
+        type: integer
+      error:
+        type: string
+      exit_code:
+        type: integer
+      input:
+        type: string
+      lang_id:
+        type: integer
+      max_memory_used:
+        type: integer
+      max_rss:
+        type: integer
+      output:
+        type: string
+      prob_id:
+        type: integer
+      real_time:
+        type: integer
+      status:
+        type: integer
+      status_str:
+        type: string
+      submit_id:
+        type: integer
+      term_signal:
+        type: integer
+      test_checker_output:
+        type: string
+      time:
+        type: integer
+      user_id:
+        type: integer
+    type: object
+  main.MasterGetContestStatusJSONReply:
+    properties:
+      action:
+        type: string
+      error:
+        $ref: '#/definitions/main.ReplyError'
+      ok:
+        type: boolean
+      result:
+        $ref: '#/definitions/main.MasterGetContestStatusJSONReplyResult'
+      server_time:
+        type: integer
+    type: object
+  main.MasterGetContestStatusJSONReplyResult:
+    properties:
+      contest:
+        $ref: '#/definitions/main.MasterGetContestStatusJSONReplyResultContest'
+      online:
+        $ref: '#/definitions/main.MasterGetContestStatusJSONReplyResultOnline'
+    type: object
+  main.MasterGetContestStatusJSONReplyResultContest:
+    properties:
+      board_fog_duration:
+        type: integer
+      board_unfog_duration:
+        type: integer
+      close_time:
+        type: integer
+      contest_load_time:
+        type: integer
+      duration:
+        type: integer
+      expected_stop_time:
+        type: integer
+      freeze_time:
+        type: integer
+      id:
+        type: integer
+      is_clients_suspended:
+        type: boolean
+      is_continue_enabled:
+        type: boolean
+      is_final_visibility:
+        type: boolean
+      is_freezable:
+        type: boolean
+      is_frozen:
+        type: boolean
+      is_judge_score:
+        type: boolean
+      is_olympiad_accepting_mode:
+        type: boolean
+      is_printing_suspended:
+        type: boolean
+      is_report_closed:
+        type: boolean
+      is_report_open:
+        type: boolean
+      is_restartable:
+        type: boolean
+      is_source_closed:
+        type: boolean
+      is_source_open:
+        type: boolean
+      is_standings_updated:
+        type: boolean
+      is_started:
+        type: boolean
+      is_stopped:
+        type: boolean
+      is_testing_finished:
+        type: boolean
+      is_testing_suspended:
+        type: boolean
+      is_unlimited:
+        type: boolean
+      is_upsolving:
+        type: boolean
+      is_valuer_judge_comments:
+        type: boolean
+      is_virtual:
+        type: boolean
+      name:
+        type: string
+      name_en:
+        type: string
+      open_time:
+        type: integer
+      scheduled_finish_time:
+        type: integer
+      scheduled_start_time:
+        type: integer
+      score_system:
+        type: integer
+      server_start_time:
+        type: integer
+      start_time:
+        type: integer
+      stop_time:
+        type: integer
+      unfreeze_time:
+        type: integer
+    type: object
+  main.MasterGetContestStatusJSONReplyResultOnline:
+    properties:
+      max_time:
+        type: integer
+      max_user_count:
+        type: integer
+      user_count:
+        type: integer
+    type: object
+  main.MasterGetGetSubmitReply:
+    properties:
+      action:
+        type: string
+      error:
+        $ref: '#/definitions/main.ReplyError'
+      ok:
+        type: boolean
+      result:
+        $ref: '#/definitions/main.EjudgeSubmit'
+      server_time:
+        type: integer
+    type: object
+  main.MasterGetRunStatusJSONReply:
+    properties:
+      action:
+        type: string
+      error:
+        $ref: '#/definitions/main.ReplyError'
+      ok:
+        type: boolean
+      result:
+        $ref: '#/definitions/main.MasterGetRunStatusJSONReplyResult'
+      server_time:
+        type: integer
+    type: object
+  main.MasterGetRunStatusJSONReplyResult:
+    properties:
+      accepting_mode:
+        type: boolean
+      run:
+        $ref: '#/definitions/main.EjudgeRun'
+    type: object
+  main.MasterPostSubmitRunInputReply:
+    properties:
+      action:
+        type: string
+      error:
+        $ref: '#/definitions/main.ReplyError'
+      ok:
+        type: boolean
+      result:
+        $ref: '#/definitions/main.MasterPostSubmitRunInputReplyResult'
+      server_time:
+        type: integer
+    type: object
+  main.MasterPostSubmitRunInputReplyResult:
+    properties:
+      submit_id:
+        type: integer
+    type: object
+  main.MasterPostSubmitRunReply:
+    properties:
+      action:
+        type: string
+      error:
+        $ref: '#/definitions/main.ReplyError'
+      ok:
+        type: boolean
+      result:
+        $ref: '#/definitions/main.MasterPostSubmitRunReplyResult'
+      server_time:
+        type: integer
+    type: object
+  main.MasterPostSubmitRunReplyResult:
+    properties:
+      run_id:
+        type: integer
+      run_uuid:
+        type: string
+    type: object
+  main.ReplyError:
+    properties:
+      log_id:
+        type: string
+      message:
+        type: string
+      num:
+        type: integer
+      symbol:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: The ejudge API
+  title: Ejudge API
+  version: 3.10.3
+paths:
+  /ej/master/contest-status-json:
+    get:
+      description: Get the contest status (privileged)
+      operationId: master-get-contest-status-json
+      parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.MasterGetContestStatusJSONReply'
+      security:
+      - ApiKeyAuth: []
+      summary: Get the contest status (privileged)
+      tags:
+      - privileged contest
+  /ej/master/download-run:
+    get:
+      description: Get the source of the run (privileged)
+      operationId: master-get-download-run
+      parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        type: integer
+      - description: run_id
+        in: query
+        name: run_id
+        type: integer
+      - description: do not generate content-disposition header
+        in: query
+        name: no_disp
+        type: integer
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Get the source of the run (privileged)
+      tags:
+      - privileged run
+  /ej/master/get-submit:
+    get:
+      description: get information about a submit (privileged)
+      operationId: master-get-submit
+      parameters:
+      - description: Contest ID
+        in: query
+        name: contest_id
+        type: integer
+      - description: Submit ID
+        in: query
+        name: submit_id
+        required: true
+        type: integer
+      - default: 1
+        description: Submit ID
+        in: query
+        name: json
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.MasterGetGetSubmitReply'
+      security:
+      - ApiKeyAuth: []
+      summary: Get information about a submit (privileged)
+      tags:
+      - privileged submit
+  /ej/master/list-runs-json:
+    get:
+      description: List the runs (privileged)
+      operationId: master-get-list-runs-json
+      parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        type: integer
+      - description: Filter expression
+        in: query
+        name: filter_expr
+        type: string
+      - description: First run to list
+        in: query
+        name: first_run
+        type: integer
+      - description: Last run to list
+        in: query
+        name: last_run
+        type: integer
+      - description: Fields to display
+        in: query
+        name: field_mask
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.MasterGetContestStatusJSONReply'
+      security:
+      - ApiKeyAuth: []
+      summary: List the runs (privileged)
+      tags:
+      - privileged run
+  /ej/master/raw-audit-log:
+    get:
+      description: Get the raw audit log of the run (privileged)
+      operationId: master-get-raw-audit-log
+      parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        type: integer
+      - description: run_id
+        in: query
+        name: run_id
+        type: integer
+      - description: run_uuid
+        in: query
+        name: run_uuid
+        type: string
+      produces:
+      - text/plain
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Get the raw audit log of the run (privileged)
+      tags:
+      - privileged run
+  /ej/master/raw-report:
+    get:
+      description: Get the raw testing report of the run (privileged)
+      operationId: master-get-raw-report
+      parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        type: integer
+      - description: run_id
+        in: query
+        name: run_id
+        type: integer
+      - description: run_uuid
+        in: query
+        name: run_uuid
+        type: string
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Get the raw testing report of the run (privileged)
+      tags:
+      - privileged run
+  /ej/master/run-status-json:
+    get:
+      description: Get the info for the run (privileged)
+      operationId: master-get-run-status-json
+      parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        type: integer
+      - description: run_id
+        in: query
+        name: run_id
+        type: integer
+      - description: run_uuid
+        in: query
+        name: run_uuid
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.MasterGetRunStatusJSONReply'
+      security:
+      - ApiKeyAuth: []
+      summary: Get the info for the run (privileged)
+      tags:
+      - privileged run
+  /ej/master/submit-run:
+    post:
+      description: submit a program for testing and scoring (privileged)
+      operationId: master-submit-run
+      parameters:
+      - description: Impersonated user login
+        in: formData
+        name: sender_user_login
+        type: string
+      - description: Impersonated user ID
+        in: formData
+        name: sender_user_id
+        type: integer
+      - description: Fake sender IP
+        in: formData
+        name: sender_ip
+        type: string
+      - description: HTTPS flag
+        in: formData
+        name: sender_ssl_flag
+        type: integer
+      - description: contest ID
+        in: formData
+        name: contest_id
+        type: integer
+      - description: UUID of the problem
+        in: formData
+        name: problem_uuid
+        type: string
+      - description: short_name or internal_name of the problem
+        in: formData
+        name: problem_name
+        type: string
+      - description: prob_id of the problem
+        in: formData
+        name: problem
+        type: integer
+      - description: variant of the problem
+        in: formData
+        name: variant
+        type: integer
+      - description: short_name of the programming language
+        in: formData
+        name: language_name
+        type: string
+      - description: lang_id or short_name
+        in: formData
+        name: lang_id
+        type: string
+      - description: End-of-Line translation type
+        in: formData
+        name: eoln_type
+        type: integer
+      - description: if value > 0 the run will be visible
+        in: formData
+        name: is_visible
+        type: integer
+      - description: if value > 0 any non OK verdict is Check failed
+        in: formData
+        name: not_ok_is_cf
+        type: integer
+      - description: if value > 0 the run is tested with rejudge priority
+        in: formData
+        name: rejudge_flag
+        type: integer
+      - description: Source code
+        in: formData
+        name: file
+        type: file
+      - description: Source code
+        format: text
+        in: formData
+        name: text_form
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.MasterPostSubmitRunReply'
+      security:
+      - ApiKeyAuth: []
+      summary: Submit a program for testing and scoring (privileged)
+      tags:
+      - privileged run
+  /ej/master/submit-run-input:
+    post:
+      description: submit a program and its input for testing (privileged)
+      operationId: master-submit-run-input
+      parameters:
+      - description: Impersonated user login
+        in: formData
+        name: sender_user_login
+        type: string
+      - description: Impersonated user ID
+        in: formData
+        name: sender_user_id
+        type: integer
+      - description: Fake sender IP
+        in: formData
+        name: sender_ip
+        type: string
+      - description: HTTPS flag
+        in: formData
+        name: sender_ssl_flag
+        type: integer
+      - description: contest ID
+        in: formData
+        name: contest_id
+        type: integer
+      - description: problem ID or short_name
+        in: formData
+        name: prob_id
+        required: true
+        type: string
+      - description: language ID or short_name
+        in: formData
+        name: lang_id
+        type: string
+      - description: End-of-Line translation type
+        in: formData
+        name: eoln_type
+        type: integer
+      - description: Source code
+        in: formData
+        name: file
+        type: file
+      - description: Source code
+        format: text
+        in: formData
+        name: text_form
+        type: string
+      - description: Input data
+        in: formData
+        name: file_input
+        type: file
+      - description: Input data
+        in: formData
+        name: text_form_input
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.MasterPostSubmitRunInputReply'
+      security:
+      - ApiKeyAuth: []
+      summary: Submit a program and its input for testing (privileged)
+      tags:
+      - privileged submit
+securityDefinitions:
+  ApiKeyAuth:
+    description: API Key Authorization
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
