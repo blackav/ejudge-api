@@ -7,6 +7,660 @@
         "version": "3.10.3"
     },
     "paths": {
+        "/ej/client/contest-status-json": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the contest status (unprivileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "unprivileged contest"
+                ],
+                "summary": "Get the contest status (unprivileged)",
+                "operationId": "client-get-contest-status-json",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.EjudgeReply-main_ClientGetContestStatusJSONResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/client/create-userprob": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "create VCS problem settings (unprivileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "unprivileged vcs"
+                ],
+                "summary": "Create VCS problem settings (unprivileged)",
+                "operationId": "client-post-create-userprob",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Problem ID",
+                        "name": "prob_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "description": "Submit ID",
+                        "name": "json",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.EjudgeReply-main_EjudgeUserProb"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/client/download-run": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the source of the run (unprivileged)",
+                "tags": [
+                    "unprivileged run"
+                ],
+                "summary": "Get the source of the run (unprivileged)",
+                "operationId": "client-get-download-run",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "run_id",
+                        "name": "run_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "do not generate content-disposition header",
+                        "name": "no_disp",
+                        "in": "query"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/ej/client/download-run-file": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the input/output/correct of the run (unprivileged)",
+                "tags": [
+                    "unprivileged run"
+                ],
+                "summary": "Get the input/output/correct file of the run (unprivileged)",
+                "operationId": "client-get-download-run-file",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "run_id",
+                        "name": "run_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "test number",
+                        "name": "num",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "file index",
+                        "name": "index",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "initial offset of the file fragment",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "length of the file fragment",
+                        "name": "length",
+                        "in": "query"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/ej/client/get-submit": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "get information about a submit (unprivileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "unprivileged submit"
+                ],
+                "summary": "Get information about a submit (unprivileged)",
+                "operationId": "client-get-submit",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Submit ID",
+                        "name": "submit_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "description": "Submit ID",
+                        "name": "json",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.EjudgeReply-main_EjudgeSubmit"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/client/get-userprob": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "get VCS problem settings (unprivileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "unprivileged vcs"
+                ],
+                "summary": "Get VCS problem settings (unprivileged)",
+                "operationId": "client-get-get-userprob",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Problem ID",
+                        "name": "prob_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "description": "Submit ID",
+                        "name": "json",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.EjudgeReply-main_EjudgeUserProb"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/client/list-runs-json": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the list of the runs (unprivileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "unprivileged run"
+                ],
+                "summary": "Get the list of the runs (unprivileged)",
+                "operationId": "client-get-list-runs-json",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Problem ID",
+                        "name": "problem",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.EjudgeReply-main_ClientGetListRunsJSONResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/client/problem-statement-json": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the problem statement (unprivileged)",
+                "produces": [
+                    "text/html"
+                ],
+                "tags": [
+                    "unprivileged problem"
+                ],
+                "summary": "Get the problem statement (unprivileged)",
+                "operationId": "client-get-problem-statement-json",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Problem ID",
+                        "name": "problem",
+                        "in": "query"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/ej/client/problem-status-json": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the problem status (unprivileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "unprivileged problem"
+                ],
+                "summary": "Get the problem status (unprivileged)",
+                "operationId": "client-get-problem-status-json",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Problem ID",
+                        "name": "problem",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.EjudgeReply-main_ClientGetProblemStatusJSONResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/client/remove-userprob": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "remove VCS problem settings (unprivileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "unprivileged vcs"
+                ],
+                "summary": "Remove VCS problem settings (unprivileged)",
+                "operationId": "client-post-remove-userprob",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Serial ID of the properties",
+                        "name": "serial_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "description": "Submit ID",
+                        "name": "json",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.EjudgeBaseReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/client/run-messages-json": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the messages associated with the run (unprivileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "unprivileged run"
+                ],
+                "summary": "Get the messages associated with the run (unprivileged)",
+                "operationId": "client-get-run-messages-json",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Run ID",
+                        "name": "run_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.EjudgeReply-main_ClientGetRunMessagesJSONResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/client/run-status-json": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the status of the run (unprivileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "unprivileged run"
+                ],
+                "summary": "Get the status of the run (unprivileged)",
+                "operationId": "client-get-run-status-json",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Run ID",
+                        "name": "run_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.EjudgeReply-main_ClientGetRunStatusJSONResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/client/save-userprob": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "save VCS problem settings (unprivileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "unprivileged vcs"
+                ],
+                "summary": "Save VCS problem settings (unprivileged)",
+                "operationId": "client-post-save-userprob",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Serial ID of the properties",
+                        "name": "serial_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "VCS type: gitlab | github",
+                        "name": "vcs_type",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Language name",
+                        "name": "lang_name",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "VCS URL",
+                        "name": "vcs_url",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "VCS subdir",
+                        "name": "vcs_subdir",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "VCS branch",
+                        "name": "vcs_branch_spec",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "ssh private key",
+                        "name": "ssh_private_key",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "description": "Submit ID",
+                        "name": "json",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.EjudgeBaseReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/client/submit-run": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "submit a program for testing and scoring (unprivileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "unprivileged run"
+                ],
+                "summary": "Submit a program for testing and scoring (unprivileged)",
+                "operationId": "client-submit-run",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "prob_id or the short_name of the problem",
+                        "name": "prob_id",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "lang_id or short_name",
+                        "name": "lang_id",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "End-of-Line translation type",
+                        "name": "eoln_type",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "file",
+                        "description": "Source code",
+                        "name": "file",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "format": "text",
+                        "description": "Source code",
+                        "name": "text_form",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.EjudgeReply-main_PostSubmitRunResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/client/submit-run-input": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "submit a program and its input for testing (unprivileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "unprivileged submit"
+                ],
+                "summary": "Submit a program and its input for testing (unprivileged)",
+                "operationId": "client-submit-run-input",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "problem ID or short_name",
+                        "name": "prob_id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "language ID or short_name",
+                        "name": "lang_id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "End-of-Line translation type",
+                        "name": "eoln_type",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "file",
+                        "description": "Source code",
+                        "name": "file",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "format": "text",
+                        "description": "Source code",
+                        "name": "text_form",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "file",
+                        "description": "Input data",
+                        "name": "file_input",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Input data",
+                        "name": "text_form_input",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.EjudgeReply-main_ClientPostSubmitRunInputResult"
+                        }
+                    }
+                }
+            }
+        },
         "/ej/master/contest-status-json": {
             "get": {
                 "security": [
@@ -35,7 +689,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.MasterGetContestStatusJSONReply"
+                            "$ref": "#/definitions/main.EjudgeReply-main_MasterGetContestStatusJSONResult"
                         }
                     }
                 }
@@ -119,7 +773,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.MasterGetGetSubmitReply"
+                            "$ref": "#/definitions/main.EjudgeReply-main_EjudgeSubmit"
                         }
                     }
                 }
@@ -177,7 +831,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.MasterGetContestStatusJSONReply"
+                            "$ref": "#/definitions/main.EjudgeReply-main_MasterGetListRunsJSONResult"
                         }
                     }
                 }
@@ -298,7 +952,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.MasterGetRunStatusJSONReply"
+                            "$ref": "#/definitions/main.EjudgeReply-main_MasterGetRunStatusJSONResult"
                         }
                     }
                 }
@@ -429,7 +1083,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.MasterPostSubmitRunReply"
+                            "$ref": "#/definitions/main.EjudgeReply-main_PostSubmitRunResult"
                         }
                     }
                 }
@@ -531,7 +1185,7 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.MasterPostSubmitRunInputReply"
+                            "$ref": "#/definitions/main.EjudgeReply-main_MasterPostSubmitRunInputResult"
                         }
                     }
                 }
@@ -539,6 +1193,1142 @@
         }
     },
     "definitions": {
+        "main.ClientGetContestStatusJSONCompiler": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "long_name": {
+                    "type": "string"
+                },
+                "short_name": {
+                    "type": "string"
+                },
+                "src_sfx": {
+                    "type": "string"
+                }
+            }
+        },
+        "main.ClientGetContestStatusJSONProblem": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "long_name": {
+                    "type": "string"
+                },
+                "short_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "main.ClientGetContestStatusJSONResult": {
+            "type": "object",
+            "properties": {
+                "compilers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/main.ClientGetContestStatusJSONCompiler"
+                    }
+                },
+                "contest": {
+                    "$ref": "#/definitions/main.EjudgeContestStatus"
+                },
+                "online": {
+                    "$ref": "#/definitions/main.EjudgeContestOnline"
+                },
+                "problems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/main.ClientGetContestStatusJSONProblem"
+                    }
+                }
+            }
+        },
+        "main.ClientGetListRunsJSONResult": {
+            "type": "object",
+            "properties": {
+                "runs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/main.ClientGetListRunsJSONRun"
+                    }
+                }
+            }
+        },
+        "main.ClientGetListRunsJSONRun": {
+            "type": "object",
+            "properties": {
+                "failed_test": {
+                    "type": "integer"
+                },
+                "passed_tests": {
+                    "type": "integer"
+                },
+                "prob_id": {
+                    "type": "integer"
+                },
+                "run_id": {
+                    "type": "integer"
+                },
+                "run_time": {
+                    "type": "integer"
+                },
+                "score": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.ClientGetProblemStatusJSONProblem": {
+            "type": "object",
+            "properties": {
+                "acm_run_penalty": {
+                    "type": "integer"
+                },
+                "combined_stdin": {
+                    "type": "boolean"
+                },
+                "combined_stdout": {
+                    "type": "boolean"
+                },
+                "compile_error_penalty": {
+                    "type": "integer"
+                },
+                "compilers": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "disable_stderr": {
+                    "type": "boolean"
+                },
+                "disable_submit_after_ok": {
+                    "type": "boolean"
+                },
+                "disable_tab": {
+                    "type": "boolean"
+                },
+                "disable_testing": {
+                    "type": "boolean"
+                },
+                "disable_user_submit": {
+                    "type": "boolean"
+                },
+                "disqualified_penalty": {
+                    "type": "integer"
+                },
+                "enable_compilation": {
+                    "type": "boolean"
+                },
+                "enable_max_stack_size": {
+                    "type": "boolean"
+                },
+                "enable_submit_after_reject": {
+                    "type": "boolean"
+                },
+                "enable_tokens": {
+                    "type": "boolean"
+                },
+                "est_stmt_size": {
+                    "type": "integer"
+                },
+                "full_score": {
+                    "type": "integer"
+                },
+                "full_user_score": {
+                    "type": "integer"
+                },
+                "hidden": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "ignore_compile_errors": {
+                    "type": "boolean"
+                },
+                "ignore_prev_ac": {
+                    "type": "boolean"
+                },
+                "input_file": {
+                    "type": "string"
+                },
+                "is_statement_avaiable": {
+                    "type": "boolean"
+                },
+                "long_name": {
+                    "type": "string"
+                },
+                "max_rss_size": {
+                    "type": "integer"
+                },
+                "max_stack_size": {
+                    "type": "integer"
+                },
+                "max_user_run_count": {
+                    "type": "integer"
+                },
+                "max_vm_size": {
+                    "type": "integer"
+                },
+                "min_score_1": {
+                    "type": "integer"
+                },
+                "min_score_2": {
+                    "type": "integer"
+                },
+                "min_tests_to_accept": {
+                    "type": "integer"
+                },
+                "ok_status": {
+                    "type": "string"
+                },
+                "output_file": {
+                    "type": "string"
+                },
+                "real_time_limit_ms": {
+                    "type": "integer"
+                },
+                "run_penalty": {
+                    "type": "integer"
+                },
+                "score_multiplier": {
+                    "type": "integer"
+                },
+                "short_name": {
+                    "type": "string"
+                },
+                "stand_column": {
+                    "type": "string"
+                },
+                "stand_hide_time": {
+                    "type": "boolean"
+                },
+                "stand_ignore_score": {
+                    "type": "boolean"
+                },
+                "stand_last_column": {
+                    "type": "boolean"
+                },
+                "stand_name": {
+                    "type": "string"
+                },
+                "start_date": {
+                    "type": "integer"
+                },
+                "team_enable_ce_view": {
+                    "type": "boolean"
+                },
+                "team_enable_rep_view": {
+                    "type": "boolean"
+                },
+                "test_score": {
+                    "type": "integer"
+                },
+                "tests_to_accept": {
+                    "type": "integer"
+                },
+                "time_limit_ms": {
+                    "type": "integer"
+                },
+                "tokens_for_user_ac": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "integer"
+                },
+                "use_ac_not_ok": {
+                    "type": "boolean"
+                },
+                "use_stdin": {
+                    "type": "boolean"
+                },
+                "use_stdout": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "main.ClientGetProblemStatusJSONProblemStatus": {
+            "type": "object",
+            "properties": {
+                "all_attempts": {
+                    "type": "integer"
+                },
+                "attempts": {
+                    "type": "integer"
+                },
+                "best_run": {
+                    "type": "integer"
+                },
+                "best_score": {
+                    "type": "integer"
+                },
+                "ce_attempts": {
+                    "type": "integer"
+                },
+                "deadline": {
+                    "type": "integer"
+                },
+                "disqualified": {
+                    "type": "integer"
+                },
+                "eff_attempts": {
+                    "type": "integer"
+                },
+                "effective_time": {
+                    "type": "integer"
+                },
+                "is_accepted": {
+                    "type": "boolean"
+                },
+                "is_autook": {
+                    "type": "boolean"
+                },
+                "is_eff_time_needed": {
+                    "type": "boolean"
+                },
+                "is_last_untokenized": {
+                    "type": "boolean"
+                },
+                "is_marked": {
+                    "type": "boolean"
+                },
+                "is_pending": {
+                    "type": "boolean"
+                },
+                "is_pending_review": {
+                    "type": "boolean"
+                },
+                "is_rejected": {
+                    "type": "boolean"
+                },
+                "is_solved": {
+                    "type": "boolean"
+                },
+                "is_submittable": {
+                    "type": "boolean"
+                },
+                "is_tabable": {
+                    "type": "boolean"
+                },
+                "is_transient": {
+                    "type": "boolean"
+                },
+                "is_viewable": {
+                    "type": "boolean"
+                },
+                "prev_successes": {
+                    "type": "integer"
+                },
+                "token_count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.ClientGetProblemStatusJSONResult": {
+            "type": "object",
+            "properties": {
+                "problem": {
+                    "$ref": "#/definitions/main.ClientGetProblemStatusJSONProblem"
+                },
+                "problem_status": {
+                    "$ref": "#/definitions/main.ClientGetProblemStatusJSONProblemStatus"
+                }
+            }
+        },
+        "main.ClientGetRunMessagesJSONMessage": {
+            "type": "object",
+            "properties": {
+                "clar_id": {
+                    "type": "integer"
+                },
+                "content": {
+                    "$ref": "#/definitions/main.EjudgeEncodedContent"
+                },
+                "from": {
+                    "type": "integer"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "subject": {
+                    "type": "string"
+                },
+                "time_us": {
+                    "type": "integer"
+                },
+                "to": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.ClientGetRunMessagesJSONResult": {
+            "type": "object",
+            "properties": {
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/main.ClientGetRunMessagesJSONMessage"
+                    }
+                }
+            }
+        },
+        "main.ClientGetRunStatusJSONCompilerOutput": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "$ref": "#/definitions/main.EjudgeEncodedContent"
+                }
+            }
+        },
+        "main.ClientGetRunStatusJSONResult": {
+            "type": "object",
+            "properties": {
+                "compiler_output": {
+                    "$ref": "#/definitions/main.ClientGetRunStatusJSONCompilerOutput"
+                },
+                "run": {
+                    "$ref": "#/definitions/main.ClientGetRunStatusJSONRun"
+                },
+                "testing_report": {
+                    "$ref": "#/definitions/main.ClientGetRunStatusJSONTestingReport"
+                }
+            }
+        },
+        "main.ClientGetRunStatusJSONRun": {
+            "type": "object",
+            "properties": {
+                "duration": {
+                    "type": "integer"
+                },
+                "effective_time": {
+                    "type": "integer"
+                },
+                "failed_test": {
+                    "type": "integer"
+                },
+                "is_compiler_output_available": {
+                    "type": "boolean"
+                },
+                "is_failed_test_available": {
+                    "type": "boolean"
+                },
+                "is_hidden": {
+                    "type": "boolean"
+                },
+                "is_imported": {
+                    "type": "boolean"
+                },
+                "is_minimal_report": {
+                    "type": "boolean"
+                },
+                "is_passed_tests_available": {
+                    "type": "boolean"
+                },
+                "is_report_available": {
+                    "type": "boolean"
+                },
+                "is_report_enabled": {
+                    "type": "boolean"
+                },
+                "is_score_available": {
+                    "type": "boolean"
+                },
+                "is_src_enabled": {
+                    "type": "boolean"
+                },
+                "is_standard_problem": {
+                    "type": "boolean"
+                },
+                "is_with_duration": {
+                    "type": "boolean"
+                },
+                "is_with_effective_time": {
+                    "type": "boolean"
+                },
+                "lang_id": {
+                    "type": "integer"
+                },
+                "message_count": {
+                    "type": "integer"
+                },
+                "passed_tests": {
+                    "type": "integer"
+                },
+                "prob_id": {
+                    "type": "integer"
+                },
+                "run_id": {
+                    "type": "integer"
+                },
+                "run_time": {
+                    "type": "integer"
+                },
+                "run_time_us": {
+                    "type": "integer"
+                },
+                "score": {
+                    "type": "integer"
+                },
+                "score_str": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "src_sfx": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "user_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.ClientGetRunStatusJSONTest": {
+            "type": "object",
+            "properties": {
+                "args": {
+                    "$ref": "#/definitions/main.ClientGetRunStatusJSONTestArgs"
+                },
+                "checker": {
+                    "$ref": "#/definitions/main.ClientGetRunStatusJSONTestBrief"
+                },
+                "correct": {
+                    "$ref": "#/definitions/main.ClientGetRunStatusJSONTestBrief"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ClientGetRunStatusJSONTestBrief"
+                },
+                "exit_code": {
+                    "type": "integer"
+                },
+                "exit_comment": {
+                    "type": "string"
+                },
+                "input": {
+                    "$ref": "#/definitions/main.ClientGetRunStatusJSONTestBrief"
+                },
+                "is_visibility_exists": {
+                    "type": "boolean"
+                },
+                "is_visibility_full": {
+                    "type": "boolean"
+                },
+                "max_score": {
+                    "type": "integer"
+                },
+                "num": {
+                    "type": "integer"
+                },
+                "output": {
+                    "$ref": "#/definitions/main.ClientGetRunStatusJSONTestBrief"
+                },
+                "score": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "team_comment": {
+                    "type": "string"
+                },
+                "term_signal": {
+                    "type": "integer"
+                },
+                "time_ms": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.ClientGetRunStatusJSONTestArgs": {
+            "type": "object",
+            "properties": {
+                "is_too_big": {
+                    "type": "boolean"
+                },
+                "size": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.ClientGetRunStatusJSONTestBrief": {
+            "type": "object",
+            "properties": {
+                "is_binary": {
+                    "type": "boolean"
+                },
+                "is_too_big": {
+                    "type": "boolean"
+                },
+                "size": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.ClientGetRunStatusJSONTestingReport": {
+            "type": "object",
+            "properties": {
+                "tests": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/main.ClientGetRunStatusJSONTest"
+                    }
+                },
+                "valuer_comment": {
+                    "$ref": "#/definitions/main.ClientGetRunStatusJSONValuerComment"
+                },
+                "valuer_judge_comment": {
+                    "$ref": "#/definitions/main.ClientGetRunStatusJSONValuerJudgeComment"
+                }
+            }
+        },
+        "main.ClientGetRunStatusJSONValuerComment": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "$ref": "#/definitions/main.EjudgeEncodedContent"
+                }
+            }
+        },
+        "main.ClientGetRunStatusJSONValuerJudgeComment": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "$ref": "#/definitions/main.EjudgeEncodedContent"
+                }
+            }
+        },
+        "main.ClientPostSubmitRunInputResult": {
+            "type": "object",
+            "properties": {
+                "submit_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeBaseReply": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeContestOnline": {
+            "type": "object",
+            "properties": {
+                "max_time": {
+                    "type": "integer"
+                },
+                "max_user_count": {
+                    "type": "integer"
+                },
+                "user_count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeContestStatus": {
+            "type": "object",
+            "properties": {
+                "board_fog_duration": {
+                    "type": "integer"
+                },
+                "board_unfog_duration": {
+                    "type": "integer"
+                },
+                "close_time": {
+                    "type": "integer"
+                },
+                "contest_load_time": {
+                    "type": "integer"
+                },
+                "duration": {
+                    "type": "integer"
+                },
+                "expected_stop_time": {
+                    "type": "integer"
+                },
+                "freeze_time": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "is_clients_suspended": {
+                    "type": "boolean"
+                },
+                "is_continue_enabled": {
+                    "type": "boolean"
+                },
+                "is_final_visibility": {
+                    "type": "boolean"
+                },
+                "is_freezable": {
+                    "type": "boolean"
+                },
+                "is_frozen": {
+                    "type": "boolean"
+                },
+                "is_judge_score": {
+                    "type": "boolean"
+                },
+                "is_olympiad_accepting_mode": {
+                    "type": "boolean"
+                },
+                "is_printing_suspended": {
+                    "type": "boolean"
+                },
+                "is_report_closed": {
+                    "type": "boolean"
+                },
+                "is_report_open": {
+                    "type": "boolean"
+                },
+                "is_restartable": {
+                    "type": "boolean"
+                },
+                "is_source_closed": {
+                    "type": "boolean"
+                },
+                "is_source_open": {
+                    "type": "boolean"
+                },
+                "is_standings_updated": {
+                    "type": "boolean"
+                },
+                "is_started": {
+                    "type": "boolean"
+                },
+                "is_stopped": {
+                    "type": "boolean"
+                },
+                "is_testing_finished": {
+                    "type": "boolean"
+                },
+                "is_testing_suspended": {
+                    "type": "boolean"
+                },
+                "is_unlimited": {
+                    "type": "boolean"
+                },
+                "is_upsolving": {
+                    "type": "boolean"
+                },
+                "is_valuer_judge_comments": {
+                    "type": "boolean"
+                },
+                "is_virtual": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "name_en": {
+                    "type": "string"
+                },
+                "open_time": {
+                    "type": "integer"
+                },
+                "scheduled_finish_time": {
+                    "type": "integer"
+                },
+                "scheduled_start_time": {
+                    "type": "integer"
+                },
+                "score_system": {
+                    "type": "integer"
+                },
+                "server_start_time": {
+                    "type": "integer"
+                },
+                "start_time": {
+                    "type": "integer"
+                },
+                "stop_time": {
+                    "type": "integer"
+                },
+                "unfreeze_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeEncodedContent": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "string"
+                },
+                "method": {
+                    "type": "integer"
+                },
+                "size": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeReply-main_ClientGetContestStatusJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.ClientGetContestStatusJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeReply-main_ClientGetListRunsJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.ClientGetListRunsJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeReply-main_ClientGetProblemStatusJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.ClientGetProblemStatusJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeReply-main_ClientGetRunMessagesJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.ClientGetRunMessagesJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeReply-main_ClientGetRunStatusJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.ClientGetRunStatusJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeReply-main_ClientPostSubmitRunInputResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.ClientPostSubmitRunInputResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeReply-main_EjudgeSubmit": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.EjudgeSubmit"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeReply-main_EjudgeUserProb": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.EjudgeUserProb"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeReply-main_MasterGetContestStatusJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.MasterGetContestStatusJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeReply-main_MasterGetListRunsJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.MasterGetListRunsJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeReply-main_MasterGetRunStatusJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.MasterGetRunStatusJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeReply-main_MasterPostSubmitRunInputResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.MasterPostSubmitRunInputResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.EjudgeReply-main_PostSubmitRunResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/main.ReplyError"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.PostSubmitRunResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
         "main.EjudgeRun": {
             "type": "object",
             "properties": {
@@ -771,217 +2561,106 @@
                 }
             }
         },
-        "main.MasterGetContestStatusJSONReply": {
+        "main.EjudgeUserProb": {
             "type": "object",
             "properties": {
-                "action": {
+                "contest_id": {
+                    "type": "integer"
+                },
+                "create_time_ms": {
+                    "type": "integer"
+                },
+                "gitlab_token": {
                     "type": "string"
                 },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
+                "hook_id": {
+                    "type": "string"
                 },
-                "ok": {
-                    "type": "boolean"
+                "lang_name": {
+                    "type": "string"
                 },
-                "result": {
-                    "$ref": "#/definitions/main.MasterGetContestStatusJSONReplyResult"
-                },
-                "server_time": {
+                "last_change_time_ms": {
                     "type": "integer"
+                },
+                "prob_id": {
+                    "type": "integer"
+                },
+                "serial_id": {
+                    "type": "integer"
+                },
+                "ssh_private_key": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "integer"
+                },
+                "vcs_branch_spec": {
+                    "type": "string"
+                },
+                "vcs_subdir": {
+                    "type": "string"
+                },
+                "vcs_type": {
+                    "type": "string"
+                },
+                "vcs_url": {
+                    "type": "string"
                 }
             }
         },
-        "main.MasterGetContestStatusJSONReplyResult": {
+        "main.MasterGetContestStatusJSONResult": {
             "type": "object",
             "properties": {
                 "contest": {
-                    "$ref": "#/definitions/main.MasterGetContestStatusJSONReplyResultContest"
+                    "$ref": "#/definitions/main.EjudgeContestStatus"
                 },
                 "online": {
-                    "$ref": "#/definitions/main.MasterGetContestStatusJSONReplyResultOnline"
+                    "$ref": "#/definitions/main.EjudgeContestOnline"
                 }
             }
         },
-        "main.MasterGetContestStatusJSONReplyResultContest": {
+        "main.MasterGetListRunsJSONResult": {
             "type": "object",
             "properties": {
-                "board_fog_duration": {
-                    "type": "integer"
-                },
-                "board_unfog_duration": {
-                    "type": "integer"
-                },
-                "close_time": {
-                    "type": "integer"
-                },
-                "contest_load_time": {
-                    "type": "integer"
-                },
-                "duration": {
-                    "type": "integer"
-                },
-                "expected_stop_time": {
-                    "type": "integer"
-                },
-                "freeze_time": {
-                    "type": "integer"
-                },
-                "id": {
-                    "type": "integer"
-                },
-                "is_clients_suspended": {
-                    "type": "boolean"
-                },
-                "is_continue_enabled": {
-                    "type": "boolean"
-                },
-                "is_final_visibility": {
-                    "type": "boolean"
-                },
-                "is_freezable": {
-                    "type": "boolean"
-                },
-                "is_frozen": {
-                    "type": "boolean"
-                },
-                "is_judge_score": {
-                    "type": "boolean"
-                },
-                "is_olympiad_accepting_mode": {
-                    "type": "boolean"
-                },
-                "is_printing_suspended": {
-                    "type": "boolean"
-                },
-                "is_report_closed": {
-                    "type": "boolean"
-                },
-                "is_report_open": {
-                    "type": "boolean"
-                },
-                "is_restartable": {
-                    "type": "boolean"
-                },
-                "is_source_closed": {
-                    "type": "boolean"
-                },
-                "is_source_open": {
-                    "type": "boolean"
-                },
-                "is_standings_updated": {
-                    "type": "boolean"
-                },
-                "is_started": {
-                    "type": "boolean"
-                },
-                "is_stopped": {
-                    "type": "boolean"
-                },
-                "is_testing_finished": {
-                    "type": "boolean"
-                },
-                "is_testing_suspended": {
-                    "type": "boolean"
-                },
-                "is_unlimited": {
-                    "type": "boolean"
-                },
-                "is_upsolving": {
-                    "type": "boolean"
-                },
-                "is_valuer_judge_comments": {
-                    "type": "boolean"
-                },
-                "is_virtual": {
-                    "type": "boolean"
-                },
-                "name": {
+                "displayed_mask": {
                     "type": "string"
                 },
-                "name_en": {
+                "displayed_size": {
+                    "type": "integer"
+                },
+                "field_mask": {
+                    "type": "integer"
+                },
+                "filter_expr": {
                     "type": "string"
                 },
-                "open_time": {
+                "filtered_runs": {
                     "type": "integer"
                 },
-                "scheduled_finish_time": {
+                "first_run": {
                     "type": "integer"
                 },
-                "scheduled_start_time": {
+                "last_run": {
                     "type": "integer"
                 },
-                "score_system": {
+                "listed_runs": {
                     "type": "integer"
                 },
-                "server_start_time": {
+                "runs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/main.EjudgeRun"
+                    }
+                },
+                "total_runs": {
                     "type": "integer"
                 },
-                "start_time": {
-                    "type": "integer"
-                },
-                "stop_time": {
-                    "type": "integer"
-                },
-                "unfreeze_time": {
+                "transient_runs": {
                     "type": "integer"
                 }
             }
         },
-        "main.MasterGetContestStatusJSONReplyResultOnline": {
-            "type": "object",
-            "properties": {
-                "max_time": {
-                    "type": "integer"
-                },
-                "max_user_count": {
-                    "type": "integer"
-                },
-                "user_count": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.MasterGetGetSubmitReply": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.EjudgeSubmit"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.MasterGetRunStatusJSONReply": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.MasterGetRunStatusJSONReplyResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.MasterGetRunStatusJSONReplyResult": {
+        "main.MasterGetRunStatusJSONResult": {
             "type": "object",
             "properties": {
                 "accepting_mode": {
@@ -992,27 +2671,7 @@
                 }
             }
         },
-        "main.MasterPostSubmitRunInputReply": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.MasterPostSubmitRunInputReplyResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.MasterPostSubmitRunInputReplyResult": {
+        "main.MasterPostSubmitRunInputResult": {
             "type": "object",
             "properties": {
                 "submit_id": {
@@ -1020,27 +2679,7 @@
                 }
             }
         },
-        "main.MasterPostSubmitRunReply": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.MasterPostSubmitRunReplyResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.MasterPostSubmitRunReplyResult": {
+        "main.PostSubmitRunResult": {
             "type": "object",
             "properties": {
                 "run_id": {
