@@ -36,7 +36,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_ClientGetContestStatusJSONResult"
+                            "$ref": "#/definitions/ejudge.Reply-main_ClientGetContestStatusJSONResult"
                         }
                     }
                 }
@@ -78,7 +78,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_EjudgeUserProb"
+                            "$ref": "#/definitions/ejudge.Reply-main_EjudgeUserProb"
                         }
                     }
                 }
@@ -201,7 +201,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_EjudgeSubmit"
+                            "$ref": "#/definitions/ejudge.Reply-ejudge_Submit"
                         }
                     }
                 }
@@ -243,7 +243,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_EjudgeUserProb"
+                            "$ref": "#/definitions/ejudge.Reply-main_EjudgeUserProb"
                         }
                     }
                 }
@@ -277,7 +277,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_ClientGetListRunsJSONResult"
+                            "$ref": "#/definitions/ejudge.Reply-main_ClientGetListRunsJSONResult"
                         }
                     }
                 }
@@ -338,7 +338,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_ClientGetProblemStatusJSONResult"
+                            "$ref": "#/definitions/ejudge.Reply-main_ClientGetProblemStatusJSONResult"
                         }
                     }
                 }
@@ -380,7 +380,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeBaseReply"
+                            "$ref": "#/definitions/ejudge.BaseReply"
                         }
                     }
                 }
@@ -414,7 +414,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_ClientGetRunMessagesJSONResult"
+                            "$ref": "#/definitions/ejudge.Reply-main_ClientGetRunMessagesJSONResult"
                         }
                     }
                 }
@@ -448,7 +448,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_ClientGetRunStatusJSONResult"
+                            "$ref": "#/definitions/ejudge.Reply-main_ClientGetRunStatusJSONResult"
                         }
                     }
                 }
@@ -532,7 +532,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeBaseReply"
+                            "$ref": "#/definitions/ejudge.BaseReply"
                         }
                     }
                 }
@@ -591,7 +591,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_PostSubmitRunResult"
+                            "$ref": "#/definitions/ejudge.Reply-main_PostSubmitRunResult"
                         }
                     }
                 }
@@ -664,7 +664,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_ClientPostSubmitRunInputResult"
+                            "$ref": "#/definitions/ejudge.Reply-main_ClientPostSubmitRunInputResult"
                         }
                     }
                 }
@@ -698,7 +698,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_MasterGetContestStatusJSONResult"
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterGetContestStatusJSONResult"
                         }
                     }
                 }
@@ -782,7 +782,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_EjudgeSubmit"
+                            "$ref": "#/definitions/ejudge.Reply-ejudge_Submit"
                         }
                     }
                 }
@@ -840,7 +840,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_MasterGetListRunsJSONResult"
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterGetListRunsJSONResult"
                         }
                     }
                 }
@@ -961,7 +961,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_MasterGetRunStatusJSONResult"
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterGetRunStatusJSONResult"
                         }
                     }
                 }
@@ -1092,7 +1092,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_PostSubmitRunResult"
+                            "$ref": "#/definitions/ejudge.Reply-main_PostSubmitRunResult"
                         }
                     }
                 }
@@ -1194,7 +1194,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/main.EjudgeReply-main_MasterPostSubmitRunInputResult"
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterPostSubmitRunInputResult"
                         }
                     }
                 }
@@ -1202,6 +1202,616 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "ejudge.BaseReply": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Error": {
+            "type": "object",
+            "properties": {
+                "log_id": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "num": {
+                    "type": "integer"
+                },
+                "symbol": {
+                    "type": "string"
+                }
+            }
+        },
+        "ejudge.Reply-ejudge_Submit": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/ejudge.Submit"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_ClientGetContestStatusJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.ClientGetContestStatusJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_ClientGetListRunsJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.ClientGetListRunsJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_ClientGetProblemStatusJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.ClientGetProblemStatusJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_ClientGetRunMessagesJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.ClientGetRunMessagesJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_ClientGetRunStatusJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.ClientGetRunStatusJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_ClientPostSubmitRunInputResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.ClientPostSubmitRunInputResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_EjudgeUserProb": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.EjudgeUserProb"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_MasterGetContestStatusJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.MasterGetContestStatusJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_MasterGetListRunsJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.MasterGetListRunsJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_MasterGetRunStatusJSONResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.MasterGetRunStatusJSONResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_MasterPostSubmitRunInputResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.MasterPostSubmitRunInputResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_PostSubmitRunResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.PostSubmitRunResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Run": {
+            "type": "object",
+            "properties": {
+                "contest_id": {
+                    "type": "integer"
+                },
+                "duration": {
+                    "type": "integer"
+                },
+                "eoln_type": {
+                    "type": "integer"
+                },
+                "ip": {
+                    "type": "string"
+                },
+                "ipv6_flag": {
+                    "type": "boolean"
+                },
+                "is_checked": {
+                    "type": "boolean"
+                },
+                "is_hidden": {
+                    "type": "boolean"
+                },
+                "is_imported": {
+                    "type": "boolean"
+                },
+                "is_marked": {
+                    "type": "boolean"
+                },
+                "is_readonly": {
+                    "type": "boolean"
+                },
+                "is_saved": {
+                    "type": "boolean"
+                },
+                "is_vcs": {
+                    "type": "boolean"
+                },
+                "judge_id": {
+                    "type": "integer"
+                },
+                "judge_uuid": {
+                    "type": "string"
+                },
+                "lang_id": {
+                    "type": "integer"
+                },
+                "lang_name": {
+                    "type": "string"
+                },
+                "last_change_us": {
+                    "type": "integer"
+                },
+                "locale_id": {
+                    "type": "integer"
+                },
+                "mime_type": {
+                    "type": "string"
+                },
+                "nsec": {
+                    "type": "integer"
+                },
+                "pages": {
+                    "type": "integer"
+                },
+                "passed_mode": {
+                    "type": "boolean"
+                },
+                "prob_id": {
+                    "type": "integer"
+                },
+                "prob_internal_name": {
+                    "type": "string"
+                },
+                "prob_name": {
+                    "type": "string"
+                },
+                "prob_uuid": {
+                    "type": "string"
+                },
+                "raw_score": {
+                    "type": "integer"
+                },
+                "raw_variant": {
+                    "type": "integer"
+                },
+                "run_id": {
+                    "type": "integer"
+                },
+                "run_time": {
+                    "type": "integer"
+                },
+                "run_time_us": {
+                    "type": "integer"
+                },
+                "run_uuid": {
+                    "type": "string"
+                },
+                "saved_score": {
+                    "type": "integer"
+                },
+                "saved_status": {
+                    "type": "integer"
+                },
+                "saved_status_str": {
+                    "type": "string"
+                },
+                "saved_test": {
+                    "type": "integer"
+                },
+                "score": {
+                    "type": "integer"
+                },
+                "score_adj": {
+                    "type": "integer"
+                },
+                "score_str": {
+                    "type": "string"
+                },
+                "serial_id": {
+                    "type": "integer"
+                },
+                "sha1": {
+                    "type": "string"
+                },
+                "sha256": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "ssl_flag": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "status_str": {
+                    "type": "string"
+                },
+                "store_flags": {
+                    "type": "integer"
+                },
+                "test": {
+                    "type": "integer"
+                },
+                "tests_passed": {
+                    "type": "integer"
+                },
+                "token_count": {
+                    "type": "integer"
+                },
+                "token_flags": {
+                    "type": "integer"
+                },
+                "user_id": {
+                    "type": "integer"
+                },
+                "user_login": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                },
+                "variant": {
+                    "type": "integer"
+                },
+                "verdict_bits": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Submit": {
+            "type": "object",
+            "properties": {
+                "compiler_output": {
+                    "type": "string"
+                },
+                "contest_id": {
+                    "type": "integer"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "exit_code": {
+                    "type": "integer"
+                },
+                "input": {
+                    "type": "string"
+                },
+                "lang_id": {
+                    "type": "integer"
+                },
+                "max_memory_used": {
+                    "type": "integer"
+                },
+                "max_rss": {
+                    "type": "integer"
+                },
+                "output": {
+                    "type": "string"
+                },
+                "prob_id": {
+                    "type": "integer"
+                },
+                "real_time": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "status_str": {
+                    "type": "string"
+                },
+                "submit_id": {
+                    "type": "integer"
+                },
+                "term_signal": {
+                    "type": "integer"
+                },
+                "test_checker_output": {
+                    "type": "string"
+                },
+                "time": {
+                    "type": "integer"
+                },
+                "user_id": {
+                    "type": "integer"
+                }
+            }
+        },
         "main.ClientGetContestStatusJSONCompiler": {
             "type": "object",
             "properties": {
@@ -1824,29 +2434,6 @@ const docTemplate = `{
                 }
             }
         },
-        "main.EjudgeBaseReply": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
         "main.EjudgeContestOnline": {
             "type": "object",
             "properties": {
@@ -2000,576 +2587,6 @@ const docTemplate = `{
                 }
             }
         },
-        "main.EjudgeReply-main_ClientGetContestStatusJSONResult": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.ClientGetContestStatusJSONResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeReply-main_ClientGetListRunsJSONResult": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.ClientGetListRunsJSONResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeReply-main_ClientGetProblemStatusJSONResult": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.ClientGetProblemStatusJSONResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeReply-main_ClientGetRunMessagesJSONResult": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.ClientGetRunMessagesJSONResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeReply-main_ClientGetRunStatusJSONResult": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.ClientGetRunStatusJSONResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeReply-main_ClientPostSubmitRunInputResult": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.ClientPostSubmitRunInputResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeReply-main_EjudgeSubmit": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.EjudgeSubmit"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeReply-main_EjudgeUserProb": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.EjudgeUserProb"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeReply-main_MasterGetContestStatusJSONResult": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.MasterGetContestStatusJSONResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeReply-main_MasterGetListRunsJSONResult": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.MasterGetListRunsJSONResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeReply-main_MasterGetRunStatusJSONResult": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.MasterGetRunStatusJSONResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeReply-main_MasterPostSubmitRunInputResult": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.MasterPostSubmitRunInputResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeReply-main_PostSubmitRunResult": {
-            "type": "object",
-            "properties": {
-                "action": {
-                    "type": "string"
-                },
-                "error": {
-                    "$ref": "#/definitions/main.ReplyError"
-                },
-                "ok": {
-                    "type": "boolean"
-                },
-                "reply_id": {
-                    "type": "integer"
-                },
-                "request_id": {
-                    "type": "integer"
-                },
-                "result": {
-                    "$ref": "#/definitions/main.PostSubmitRunResult"
-                },
-                "server_time": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeRun": {
-            "type": "object",
-            "properties": {
-                "contest_id": {
-                    "type": "integer"
-                },
-                "duration": {
-                    "type": "integer"
-                },
-                "eoln_type": {
-                    "type": "integer"
-                },
-                "ip": {
-                    "type": "string"
-                },
-                "ipv6_flag": {
-                    "type": "boolean"
-                },
-                "is_checked": {
-                    "type": "boolean"
-                },
-                "is_hidden": {
-                    "type": "boolean"
-                },
-                "is_imported": {
-                    "type": "boolean"
-                },
-                "is_marked": {
-                    "type": "boolean"
-                },
-                "is_readonly": {
-                    "type": "boolean"
-                },
-                "is_saved": {
-                    "type": "boolean"
-                },
-                "is_vcs": {
-                    "type": "boolean"
-                },
-                "judge_id": {
-                    "type": "integer"
-                },
-                "judge_uuid": {
-                    "type": "string"
-                },
-                "lang_id": {
-                    "type": "integer"
-                },
-                "lang_name": {
-                    "type": "string"
-                },
-                "last_change_us": {
-                    "type": "integer"
-                },
-                "locale_id": {
-                    "type": "integer"
-                },
-                "mime_type": {
-                    "type": "string"
-                },
-                "nsec": {
-                    "type": "integer"
-                },
-                "pages": {
-                    "type": "integer"
-                },
-                "passed_mode": {
-                    "type": "boolean"
-                },
-                "prob_id": {
-                    "type": "integer"
-                },
-                "prob_internal_name": {
-                    "type": "string"
-                },
-                "prob_name": {
-                    "type": "string"
-                },
-                "prob_uuid": {
-                    "type": "string"
-                },
-                "raw_score": {
-                    "type": "integer"
-                },
-                "raw_variant": {
-                    "type": "integer"
-                },
-                "run_id": {
-                    "type": "integer"
-                },
-                "run_time": {
-                    "type": "integer"
-                },
-                "run_time_us": {
-                    "type": "integer"
-                },
-                "run_uuid": {
-                    "type": "string"
-                },
-                "saved_score": {
-                    "type": "integer"
-                },
-                "saved_status": {
-                    "type": "integer"
-                },
-                "saved_status_str": {
-                    "type": "string"
-                },
-                "saved_test": {
-                    "type": "integer"
-                },
-                "score": {
-                    "type": "integer"
-                },
-                "score_adj": {
-                    "type": "integer"
-                },
-                "score_str": {
-                    "type": "string"
-                },
-                "serial_id": {
-                    "type": "integer"
-                },
-                "sha1": {
-                    "type": "string"
-                },
-                "sha256": {
-                    "type": "string"
-                },
-                "size": {
-                    "type": "integer"
-                },
-                "ssl_flag": {
-                    "type": "boolean"
-                },
-                "status": {
-                    "type": "integer"
-                },
-                "status_str": {
-                    "type": "string"
-                },
-                "store_flags": {
-                    "type": "integer"
-                },
-                "test": {
-                    "type": "integer"
-                },
-                "tests_passed": {
-                    "type": "integer"
-                },
-                "token_count": {
-                    "type": "integer"
-                },
-                "token_flags": {
-                    "type": "integer"
-                },
-                "user_id": {
-                    "type": "integer"
-                },
-                "user_login": {
-                    "type": "string"
-                },
-                "user_name": {
-                    "type": "string"
-                },
-                "variant": {
-                    "type": "integer"
-                },
-                "verdict_bits": {
-                    "type": "integer"
-                }
-            }
-        },
-        "main.EjudgeSubmit": {
-            "type": "object",
-            "properties": {
-                "compiler_output": {
-                    "type": "string"
-                },
-                "contest_id": {
-                    "type": "integer"
-                },
-                "error": {
-                    "type": "string"
-                },
-                "exit_code": {
-                    "type": "integer"
-                },
-                "input": {
-                    "type": "string"
-                },
-                "lang_id": {
-                    "type": "integer"
-                },
-                "max_memory_used": {
-                    "type": "integer"
-                },
-                "max_rss": {
-                    "type": "integer"
-                },
-                "output": {
-                    "type": "string"
-                },
-                "prob_id": {
-                    "type": "integer"
-                },
-                "real_time": {
-                    "type": "integer"
-                },
-                "status": {
-                    "type": "integer"
-                },
-                "status_str": {
-                    "type": "string"
-                },
-                "submit_id": {
-                    "type": "integer"
-                },
-                "term_signal": {
-                    "type": "integer"
-                },
-                "test_checker_output": {
-                    "type": "string"
-                },
-                "time": {
-                    "type": "integer"
-                },
-                "user_id": {
-                    "type": "integer"
-                }
-            }
-        },
         "main.EjudgeUserProb": {
             "type": "object",
             "properties": {
@@ -2658,7 +2675,7 @@ const docTemplate = `{
                 "runs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/main.EjudgeRun"
+                        "$ref": "#/definitions/ejudge.Run"
                     }
                 },
                 "total_runs": {
@@ -2676,7 +2693,7 @@ const docTemplate = `{
                     "type": "boolean"
                 },
                 "run": {
-                    "$ref": "#/definitions/main.EjudgeRun"
+                    "$ref": "#/definitions/ejudge.Run"
                 }
             }
         },
@@ -2695,23 +2712,6 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "run_uuid": {
-                    "type": "string"
-                }
-            }
-        },
-        "main.ReplyError": {
-            "type": "object",
-            "properties": {
-                "log_id": {
-                    "type": "string"
-                },
-                "message": {
-                    "type": "string"
-                },
-                "num": {
-                    "type": "integer"
-                },
-                "symbol": {
                     "type": "string"
                 }
             }
