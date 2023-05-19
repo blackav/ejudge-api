@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/blackav/ejudge-api/docs"
+	"github.com/blackav/ejudge-api/ejudge"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -14,53 +15,6 @@ type MasterGetGetSubmitQueryParams struct {
 	ContestID int32 `form:"contest_id"`
 	Json      int32 `form:"json"`
 	SubmitID  int64 `form:"submit_id"`
-}
-
-type ReplyError struct {
-	Num     int64  `json:"num"`
-	Symbol  string `json:"symbol,omitempty"`
-	Message string `json:"message,omitempty"`
-	LogID   string `json:"log_id,omitempty"`
-}
-
-type EjudgeBaseReply struct {
-	Ok         bool        `json:"ok"`
-	ServerTime int64       `json:"server_time"`
-	Action     string      `json:"action"`
-	RequestId  int64       `json:"request_id,omitempty"`
-	ReplyId    int64       `json:"reply_id,omitempty"`
-	Error      *ReplyError `json:"error,omitempty"`
-}
-
-type EjudgeReply[T any] struct {
-	Ok         bool        `json:"ok"`
-	ServerTime int64       `json:"server_time"`
-	Action     string      `json:"action"`
-	RequestId  int64       `json:"request_id,omitempty"`
-	ReplyId    int64       `json:"reply_id,omitempty"`
-	Error      *ReplyError `json:"error,omitempty"`
-	Result     *T          `json:"result,omitempty"`
-}
-
-type EjudgeSubmit struct {
-	SubmitID          int64  `json:"submit_id"`
-	UserID            int32  `json:"user_id"`
-	ContestID         int32  `json:"contest_id"`
-	ProbID            int32  `json:"prob_id"`
-	LangID            *int32 `json:"lang_id,omitempty"`
-	Status            int32  `json:"status"`
-	StatusStr         string `json:"status_str"`
-	CompilerOutput    string `json:"compiler_output,omitempty"`
-	TestCheckerOutput string `json:"test_checker_output,omitempty"`
-	Time              *int64 `json:"time,omitempty"`
-	RealTime          *int64 `json:"real_time,omitempty"`
-	ExitCode          *int32 `json:"exit_code,omitempty"`
-	TermSignal        *int32 `json:"term_signal,omitempty"`
-	MaxMemoryUsed     *int64 `json:"max_memory_used,omitempty"`
-	MaxRSS            *int64 `json:"max_rss,omitempty"`
-	Input             string `json:"input,omitempty"`
-	Output            string `json:"output,omitempty"`
-	Error             string `json:"error,omitempty"`
 }
 
 // MasterGetGetSubmit godoc
@@ -73,7 +27,7 @@ type EjudgeSubmit struct {
 // @Param		contest_id query int false "Contest ID"
 // @Param		submit_id query int true "Submit ID"
 // @Param		json query int false "Submit ID" default(1)
-// @Success		200	{object}	EjudgeReply[EjudgeSubmit]
+// @Success		200	{object}	ejudge.Reply[ejudge.Submit]
 // @Router		/ej/master/get-submit [get]
 // @Security	ApiKeyAuth
 func MasterGetGetSubmit(c *gin.Context) {
@@ -84,11 +38,11 @@ func MasterGetGetSubmit(c *gin.Context) {
 	}
 
 	var langID int32 = 3
-	res := EjudgeReply[EjudgeSubmit]{
+	res := ejudge.Reply[ejudge.Submit]{
 		Ok:         true,
 		ServerTime: time.Now().Unix(),
 		Action:     "get-submit",
-		Result: &EjudgeSubmit{
+		Result: &ejudge.Submit{
 			SubmitID:  q.SubmitID,
 			ContestID: q.ContestID,
 			UserID:    1000,
@@ -124,7 +78,7 @@ type MasterPostSubmitRunInputResult struct {
 // @Param		text_form formData string false "Source code" format(text)
 // @Param		file_input formData file false "Input data"
 // @Param		text_form_input formData string false "Input data"
-// @Success		200	{object}	EjudgeReply[MasterPostSubmitRunInputResult]
+// @Success		200	{object}	ejudge.Reply[MasterPostSubmitRunInputResult]
 // @Router		/ej/master/submit-run-input [post]
 // @Security	ApiKeyAuth
 func MasterPostSubmitRunInput(c *gin.Context) {
@@ -160,74 +114,15 @@ type PostSubmitRunResult struct {
 // @Param		rejudge_flag formData int false "if value > 0 the run is tested with rejudge priority"
 // @Param		file formData file false "Source code"
 // @Param		text_form formData string false "Source code" format(text)
-// @Success		200	{object}	EjudgeReply[PostSubmitRunResult]
+// @Success		200	{object}	ejudge.Reply[PostSubmitRunResult]
 // @Router		/ej/master/submit-run [post]
 // @Security	ApiKeyAuth
 func MasterPostSubmitRun(c *gin.Context) {
 }
 
-type EjudgeRun struct {
-	RunID            int32  `json:"run_id"`
-	ContestID        int32  `json:"contest_id,omitempty"`
-	RunUUID          string `json:"run_uuid,omitempty"`
-	SerialID         int64  `json:"serial_id,omitempty"`
-	Status           int32  `json:"status"`
-	StatusStr        string `json:"status_str,omitempty"`
-	RunTime          int64  `json:"run_time,omitempty"`
-	NSec             int32  `json:"nsec,omitempty"`
-	RunTimeUs        int64  `json:"run_time_us,omitempty"`
-	Duration         int32  `json:"duration,omitempty"`
-	UserID           int32  `json:"user_id,omitempty"`
-	UserLogin        string `json:"user_login,omitempty"`
-	UserName         string `json:"user_name,omitempty"`
-	ProbID           int32  `json:"prob_id,omitempty"`
-	ProbName         string `json:"prob_name,omitempty"`
-	ProbInternalName string `json:"prob_internal_name,omitempty"`
-	ProbUUID         string `json:"prob_uuid,omitempty"`
-	Variant          int32  `json:"variant,omitempty"`
-	RawVariant       int32  `json:"raw_variant,omitempty"`
-	LangID           int32  `json:"lang_id,omitempty"`
-	LangName         string `json:"lang_name,omitempty"`
-	IP               string `json:"ip,omitempty"`
-	SSLFlag          bool   `json:"ssl_flag,omitempty"`
-	IPV6Flag         bool   `json:"ipv6_flag,omitempty"`
-	SHA1             string `json:"sha1,omitempty"`
-	SHA256           string `json:"sha256,omitempty"`
-	LocaleID         int32  `json:"locale_id,omitempty"`
-	EOLNType         int32  `json:"eoln_type,omitempty"`
-	MIMEType         string `json:"mime_type,omitempty"`
-	Size             int64  `json:"size,omitempty"`
-	StoreFlags       int32  `json:"store_flags,omitempty"`
-	IsImported       bool   `json:"is_imported,omitempty"`
-	IsHidden         bool   `json:"is_hidden,omitempty"`
-	IsReadOnly       bool   `json:"is_readonly,omitempty"`
-	PassedMode       bool   `json:"passed_mode,omitempty"`
-	Score            *int32 `json:"score,omitempty"`
-	Test             *int32 `json:"test,omitempty"`
-	IsMarked         bool   `json:"is_marked,omitempty"`
-	ScoreAdj         int32  `json:"score_adj,omitempty"`
-	JudgeID          int32  `json:"judge_id,omitempty"`
-	JudgeUUID        string `json:"judge_uuid,omitempty"`
-	Pages            int32  `json:"pages,omitempty"`
-	TokenFlags       int32  `json:"token_flags,omitempty"`
-	TokenCount       int32  `json:"token_count,omitempty"`
-	IsSaved          bool   `json:"is_saved,omitempty"`
-	SavedStatus      *int32 `json:"saved_status,omitempty"`
-	SavedStatusStr   string `json:"saved_status_str,omitempty"`
-	SavedScore       *int32 `json:"saved_score,omitempty"`
-	SavedTest        *int32 `json:"saved_test,omitempty"`
-	IsChecked        bool   `json:"is_checked,omitempty"`
-	IsVCS            bool   `json:"is_vcs,omitempty"`
-	VerdictBits      uint32 `json:"verdict_bits,omitempty"`
-	LastChangeUs     int64  `json:"last_change_us,omitempty"`
-	TestsPassed      *int32 `json:"tests_passed,omitempty"`
-	RawScore         *int32 `json:"raw_score,omitempty"`
-	ScoreStr         string `json:"score_str,omitempty"`
-}
-
 type MasterGetRunStatusJSONResult struct {
-	AcceptingMode bool      `json:"accepting_mode,omitempty"`
-	Run           EjudgeRun `json:"run,omitempty"`
+	AcceptingMode bool       `json:"accepting_mode,omitempty"`
+	Run           ejudge.Run `json:"run,omitempty"`
 }
 
 // MasterGetRunStatusJSON godoc
@@ -240,7 +135,7 @@ type MasterGetRunStatusJSONResult struct {
 // @Param		contest_id query int false "contest_id"
 // @Param		run_id query int false "run_id"
 // @Param		run_uuid query string false "run_uuid"
-// @Success		200	{object}	EjudgeReply[MasterGetRunStatusJSONResult]
+// @Success		200	{object}	ejudge.Reply[MasterGetRunStatusJSONResult]
 // @Router		/ej/master/run-status-json [get]
 // @Security	ApiKeyAuth
 func MasterGetRunStatusJSON(c *gin.Context) {
@@ -351,24 +246,24 @@ type MasterGetContestStatusJSONResult struct {
 // @Tags		privileged contest
 // @Produce		json
 // @Param		contest_id query int false "contest_id"
-// @Success		200	{object}	EjudgeReply[MasterGetContestStatusJSONResult]
+// @Success		200	{object}	ejudge.Reply[MasterGetContestStatusJSONResult]
 // @Router		/ej/master/contest-status-json [get]
 // @Security	ApiKeyAuth
 func MasterGetContestStatusJSON(c *gin.Context) {
 }
 
 type MasterGetListRunsJSONResult struct {
-	TotalRuns     int32       `json:"total_runs,omitempty"`
-	FilteredRuns  int32       `json:"filtered_runs,omitempty"`
-	ListedRuns    int32       `json:"listed_runs,omitempty"`
-	TransientRuns int32       `json:"transient_runs,omitempty"`
-	FilterExpr    string      `json:"filter_expr,omitempty"`
-	FirstRun      int32       `json:"first_run,omitempty"`
-	LastRun       int32       `json:"last_run,omitempty"`
-	FieldMask     int32       `json:"field_mask,omitempty"`
-	DisplayedSize int32       `json:"displayed_size,omitempty"`
-	DisplayedMask string      `json:"displayed_mask,omitempty"`
-	Runs          []EjudgeRun `json:"runs,omitempty"`
+	TotalRuns     int32        `json:"total_runs,omitempty"`
+	FilteredRuns  int32        `json:"filtered_runs,omitempty"`
+	ListedRuns    int32        `json:"listed_runs,omitempty"`
+	TransientRuns int32        `json:"transient_runs,omitempty"`
+	FilterExpr    string       `json:"filter_expr,omitempty"`
+	FirstRun      int32        `json:"first_run,omitempty"`
+	LastRun       int32        `json:"last_run,omitempty"`
+	FieldMask     int32        `json:"field_mask,omitempty"`
+	DisplayedSize int32        `json:"displayed_size,omitempty"`
+	DisplayedMask string       `json:"displayed_mask,omitempty"`
+	Runs          []ejudge.Run `json:"runs,omitempty"`
 }
 
 // MasterGetListRunsJSON godoc
@@ -383,7 +278,7 @@ type MasterGetListRunsJSONResult struct {
 // @Param		first_run query int false "First run to list"
 // @Param		last_run query int false "Last run to list"
 // @Param		field_mask query int false "Fields to display"
-// @Success		200	{object}	EjudgeReply[MasterGetListRunsJSONResult]
+// @Success		200	{object}	ejudge.Reply[MasterGetListRunsJSONResult]
 // @Router		/ej/master/list-runs-json [get]
 // @Security	ApiKeyAuth
 func MasterGetListRunsJSON(c *gin.Context) {
@@ -416,7 +311,7 @@ type ClientGetContestStatusJSONResult struct {
 // @ID			client-get-contest-status-json
 // @Tags		unprivileged contest
 // @Produce		json
-// @Success		200	{object}	EjudgeReply[ClientGetContestStatusJSONResult]
+// @Success		200	{object}	ejudge.Reply[ClientGetContestStatusJSONResult]
 // @Router		/ej/client/contest-status-json [get]
 // @Security	ApiKeyAuth
 func ClientGetContestStatusJSON(c *gin.Context) {
@@ -519,7 +414,7 @@ type ClientGetProblemStatusJSONResult struct {
 // @Tags		unprivileged problem
 // @Produce		json
 // @Param		problem query int false "Problem ID"
-// @Success		200	{object}	EjudgeReply[ClientGetProblemStatusJSONResult]
+// @Success		200	{object}	ejudge.Reply[ClientGetProblemStatusJSONResult]
 // @Router		/ej/client/problem-status-json [get]
 // @Security	ApiKeyAuth
 func ClientGetProblemStatusJSON(c *gin.Context) {
@@ -551,7 +446,7 @@ func ClientGetProblemStatementJSON(c *gin.Context) {
 // @Param		eoln_type formData int false "End-of-Line translation type"
 // @Param		file formData file false "Source code"
 // @Param		text_form formData string false "Source code" format(text)
-// @Success		200	{object}	EjudgeReply[PostSubmitRunResult]
+// @Success		200	{object}	ejudge.Reply[PostSubmitRunResult]
 // @Router		/ej/client/submit-run [post]
 // @Security	ApiKeyAuth
 func ClientPostSubmitRun(c *gin.Context) {
@@ -579,7 +474,7 @@ type ClientGetListRunsJSONResult struct {
 // @Tags		unprivileged run
 // @Produce		json
 // @Param		problem query int false "Problem ID"
-// @Success		200	{object}	EjudgeReply[ClientGetListRunsJSONResult]
+// @Success		200	{object}	ejudge.Reply[ClientGetListRunsJSONResult]
 // @Router		/ej/client/list-runs-json [get]
 // @Security	ApiKeyAuth
 func ClientGetListRunsJSON(c *gin.Context) {
@@ -686,7 +581,7 @@ type ClientGetRunStatusJSONResult struct {
 // @Tags		unprivileged run
 // @Produce		json
 // @Param		run_id query int false "Run ID"
-// @Success		200	{object}	EjudgeReply[ClientGetRunStatusJSONResult]
+// @Success		200	{object}	ejudge.Reply[ClientGetRunStatusJSONResult]
 // @Router		/ej/client/run-status-json [get]
 // @Security	ApiKeyAuth
 func ClientGetRunStatusJSON(c *gin.Context) {
@@ -714,7 +609,7 @@ type ClientGetRunMessagesJSONResult struct {
 // @Tags		unprivileged run
 // @Produce		json
 // @Param		run_id query int false "Run ID"
-// @Success		200	{object}	EjudgeReply[ClientGetRunMessagesJSONResult]
+// @Success		200	{object}	ejudge.Reply[ClientGetRunMessagesJSONResult]
 // @Router		/ej/client/run-messages-json [get]
 // @Security	ApiKeyAuth
 func ClientGetRunMessagesJSON(c *gin.Context) {
@@ -758,7 +653,7 @@ func ClientGetDownloadRunFile(c *gin.Context) {
 // @Produce		json
 // @Param		submit_id query int true "Submit ID"
 // @Param		json query int false "Submit ID" default(1)
-// @Success		200	{object}	EjudgeReply[EjudgeSubmit]
+// @Success		200	{object}	ejudge.Reply[ejudge.Submit]
 // @Router		/ej/client/get-submit [get]
 // @Security	ApiKeyAuth
 func ClientGetGetSubmit(c *gin.Context) {
@@ -783,7 +678,7 @@ type ClientPostSubmitRunInputResult struct {
 // @Param		text_form formData string false "Source code" format(text)
 // @Param		file_input formData file false "Input data"
 // @Param		text_form_input formData string false "Input data"
-// @Success		200	{object}	EjudgeReply[ClientPostSubmitRunInputResult]
+// @Success		200	{object}	ejudge.Reply[ClientPostSubmitRunInputResult]
 // @Router		/ej/client/submit-run-input [post]
 // @Security	ApiKeyAuth
 func ClientPostSubmitRunInput(c *gin.Context) {
@@ -815,7 +710,7 @@ type EjudgeUserProb struct {
 // @Produce		json
 // @Param		prob_id query int true "Problem ID"
 // @Param		json query int false "Submit ID" default(1)
-// @Success		200	{object}	EjudgeReply[EjudgeUserProb]
+// @Success		200	{object}	ejudge.Reply[EjudgeUserProb]
 // @Router		/ej/client/get-userprob [get]
 // @Security	ApiKeyAuth
 func ClientGetGetUserprob(c *gin.Context) {
@@ -830,7 +725,7 @@ func ClientGetGetUserprob(c *gin.Context) {
 // @Produce		json
 // @Param		prob_id query int true "Problem ID"
 // @Param		json query int false "Submit ID" default(1)
-// @Success		200	{object}	EjudgeReply[EjudgeUserProb]
+// @Success		200	{object}	ejudge.Reply[EjudgeUserProb]
 // @Router		/ej/client/create-userprob [post]
 // @Security	ApiKeyAuth
 func ClientPostCreateUserprob(c *gin.Context) {
@@ -851,7 +746,7 @@ func ClientPostCreateUserprob(c *gin.Context) {
 // @Param		vcs_branch_spec query string true "VCS branch"
 // @Param		ssh_private_key query string true "ssh private key"
 // @Param		json query int false "Submit ID" default(1)
-// @Success		200	{object}	EjudgeBaseReply
+// @Success		200	{object}	ejudge.BaseReply
 // @Router		/ej/client/save-userprob [post]
 // @Security	ApiKeyAuth
 func ClientPostSaveUserprob(c *gin.Context) {
@@ -866,7 +761,7 @@ func ClientPostSaveUserprob(c *gin.Context) {
 // @Produce		json
 // @Param		serial_id query int true "Serial ID of the properties"
 // @Param		json query int false "Submit ID" default(1)
-// @Success		200	{object}	EjudgeBaseReply
+// @Success		200	{object}	ejudge.BaseReply
 // @Router		/ej/client/remove-userprob [post]
 // @Security	ApiKeyAuth
 func ClientPostRemoveUserprob(c *gin.Context) {
