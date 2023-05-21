@@ -16,7 +16,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/ej/client/contest-status-json": {
+        "/ej/api/v1/client/contest-status-json": {
             "get": {
                 "security": [
                     {
@@ -42,7 +42,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/client/create-userprob": {
+        "/ej/api/v1/client/create-userprob": {
             "post": {
                 "security": [
                     {
@@ -84,7 +84,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/client/download-run": {
+        "/ej/api/v1/client/download-run": {
             "get": {
                 "security": [
                     {
@@ -114,7 +114,7 @@ const docTemplate = `{
                 "responses": {}
             }
         },
-        "/ej/client/download-run-file": {
+        "/ej/api/v1/client/download-run-file": {
             "get": {
                 "security": [
                     {
@@ -165,7 +165,7 @@ const docTemplate = `{
                 "responses": {}
             }
         },
-        "/ej/client/get-submit": {
+        "/ej/api/v1/client/get-submit": {
             "get": {
                 "security": [
                     {
@@ -207,7 +207,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/client/get-userprob": {
+        "/ej/api/v1/client/get-userprob": {
             "get": {
                 "security": [
                     {
@@ -249,7 +249,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/client/list-runs-json": {
+        "/ej/api/v1/client/list-runs-json": {
             "get": {
                 "security": [
                     {
@@ -283,7 +283,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/client/problem-statement-json": {
+        "/ej/api/v1/client/problem-statement-json": {
             "get": {
                 "security": [
                     {
@@ -310,7 +310,7 @@ const docTemplate = `{
                 "responses": {}
             }
         },
-        "/ej/client/problem-status-json": {
+        "/ej/api/v1/client/problem-status-json": {
             "get": {
                 "security": [
                     {
@@ -344,7 +344,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/client/remove-userprob": {
+        "/ej/api/v1/client/remove-userprob": {
             "post": {
                 "security": [
                     {
@@ -386,7 +386,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/client/run-messages-json": {
+        "/ej/api/v1/client/run-messages-json": {
             "get": {
                 "security": [
                     {
@@ -420,7 +420,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/client/run-status-json": {
+        "/ej/api/v1/client/run-status-json": {
             "get": {
                 "security": [
                     {
@@ -454,7 +454,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/client/save-userprob": {
+        "/ej/api/v1/client/save-userprob": {
             "post": {
                 "security": [
                     {
@@ -538,7 +538,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/client/submit-run": {
+        "/ej/api/v1/client/submit-run": {
             "post": {
                 "security": [
                     {
@@ -597,7 +597,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/client/submit-run-input": {
+        "/ej/api/v1/client/submit-run-input": {
             "post": {
                 "security": [
                     {
@@ -670,7 +670,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/master/contest-status-json": {
+        "/ej/api/v1/master/contest-status-json": {
             "get": {
                 "security": [
                     {
@@ -704,7 +704,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/master/download-run": {
+        "/ej/api/v1/master/download-run": {
             "get": {
                 "security": [
                     {
@@ -740,7 +740,7 @@ const docTemplate = `{
                 "responses": {}
             }
         },
-        "/ej/master/get-submit": {
+        "/ej/api/v1/master/get-submit": {
             "get": {
                 "security": [
                     {
@@ -788,7 +788,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/master/list-runs-json": {
+        "/ej/api/v1/master/list-runs-json": {
             "get": {
                 "security": [
                     {
@@ -846,7 +846,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/master/raw-audit-log": {
+        "/ej/api/v1/master/raw-audit-log": {
             "get": {
                 "security": [
                     {
@@ -885,7 +885,7 @@ const docTemplate = `{
                 "responses": {}
             }
         },
-        "/ej/master/raw-report": {
+        "/ej/api/v1/master/raw-report": {
             "get": {
                 "security": [
                     {
@@ -921,7 +921,7 @@ const docTemplate = `{
                 "responses": {}
             }
         },
-        "/ej/master/run-status-json": {
+        "/ej/api/v1/master/run-status-json": {
             "get": {
                 "security": [
                     {
@@ -967,7 +967,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/master/submit-run": {
+        "/ej/api/v1/master/submit-run": {
             "post": {
                 "security": [
                     {
@@ -1098,7 +1098,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/ej/master/submit-run-input": {
+        "/ej/api/v1/master/submit-run-input": {
             "post": {
                 "security": [
                     {

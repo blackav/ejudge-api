@@ -999,7 +999,7 @@ info:
   title: Ejudge API
   version: 3.10.3
 paths:
-  /ej/client/contest-status-json:
+  /ej/api/v1/client/contest-status-json:
     get:
       description: Get the contest status (unprivileged)
       operationId: client-get-contest-status-json
@@ -1015,7 +1015,7 @@ paths:
       summary: Get the contest status (unprivileged)
       tags:
       - unprivileged contest
-  /ej/client/create-userprob:
+  /ej/api/v1/client/create-userprob:
     post:
       description: create VCS problem settings (unprivileged)
       operationId: client-post-create-userprob
@@ -1042,7 +1042,7 @@ paths:
       summary: Create VCS problem settings (unprivileged)
       tags:
       - unprivileged vcs
-  /ej/client/download-run:
+  /ej/api/v1/client/download-run:
     get:
       description: Get the source of the run (unprivileged)
       operationId: client-get-download-run
@@ -1061,7 +1061,7 @@ paths:
       summary: Get the source of the run (unprivileged)
       tags:
       - unprivileged run
-  /ej/client/download-run-file:
+  /ej/api/v1/client/download-run-file:
     get:
       description: Get the input/output/correct of the run (unprivileged)
       operationId: client-get-download-run-file
@@ -1095,7 +1095,7 @@ paths:
       summary: Get the input/output/correct file of the run (unprivileged)
       tags:
       - unprivileged run
-  /ej/client/get-submit:
+  /ej/api/v1/client/get-submit:
     get:
       description: get information about a submit (unprivileged)
       operationId: client-get-submit
@@ -1122,7 +1122,7 @@ paths:
       summary: Get information about a submit (unprivileged)
       tags:
       - unprivileged submit
-  /ej/client/get-userprob:
+  /ej/api/v1/client/get-userprob:
     get:
       description: get VCS problem settings (unprivileged)
       operationId: client-get-get-userprob
@@ -1149,7 +1149,7 @@ paths:
       summary: Get VCS problem settings (unprivileged)
       tags:
       - unprivileged vcs
-  /ej/client/list-runs-json:
+  /ej/api/v1/client/list-runs-json:
     get:
       description: Get the list of the runs (unprivileged)
       operationId: client-get-list-runs-json
@@ -1170,7 +1170,7 @@ paths:
       summary: Get the list of the runs (unprivileged)
       tags:
       - unprivileged run
-  /ej/client/problem-statement-json:
+  /ej/api/v1/client/problem-statement-json:
     get:
       description: Get the problem statement (unprivileged)
       operationId: client-get-problem-statement-json
@@ -1187,7 +1187,7 @@ paths:
       summary: Get the problem statement (unprivileged)
       tags:
       - unprivileged problem
-  /ej/client/problem-status-json:
+  /ej/api/v1/client/problem-status-json:
     get:
       description: Get the problem status (unprivileged)
       operationId: client-get-problem-status-json
@@ -1208,7 +1208,7 @@ paths:
       summary: Get the problem status (unprivileged)
       tags:
       - unprivileged problem
-  /ej/client/remove-userprob:
+  /ej/api/v1/client/remove-userprob:
     post:
       description: remove VCS problem settings (unprivileged)
       operationId: client-post-remove-userprob
@@ -1235,7 +1235,7 @@ paths:
       summary: Remove VCS problem settings (unprivileged)
       tags:
       - unprivileged vcs
-  /ej/client/run-messages-json:
+  /ej/api/v1/client/run-messages-json:
     get:
       description: Get the messages associated with the run (unprivileged)
       operationId: client-get-run-messages-json
@@ -1256,7 +1256,7 @@ paths:
       summary: Get the messages associated with the run (unprivileged)
       tags:
       - unprivileged run
-  /ej/client/run-status-json:
+  /ej/api/v1/client/run-status-json:
     get:
       description: Get the status of the run (unprivileged)
       operationId: client-get-run-status-json
@@ -1277,7 +1277,7 @@ paths:
       summary: Get the status of the run (unprivileged)
       tags:
       - unprivileged run
-  /ej/client/save-userprob:
+  /ej/api/v1/client/save-userprob:
     post:
       description: save VCS problem settings (unprivileged)
       operationId: client-post-save-userprob
@@ -1334,7 +1334,7 @@ paths:
       summary: Save VCS problem settings (unprivileged)
       tags:
       - unprivileged vcs
-  /ej/client/submit-run:
+  /ej/api/v1/client/submit-run:
     post:
       description: submit a program for testing and scoring (unprivileged)
       operationId: client-submit-run
@@ -1372,7 +1372,7 @@ paths:
       summary: Submit a program for testing and scoring (unprivileged)
       tags:
       - unprivileged run
-  /ej/client/submit-run-input:
+  /ej/api/v1/client/submit-run-input:
     post:
       description: submit a program and its input for testing (unprivileged)
       operationId: client-submit-run-input
@@ -1420,7 +1420,7 @@ paths:
       summary: Submit a program and its input for testing (unprivileged)
       tags:
       - unprivileged submit
-  /ej/master/contest-status-json:
+  /ej/api/v1/master/contest-status-json:
     get:
       description: Get the contest status (privileged)
       operationId: master-get-contest-status-json
@@ -1441,7 +1441,7 @@ paths:
       summary: Get the contest status (privileged)
       tags:
       - privileged contest
-  /ej/master/download-run:
+  /ej/api/v1/master/download-run:
     get:
       description: Get the source of the run (privileged)
       operationId: master-get-download-run
@@ -1464,7 +1464,7 @@ paths:
       summary: Get the source of the run (privileged)
       tags:
       - privileged run
-  /ej/master/get-submit:
+  /ej/api/v1/master/get-submit:
     get:
       description: get information about a submit (privileged)
       operationId: master-get-submit
@@ -1495,7 +1495,7 @@ paths:
       summary: Get information about a submit (privileged)
       tags:
       - privileged submit
-  /ej/master/list-runs-json:
+  /ej/api/v1/master/list-runs-json:
     get:
       description: List the runs (privileged)
       operationId: master-get-list-runs-json
@@ -1532,7 +1532,7 @@ paths:
       summary: List the runs (privileged)
       tags:
       - privileged run
-  /ej/master/raw-audit-log:
+  /ej/api/v1/master/raw-audit-log:
     get:
       description: Get the raw audit log of the run (privileged)
       operationId: master-get-raw-audit-log
@@ -1557,7 +1557,7 @@ paths:
       summary: Get the raw audit log of the run (privileged)
       tags:
       - privileged run
-  /ej/master/raw-report:
+  /ej/api/v1/master/raw-report:
     get:
       description: Get the raw testing report of the run (privileged)
       operationId: master-get-raw-report
@@ -1580,7 +1580,7 @@ paths:
       summary: Get the raw testing report of the run (privileged)
       tags:
       - privileged run
-  /ej/master/run-status-json:
+  /ej/api/v1/master/run-status-json:
     get:
       description: Get the info for the run (privileged)
       operationId: master-get-run-status-json
@@ -1609,7 +1609,7 @@ paths:
       summary: Get the info for the run (privileged)
       tags:
       - privileged run
-  /ej/master/submit-run:
+  /ej/api/v1/master/submit-run:
     post:
       description: submit a program for testing and scoring (privileged)
       operationId: master-submit-run
@@ -1695,7 +1695,7 @@ paths:
       summary: Submit a program for testing and scoring (privileged)
       tags:
       - privileged run
-  /ej/master/submit-run-input:
+  /ej/api/v1/master/submit-run-input:
     post:
       description: submit a program and its input for testing (privileged)
       operationId: master-submit-run-input

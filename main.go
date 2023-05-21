@@ -28,7 +28,7 @@ type MasterGetGetSubmitQueryParams struct {
 // @Param		submit_id query int true "Submit ID"
 // @Param		json query int false "Submit ID" default(1)
 // @Success		200	{object}	ejudge.Reply[ejudge.Submit]
-// @Router		/ej/master/get-submit [get]
+// @Router		/ej/api/v1/master/get-submit [get]
 // @Security	ApiKeyAuth
 func MasterGetGetSubmit(c *gin.Context) {
 	var q MasterGetGetSubmitQueryParams
@@ -79,7 +79,7 @@ type MasterPostSubmitRunInputResult struct {
 // @Param		file_input formData file false "Input data"
 // @Param		text_form_input formData string false "Input data"
 // @Success		200	{object}	ejudge.Reply[MasterPostSubmitRunInputResult]
-// @Router		/ej/master/submit-run-input [post]
+// @Router		/ej/api/v1/master/submit-run-input [post]
 // @Security	ApiKeyAuth
 func MasterPostSubmitRunInput(c *gin.Context) {
 }
@@ -115,7 +115,7 @@ type PostSubmitRunResult struct {
 // @Param		file formData file false "Source code"
 // @Param		text_form formData string false "Source code" format(text)
 // @Success		200	{object}	ejudge.Reply[PostSubmitRunResult]
-// @Router		/ej/master/submit-run [post]
+// @Router		/ej/api/v1/master/submit-run [post]
 // @Security	ApiKeyAuth
 func MasterPostSubmitRun(c *gin.Context) {
 }
@@ -136,7 +136,7 @@ type MasterGetRunStatusJSONResult struct {
 // @Param		run_id query int false "run_id"
 // @Param		run_uuid query string false "run_uuid"
 // @Success		200	{object}	ejudge.Reply[MasterGetRunStatusJSONResult]
-// @Router		/ej/master/run-status-json [get]
+// @Router		/ej/api/v1/master/run-status-json [get]
 // @Security	ApiKeyAuth
 func MasterGetRunStatusJSON(c *gin.Context) {
 }
@@ -151,7 +151,7 @@ func MasterGetRunStatusJSON(c *gin.Context) {
 // @Param		contest_id query int false "contest_id"
 // @Param		run_id query int false "run_id"
 // @Param		run_uuid query string false "run_uuid"
-// @Router		/ej/master/raw-audit-log [get]
+// @Router		/ej/api/v1/master/raw-audit-log [get]
 // @Security	ApiKeyAuth
 func MasterGetRawAuditLog(c *gin.Context) {
 }
@@ -165,7 +165,7 @@ func MasterGetRawAuditLog(c *gin.Context) {
 // @Param		contest_id query int false "contest_id"
 // @Param		run_id query int false "run_id"
 // @Param		run_uuid query string false "run_uuid"
-// @Router		/ej/master/raw-report [get]
+// @Router		/ej/api/v1/master/raw-report [get]
 // @Security	ApiKeyAuth
 func MasterGetRawReport(c *gin.Context) {
 }
@@ -179,7 +179,7 @@ func MasterGetRawReport(c *gin.Context) {
 // @Param		contest_id query int false "contest_id"
 // @Param		run_id query int false "run_id"
 // @Param       no_disp query int false "do not generate content-disposition header"
-// @Router		/ej/master/download-run [get]
+// @Router		/ej/api/v1/master/download-run [get]
 // @Security	ApiKeyAuth
 func MasterGetDownloadRun(c *gin.Context) {
 }
@@ -247,7 +247,7 @@ type MasterGetContestStatusJSONResult struct {
 // @Produce		json
 // @Param		contest_id query int false "contest_id"
 // @Success		200	{object}	ejudge.Reply[MasterGetContestStatusJSONResult]
-// @Router		/ej/master/contest-status-json [get]
+// @Router		/ej/api/v1/master/contest-status-json [get]
 // @Security	ApiKeyAuth
 func MasterGetContestStatusJSON(c *gin.Context) {
 }
@@ -279,7 +279,7 @@ type MasterGetListRunsJSONResult struct {
 // @Param		last_run query int false "Last run to list"
 // @Param		field_mask query int false "Fields to display"
 // @Success		200	{object}	ejudge.Reply[MasterGetListRunsJSONResult]
-// @Router		/ej/master/list-runs-json [get]
+// @Router		/ej/api/v1/master/list-runs-json [get]
 // @Security	ApiKeyAuth
 func MasterGetListRunsJSON(c *gin.Context) {
 }
@@ -312,7 +312,7 @@ type ClientGetContestStatusJSONResult struct {
 // @Tags		unprivileged contest
 // @Produce		json
 // @Success		200	{object}	ejudge.Reply[ClientGetContestStatusJSONResult]
-// @Router		/ej/client/contest-status-json [get]
+// @Router		/ej/api/v1/client/contest-status-json [get]
 // @Security	ApiKeyAuth
 func ClientGetContestStatusJSON(c *gin.Context) {
 }
@@ -415,7 +415,7 @@ type ClientGetProblemStatusJSONResult struct {
 // @Produce		json
 // @Param		problem query int false "Problem ID"
 // @Success		200	{object}	ejudge.Reply[ClientGetProblemStatusJSONResult]
-// @Router		/ej/client/problem-status-json [get]
+// @Router		/ej/api/v1/client/problem-status-json [get]
 // @Security	ApiKeyAuth
 func ClientGetProblemStatusJSON(c *gin.Context) {
 }
@@ -428,7 +428,7 @@ func ClientGetProblemStatusJSON(c *gin.Context) {
 // @Tags		unprivileged problem
 // @Produce		html
 // @Param		problem query int false "Problem ID"
-// @Router		/ej/client/problem-statement-json [get]
+// @Router		/ej/api/v1/client/problem-statement-json [get]
 // @Security	ApiKeyAuth
 func ClientGetProblemStatementJSON(c *gin.Context) {
 }
@@ -447,7 +447,7 @@ func ClientGetProblemStatementJSON(c *gin.Context) {
 // @Param		file formData file false "Source code"
 // @Param		text_form formData string false "Source code" format(text)
 // @Success		200	{object}	ejudge.Reply[PostSubmitRunResult]
-// @Router		/ej/client/submit-run [post]
+// @Router		/ej/api/v1/client/submit-run [post]
 // @Security	ApiKeyAuth
 func ClientPostSubmitRun(c *gin.Context) {
 }
@@ -475,7 +475,7 @@ type ClientGetListRunsJSONResult struct {
 // @Produce		json
 // @Param		problem query int false "Problem ID"
 // @Success		200	{object}	ejudge.Reply[ClientGetListRunsJSONResult]
-// @Router		/ej/client/list-runs-json [get]
+// @Router		/ej/api/v1/client/list-runs-json [get]
 // @Security	ApiKeyAuth
 func ClientGetListRunsJSON(c *gin.Context) {
 }
@@ -582,7 +582,7 @@ type ClientGetRunStatusJSONResult struct {
 // @Produce		json
 // @Param		run_id query int false "Run ID"
 // @Success		200	{object}	ejudge.Reply[ClientGetRunStatusJSONResult]
-// @Router		/ej/client/run-status-json [get]
+// @Router		/ej/api/v1/client/run-status-json [get]
 // @Security	ApiKeyAuth
 func ClientGetRunStatusJSON(c *gin.Context) {
 }
@@ -610,7 +610,7 @@ type ClientGetRunMessagesJSONResult struct {
 // @Produce		json
 // @Param		run_id query int false "Run ID"
 // @Success		200	{object}	ejudge.Reply[ClientGetRunMessagesJSONResult]
-// @Router		/ej/client/run-messages-json [get]
+// @Router		/ej/api/v1/client/run-messages-json [get]
 // @Security	ApiKeyAuth
 func ClientGetRunMessagesJSON(c *gin.Context) {
 }
@@ -623,7 +623,7 @@ func ClientGetRunMessagesJSON(c *gin.Context) {
 // @Tags		unprivileged run
 // @Param		run_id query int false "run_id"
 // @Param       no_disp query int false "do not generate content-disposition header"
-// @Router		/ej/client/download-run [get]
+// @Router		/ej/api/v1/client/download-run [get]
 // @Security	ApiKeyAuth
 func ClientGetDownloadRun(c *gin.Context) {
 }
@@ -639,7 +639,7 @@ func ClientGetDownloadRun(c *gin.Context) {
 // @Param		index query int true "file index"
 // @Param		offset query int false "initial offset of the file fragment"
 // @Param		length query int false "length of the file fragment"
-// @Router		/ej/client/download-run-file [get]
+// @Router		/ej/api/v1/client/download-run-file [get]
 // @Security	ApiKeyAuth
 func ClientGetDownloadRunFile(c *gin.Context) {
 }
@@ -654,7 +654,7 @@ func ClientGetDownloadRunFile(c *gin.Context) {
 // @Param		submit_id query int true "Submit ID"
 // @Param		json query int false "Submit ID" default(1)
 // @Success		200	{object}	ejudge.Reply[ejudge.Submit]
-// @Router		/ej/client/get-submit [get]
+// @Router		/ej/api/v1/client/get-submit [get]
 // @Security	ApiKeyAuth
 func ClientGetGetSubmit(c *gin.Context) {
 }
@@ -679,7 +679,7 @@ type ClientPostSubmitRunInputResult struct {
 // @Param		file_input formData file false "Input data"
 // @Param		text_form_input formData string false "Input data"
 // @Success		200	{object}	ejudge.Reply[ClientPostSubmitRunInputResult]
-// @Router		/ej/client/submit-run-input [post]
+// @Router		/ej/api/v1/client/submit-run-input [post]
 // @Security	ApiKeyAuth
 func ClientPostSubmitRunInput(c *gin.Context) {
 }
@@ -711,7 +711,7 @@ type EjudgeUserProb struct {
 // @Param		prob_id query int true "Problem ID"
 // @Param		json query int false "Submit ID" default(1)
 // @Success		200	{object}	ejudge.Reply[EjudgeUserProb]
-// @Router		/ej/client/get-userprob [get]
+// @Router		/ej/api/v1/client/get-userprob [get]
 // @Security	ApiKeyAuth
 func ClientGetGetUserprob(c *gin.Context) {
 }
@@ -726,7 +726,7 @@ func ClientGetGetUserprob(c *gin.Context) {
 // @Param		prob_id query int true "Problem ID"
 // @Param		json query int false "Submit ID" default(1)
 // @Success		200	{object}	ejudge.Reply[EjudgeUserProb]
-// @Router		/ej/client/create-userprob [post]
+// @Router		/ej/api/v1/client/create-userprob [post]
 // @Security	ApiKeyAuth
 func ClientPostCreateUserprob(c *gin.Context) {
 }
@@ -747,7 +747,7 @@ func ClientPostCreateUserprob(c *gin.Context) {
 // @Param		ssh_private_key query string true "ssh private key"
 // @Param		json query int false "Submit ID" default(1)
 // @Success		200	{object}	ejudge.BaseReply
-// @Router		/ej/client/save-userprob [post]
+// @Router		/ej/api/v1/client/save-userprob [post]
 // @Security	ApiKeyAuth
 func ClientPostSaveUserprob(c *gin.Context) {
 }
@@ -762,7 +762,7 @@ func ClientPostSaveUserprob(c *gin.Context) {
 // @Param		serial_id query int true "Serial ID of the properties"
 // @Param		json query int false "Submit ID" default(1)
 // @Success		200	{object}	ejudge.BaseReply
-// @Router		/ej/client/remove-userprob [post]
+// @Router		/ej/api/v1/client/remove-userprob [post]
 // @Security	ApiKeyAuth
 func ClientPostRemoveUserprob(c *gin.Context) {
 }
@@ -778,7 +778,7 @@ func main() {
 	router := gin.Default()
 	docs.SwaggerInfo.BasePath = "/"
 
-	ej := router.Group("/ej")
+	ej := router.Group("/ej/api/v1")
 	{
 		master := ej.Group("/master")
 		{
