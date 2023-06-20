@@ -8,6 +8,7 @@ type Submit struct {
 	LangID            *int32 `json:"lang_id,omitempty"`
 	Status            int32  `json:"status"`
 	StatusStr         string `json:"status_str"`
+	StatusDesc        string `json:"status_desc,omitempty"`
 	CompilerOutput    string `json:"compiler_output,omitempty"`
 	TestCheckerOutput string `json:"test_checker_output,omitempty"`
 	Time              *int64 `json:"time,omitempty"`
@@ -19,6 +20,11 @@ type Submit struct {
 	Input             string `json:"input,omitempty"`
 	Output            string `json:"output,omitempty"`
 	Error             string `json:"error,omitempty"`
+        ExtUserKind       string `json:"ext_user_kind,omitempty"`
+        ExtUser           string `json:"ext_user,omitempty"`
+        NotifyDriver      int32  `json:"notify_driver,omitempty"`
+        NotifyKind        string `json:"notify_kind,omitempty"`
+        NotifyQueue       string `json:"notify_queue,omitempty"`
 }
 
 type Run struct {
@@ -28,6 +34,7 @@ type Run struct {
 	SerialID         int64  `json:"serial_id,omitempty"`
 	Status           int32  `json:"status"`
 	StatusStr        string `json:"status_str,omitempty"`
+	StatusDesc       string `json:"status_desc,omitempty"`
 	RunTime          int64  `json:"run_time,omitempty"`
 	NSec             int32  `json:"nsec,omitempty"`
 	RunTimeUs        int64  `json:"run_time_us,omitempty"`
@@ -78,4 +85,9 @@ type Run struct {
 	TestsPassed      *int32 `json:"tests_passed,omitempty"`
 	RawScore         *int32 `json:"raw_score,omitempty"`
 	ScoreStr         string `json:"score_str,omitempty"`
+        ExtUserKind      string `json:"ext_user_kind,omitempty"`
+        ExtUser          string `json:"ext_user,omitempty"`
+        NotifyDriver     int32  `json:"notify_driver,omitempty"`
+        NotifyKind       string `json:"notify_kind,omitempty"`
+        NotifyQueue      string `json:"notify_queue,omitempty"`
 }
