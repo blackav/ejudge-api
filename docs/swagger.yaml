@@ -254,6 +254,10 @@ definitions:
         type: integer
       eoln_type:
         type: integer
+      ext_user:
+        type: string
+      ext_user_kind:
+        type: string
       ip:
         type: string
       ipv6_flag:
@@ -285,6 +289,12 @@ definitions:
       locale_id:
         type: integer
       mime_type:
+        type: string
+      notify_driver:
+        type: integer
+      notify_kind:
+        type: string
+      notify_queue:
         type: string
       nsec:
         type: integer
@@ -338,6 +348,8 @@ definitions:
         type: boolean
       status:
         type: integer
+      status_desc:
+        type: string
       status_str:
         type: string
       store_flags:
@@ -371,6 +383,10 @@ definitions:
         type: string
       exit_code:
         type: integer
+      ext_user:
+        type: string
+      ext_user_kind:
+        type: string
       input:
         type: string
       lang_id:
@@ -379,6 +395,12 @@ definitions:
         type: integer
       max_rss:
         type: integer
+      notify_driver:
+        type: integer
+      notify_kind:
+        type: string
+      notify_queue:
+        type: string
       output:
         type: string
       prob_id:
@@ -387,6 +409,8 @@ definitions:
         type: integer
       status:
         type: integer
+      status_desc:
+        type: string
       status_str:
         type: string
       submit_id:
@@ -997,7 +1021,7 @@ info:
   contact: {}
   description: The ejudge API
   title: Ejudge API
-  version: 3.10.3
+  version: 3.10.4
 paths:
   /ej/api/v1/client/contest-status-json:
     get:

@@ -4,7 +4,7 @@
         "description": "The ejudge API",
         "title": "Ejudge API",
         "contact": {},
-        "version": "3.10.3"
+        "version": "3.10.4"
     },
     "paths": {
         "/ej/api/v1/client/contest-status-json": {
@@ -1583,6 +1583,12 @@
                 "eoln_type": {
                     "type": "integer"
                 },
+                "ext_user": {
+                    "type": "string"
+                },
+                "ext_user_kind": {
+                    "type": "string"
+                },
                 "ip": {
                     "type": "string"
                 },
@@ -1629,6 +1635,15 @@
                     "type": "integer"
                 },
                 "mime_type": {
+                    "type": "string"
+                },
+                "notify_driver": {
+                    "type": "integer"
+                },
+                "notify_kind": {
+                    "type": "string"
+                },
+                "notify_queue": {
                     "type": "string"
                 },
                 "nsec": {
@@ -1709,6 +1724,9 @@
                 "status": {
                     "type": "integer"
                 },
+                "status_desc": {
+                    "type": "string"
+                },
                 "status_str": {
                     "type": "string"
                 },
@@ -1759,6 +1777,12 @@
                 "exit_code": {
                     "type": "integer"
                 },
+                "ext_user": {
+                    "type": "string"
+                },
+                "ext_user_kind": {
+                    "type": "string"
+                },
                 "input": {
                     "type": "string"
                 },
@@ -1771,6 +1795,15 @@
                 "max_rss": {
                     "type": "integer"
                 },
+                "notify_driver": {
+                    "type": "integer"
+                },
+                "notify_kind": {
+                    "type": "string"
+                },
+                "notify_queue": {
+                    "type": "string"
+                },
                 "output": {
                     "type": "string"
                 },
@@ -1782,6 +1815,9 @@
                 },
                 "status": {
                     "type": "integer"
+                },
+                "status_desc": {
+                    "type": "string"
                 },
                 "status_str": {
                     "type": "string"

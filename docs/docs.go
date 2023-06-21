@@ -1592,6 +1592,12 @@ const docTemplate = `{
                 "eoln_type": {
                     "type": "integer"
                 },
+                "ext_user": {
+                    "type": "string"
+                },
+                "ext_user_kind": {
+                    "type": "string"
+                },
                 "ip": {
                     "type": "string"
                 },
@@ -1638,6 +1644,15 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "mime_type": {
+                    "type": "string"
+                },
+                "notify_driver": {
+                    "type": "integer"
+                },
+                "notify_kind": {
+                    "type": "string"
+                },
+                "notify_queue": {
                     "type": "string"
                 },
                 "nsec": {
@@ -1718,6 +1733,9 @@ const docTemplate = `{
                 "status": {
                     "type": "integer"
                 },
+                "status_desc": {
+                    "type": "string"
+                },
                 "status_str": {
                     "type": "string"
                 },
@@ -1768,6 +1786,12 @@ const docTemplate = `{
                 "exit_code": {
                     "type": "integer"
                 },
+                "ext_user": {
+                    "type": "string"
+                },
+                "ext_user_kind": {
+                    "type": "string"
+                },
                 "input": {
                     "type": "string"
                 },
@@ -1780,6 +1804,15 @@ const docTemplate = `{
                 "max_rss": {
                     "type": "integer"
                 },
+                "notify_driver": {
+                    "type": "integer"
+                },
+                "notify_kind": {
+                    "type": "string"
+                },
+                "notify_queue": {
+                    "type": "string"
+                },
                 "output": {
                     "type": "string"
                 },
@@ -1791,6 +1824,9 @@ const docTemplate = `{
                 },
                 "status": {
                     "type": "integer"
+                },
+                "status_desc": {
+                    "type": "string"
                 },
                 "status_str": {
                     "type": "string"
@@ -2729,7 +2765,7 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "3.10.3",
+	Version:          "3.10.4",
 	Host:             "",
 	BasePath:         "",
 	Schemes:          []string{},
