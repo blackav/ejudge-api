@@ -32,6 +32,15 @@ const docTemplate = `{
                 ],
                 "summary": "Get the contest status (unprivileged)",
                 "operationId": "client-get-contest-status-json",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -59,6 +68,13 @@ const docTemplate = `{
                 "summary": "Create VCS problem settings (unprivileged)",
                 "operationId": "client-post-create-userprob",
                 "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
                     {
                         "type": "integer",
                         "description": "Problem ID",
@@ -100,6 +116,13 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
                         "description": "run_id",
                         "name": "run_id",
                         "in": "query"
@@ -128,6 +151,13 @@ const docTemplate = `{
                 "summary": "Get the input/output/correct file of the run (unprivileged)",
                 "operationId": "client-get-download-run-file",
                 "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
                     {
                         "type": "integer",
                         "description": "run_id",
@@ -184,6 +214,13 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
                         "description": "Submit ID",
                         "name": "submit_id",
                         "in": "query",
@@ -224,6 +261,13 @@ const docTemplate = `{
                 "summary": "Get VCS problem settings (unprivileged)",
                 "operationId": "client-get-get-userprob",
                 "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
                     {
                         "type": "integer",
                         "description": "Problem ID",
@@ -268,6 +312,13 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
                         "description": "Problem ID",
                         "name": "problem",
                         "in": "query"
@@ -302,9 +353,17 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
                         "description": "Problem ID",
                         "name": "problem",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     }
                 ],
                 "responses": {}
@@ -329,9 +388,17 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
                         "description": "Problem ID",
                         "name": "problem",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -361,6 +428,13 @@ const docTemplate = `{
                 "summary": "Remove VCS problem settings (unprivileged)",
                 "operationId": "client-post-remove-userprob",
                 "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
                     {
                         "type": "integer",
                         "description": "Serial ID of the properties",
@@ -405,9 +479,17 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
                         "description": "Run ID",
                         "name": "run_id",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -439,9 +521,17 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
                         "description": "Run ID",
                         "name": "run_id",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -471,6 +561,13 @@ const docTemplate = `{
                 "summary": "Save VCS problem settings (unprivileged)",
                 "operationId": "client-post-save-userprob",
                 "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
                     {
                         "type": "integer",
                         "description": "Serial ID of the properties",
@@ -556,6 +653,13 @@ const docTemplate = `{
                 "operationId": "client-submit-run",
                 "parameters": [
                     {
+                        "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
                         "type": "string",
                         "description": "prob_id or the short_name of the problem",
                         "name": "prob_id",
@@ -614,6 +718,13 @@ const docTemplate = `{
                 "summary": "Submit a program and its input for testing (unprivileged)",
                 "operationId": "client-submit-run-input",
                 "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
                     {
                         "type": "string",
                         "description": "problem ID or short_name",
@@ -691,7 +802,8 @@ const docTemplate = `{
                         "type": "integer",
                         "description": "contest_id",
                         "name": "contest_id",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -722,7 +834,8 @@ const docTemplate = `{
                         "type": "integer",
                         "description": "contest_id",
                         "name": "contest_id",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     },
                     {
                         "type": "integer",
@@ -761,7 +874,8 @@ const docTemplate = `{
                         "type": "integer",
                         "description": "Contest ID",
                         "name": "contest_id",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     },
                     {
                         "type": "integer",
@@ -809,7 +923,8 @@ const docTemplate = `{
                         "type": "integer",
                         "description": "contest_id",
                         "name": "contest_id",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     },
                     {
                         "type": "string",
@@ -867,7 +982,8 @@ const docTemplate = `{
                         "type": "integer",
                         "description": "contest_id",
                         "name": "contest_id",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     },
                     {
                         "type": "integer",
@@ -903,7 +1019,8 @@ const docTemplate = `{
                         "type": "integer",
                         "description": "contest_id",
                         "name": "contest_id",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     },
                     {
                         "type": "integer",
@@ -942,7 +1059,8 @@ const docTemplate = `{
                         "type": "integer",
                         "description": "contest_id",
                         "name": "contest_id",
-                        "in": "query"
+                        "in": "query",
+                        "required": true
                     },
                     {
                         "type": "integer",
@@ -1012,7 +1130,8 @@ const docTemplate = `{
                         "type": "integer",
                         "description": "contest ID",
                         "name": "contest_id",
-                        "in": "formData"
+                        "in": "formData",
+                        "required": true
                     },
                     {
                         "type": "string",
@@ -1143,7 +1262,8 @@ const docTemplate = `{
                         "type": "integer",
                         "description": "contest ID",
                         "name": "contest_id",
-                        "in": "formData"
+                        "in": "formData",
+                        "required": true
                     },
                     {
                         "type": "string",

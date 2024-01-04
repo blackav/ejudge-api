@@ -1027,6 +1027,12 @@ paths:
     get:
       description: Get the contest status (unprivileged)
       operationId: client-get-contest-status-json
+      parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       produces:
       - application/json
       responses:
@@ -1044,6 +1050,11 @@ paths:
       description: create VCS problem settings (unprivileged)
       operationId: client-post-create-userprob
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: Problem ID
         in: query
         name: prob_id
@@ -1071,6 +1082,11 @@ paths:
       description: Get the source of the run (unprivileged)
       operationId: client-get-download-run
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: run_id
         in: query
         name: run_id
@@ -1090,6 +1106,11 @@ paths:
       description: Get the input/output/correct of the run (unprivileged)
       operationId: client-get-download-run-file
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: run_id
         in: query
         name: run_id
@@ -1124,6 +1145,11 @@ paths:
       description: get information about a submit (unprivileged)
       operationId: client-get-submit
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: Submit ID
         in: query
         name: submit_id
@@ -1151,6 +1177,11 @@ paths:
       description: get VCS problem settings (unprivileged)
       operationId: client-get-get-userprob
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: Problem ID
         in: query
         name: prob_id
@@ -1178,6 +1209,11 @@ paths:
       description: Get the list of the runs (unprivileged)
       operationId: client-get-list-runs-json
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: Problem ID
         in: query
         name: problem
@@ -1199,9 +1235,15 @@ paths:
       description: Get the problem statement (unprivileged)
       operationId: client-get-problem-statement-json
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: Problem ID
         in: query
         name: problem
+        required: true
         type: integer
       produces:
       - text/html
@@ -1216,9 +1258,15 @@ paths:
       description: Get the problem status (unprivileged)
       operationId: client-get-problem-status-json
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: Problem ID
         in: query
         name: problem
+        required: true
         type: integer
       produces:
       - application/json
@@ -1237,6 +1285,11 @@ paths:
       description: remove VCS problem settings (unprivileged)
       operationId: client-post-remove-userprob
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: Serial ID of the properties
         in: query
         name: serial_id
@@ -1264,9 +1317,15 @@ paths:
       description: Get the messages associated with the run (unprivileged)
       operationId: client-get-run-messages-json
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: Run ID
         in: query
         name: run_id
+        required: true
         type: integer
       produces:
       - application/json
@@ -1285,9 +1344,15 @@ paths:
       description: Get the status of the run (unprivileged)
       operationId: client-get-run-status-json
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: Run ID
         in: query
         name: run_id
+        required: true
         type: integer
       produces:
       - application/json
@@ -1306,6 +1371,11 @@ paths:
       description: save VCS problem settings (unprivileged)
       operationId: client-post-save-userprob
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: Serial ID of the properties
         in: query
         name: serial_id
@@ -1363,6 +1433,11 @@ paths:
       description: submit a program for testing and scoring (unprivileged)
       operationId: client-submit-run
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: prob_id or the short_name of the problem
         in: formData
         name: prob_id
@@ -1401,6 +1476,11 @@ paths:
       description: submit a program and its input for testing (unprivileged)
       operationId: client-submit-run-input
       parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       - description: problem ID or short_name
         in: formData
         name: prob_id
@@ -1452,6 +1532,7 @@ paths:
       - description: contest_id
         in: query
         name: contest_id
+        required: true
         type: integer
       produces:
       - application/json
@@ -1473,6 +1554,7 @@ paths:
       - description: contest_id
         in: query
         name: contest_id
+        required: true
         type: integer
       - description: run_id
         in: query
@@ -1496,6 +1578,7 @@ paths:
       - description: Contest ID
         in: query
         name: contest_id
+        required: true
         type: integer
       - description: Submit ID
         in: query
@@ -1527,6 +1610,7 @@ paths:
       - description: contest_id
         in: query
         name: contest_id
+        required: true
         type: integer
       - description: Filter expression
         in: query
@@ -1564,6 +1648,7 @@ paths:
       - description: contest_id
         in: query
         name: contest_id
+        required: true
         type: integer
       - description: run_id
         in: query
@@ -1589,6 +1674,7 @@ paths:
       - description: contest_id
         in: query
         name: contest_id
+        required: true
         type: integer
       - description: run_id
         in: query
@@ -1612,6 +1698,7 @@ paths:
       - description: contest_id
         in: query
         name: contest_id
+        required: true
         type: integer
       - description: run_id
         in: query
@@ -1657,6 +1744,7 @@ paths:
       - description: contest ID
         in: formData
         name: contest_id
+        required: true
         type: integer
       - description: UUID of the problem
         in: formData
@@ -1743,6 +1831,7 @@ paths:
       - description: contest ID
         in: formData
         name: contest_id
+        required: true
         type: integer
       - description: problem ID or short_name
         in: formData
