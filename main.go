@@ -24,7 +24,7 @@ type MasterGetGetSubmitQueryParams struct {
 // @ID			master-get-submit
 // @Tags		privileged submit
 // @Produce		json
-// @Param		contest_id query int false "Contest ID"
+// @Param		contest_id query int true "Contest ID"
 // @Param		submit_id query int true "Submit ID"
 // @Param		json query int false "Submit ID" default(1)
 // @Success		200	{object}	ejudge.Reply[ejudge.Submit]
@@ -70,7 +70,7 @@ type MasterPostSubmitRunInputResult struct {
 // @Param		sender_user_id formData int false "Impersonated user ID"
 // @Param		sender_ip formData string false "Fake sender IP"
 // @Param		sender_ssl_flag formData int false "HTTPS flag"
-// @Param		contest_id formData int false "contest ID"
+// @Param		contest_id formData int true "contest ID"
 // @Param		prob_id formData string true "problem ID or short_name"
 // @Param		lang_id formData string false "language ID or short_name"
 // @Param		eoln_type formData int false "End-of-Line translation type"
@@ -101,7 +101,7 @@ type PostSubmitRunResult struct {
 // @Param		sender_user_id formData int false "Impersonated user ID"
 // @Param		sender_ip formData string false "Fake sender IP"
 // @Param		sender_ssl_flag formData int false "HTTPS flag"
-// @Param		contest_id formData int false "contest ID"
+// @Param		contest_id formData int true "contest ID"
 // @Param		problem_uuid formData string false "UUID of the problem"
 // @Param		problem_name formData string false "short_name or internal_name of the problem"
 // @Param		problem formData int false "prob_id of the problem"
@@ -132,7 +132,7 @@ type MasterGetRunStatusJSONResult struct {
 // @ID			master-get-run-status-json
 // @Tags		privileged run
 // @Produce		json
-// @Param		contest_id query int false "contest_id"
+// @Param		contest_id query int true "contest_id"
 // @Param		run_id query int false "run_id"
 // @Param		run_uuid query string false "run_uuid"
 // @Success		200	{object}	ejudge.Reply[MasterGetRunStatusJSONResult]
@@ -148,7 +148,7 @@ func MasterGetRunStatusJSON(c *gin.Context) {
 // @ID			master-get-raw-audit-log
 // @Tags		privileged run
 // @Produce		plain
-// @Param		contest_id query int false "contest_id"
+// @Param		contest_id query int true "contest_id"
 // @Param		run_id query int false "run_id"
 // @Param		run_uuid query string false "run_uuid"
 // @Router		/ej/api/v1/master/raw-audit-log [get]
@@ -162,7 +162,7 @@ func MasterGetRawAuditLog(c *gin.Context) {
 // @Description	Get the raw testing report of the run (privileged)
 // @ID			master-get-raw-report
 // @Tags		privileged run
-// @Param		contest_id query int false "contest_id"
+// @Param		contest_id query int true "contest_id"
 // @Param		run_id query int false "run_id"
 // @Param		run_uuid query string false "run_uuid"
 // @Router		/ej/api/v1/master/raw-report [get]
@@ -176,7 +176,7 @@ func MasterGetRawReport(c *gin.Context) {
 // @Description	Get the source of the run (privileged)
 // @ID			master-get-download-run
 // @Tags		privileged run
-// @Param		contest_id query int false "contest_id"
+// @Param		contest_id query int true "contest_id"
 // @Param		run_id query int false "run_id"
 // @Param       no_disp query int false "do not generate content-disposition header"
 // @Router		/ej/api/v1/master/download-run [get]
@@ -245,7 +245,7 @@ type MasterGetContestStatusJSONResult struct {
 // @ID			master-get-contest-status-json
 // @Tags		privileged contest
 // @Produce		json
-// @Param		contest_id query int false "contest_id"
+// @Param		contest_id query int true "contest_id"
 // @Success		200	{object}	ejudge.Reply[MasterGetContestStatusJSONResult]
 // @Router		/ej/api/v1/master/contest-status-json [get]
 // @Security	ApiKeyAuth
@@ -273,7 +273,7 @@ type MasterGetListRunsJSONResult struct {
 // @ID			master-get-list-runs-json
 // @Tags		privileged run
 // @Produce		json
-// @Param		contest_id query int false "contest_id"
+// @Param		contest_id query int true "contest_id"
 // @Param		filter_expr query string false "Filter expression"
 // @Param		first_run query int false "First run to list"
 // @Param		last_run query int false "Last run to list"
@@ -311,6 +311,7 @@ type ClientGetContestStatusJSONResult struct {
 // @ID			client-get-contest-status-json
 // @Tags		unprivileged contest
 // @Produce		json
+// @Param		contest_id query int true "contest_id"
 // @Success		200	{object}	ejudge.Reply[ClientGetContestStatusJSONResult]
 // @Router		/ej/api/v1/client/contest-status-json [get]
 // @Security	ApiKeyAuth
@@ -413,7 +414,8 @@ type ClientGetProblemStatusJSONResult struct {
 // @ID			client-get-problem-status-json
 // @Tags		unprivileged problem
 // @Produce		json
-// @Param		problem query int false "Problem ID"
+// @Param		contest_id query int true "contest_id"
+// @Param		problem query int true "Problem ID"
 // @Success		200	{object}	ejudge.Reply[ClientGetProblemStatusJSONResult]
 // @Router		/ej/api/v1/client/problem-status-json [get]
 // @Security	ApiKeyAuth
@@ -427,7 +429,8 @@ func ClientGetProblemStatusJSON(c *gin.Context) {
 // @ID			client-get-problem-statement-json
 // @Tags		unprivileged problem
 // @Produce		html
-// @Param		problem query int false "Problem ID"
+// @Param		contest_id query int true "contest_id"
+// @Param		problem query int true "Problem ID"
 // @Router		/ej/api/v1/client/problem-statement-json [get]
 // @Security	ApiKeyAuth
 func ClientGetProblemStatementJSON(c *gin.Context) {
@@ -441,6 +444,7 @@ func ClientGetProblemStatementJSON(c *gin.Context) {
 // @Tags		unprivileged run
 // @Consume     mpfd
 // @Produce		json
+// @Param		contest_id query int true "contest_id"
 // @Param		prob_id formData string false "prob_id or the short_name of the problem"
 // @Param		lang_id formData string false "lang_id or short_name"
 // @Param		eoln_type formData int false "End-of-Line translation type"
@@ -473,6 +477,7 @@ type ClientGetListRunsJSONResult struct {
 // @ID			client-get-list-runs-json
 // @Tags		unprivileged run
 // @Produce		json
+// @Param		contest_id query int true "contest_id"
 // @Param		problem query int false "Problem ID"
 // @Success		200	{object}	ejudge.Reply[ClientGetListRunsJSONResult]
 // @Router		/ej/api/v1/client/list-runs-json [get]
@@ -580,7 +585,8 @@ type ClientGetRunStatusJSONResult struct {
 // @ID			client-get-run-status-json
 // @Tags		unprivileged run
 // @Produce		json
-// @Param		run_id query int false "Run ID"
+// @Param		contest_id query int true "contest_id"
+// @Param		run_id query int true "Run ID"
 // @Success		200	{object}	ejudge.Reply[ClientGetRunStatusJSONResult]
 // @Router		/ej/api/v1/client/run-status-json [get]
 // @Security	ApiKeyAuth
@@ -608,7 +614,8 @@ type ClientGetRunMessagesJSONResult struct {
 // @ID			client-get-run-messages-json
 // @Tags		unprivileged run
 // @Produce		json
-// @Param		run_id query int false "Run ID"
+// @Param		contest_id query int true "contest_id"
+// @Param		run_id query int true "Run ID"
 // @Success		200	{object}	ejudge.Reply[ClientGetRunMessagesJSONResult]
 // @Router		/ej/api/v1/client/run-messages-json [get]
 // @Security	ApiKeyAuth
@@ -621,6 +628,7 @@ func ClientGetRunMessagesJSON(c *gin.Context) {
 // @Description	Get the source of the run (unprivileged)
 // @ID			client-get-download-run
 // @Tags		unprivileged run
+// @Param		contest_id query int true "contest_id"
 // @Param		run_id query int false "run_id"
 // @Param       no_disp query int false "do not generate content-disposition header"
 // @Router		/ej/api/v1/client/download-run [get]
@@ -634,6 +642,7 @@ func ClientGetDownloadRun(c *gin.Context) {
 // @Description	Get the input/output/correct of the run (unprivileged)
 // @ID			client-get-download-run-file
 // @Tags		unprivileged run
+// @Param		contest_id query int true "contest_id"
 // @Param		run_id query int true "run_id"
 // @Param		num query int true "test number"
 // @Param		index query int true "file index"
@@ -651,6 +660,7 @@ func ClientGetDownloadRunFile(c *gin.Context) {
 // @ID			client-get-submit
 // @Tags		unprivileged submit
 // @Produce		json
+// @Param		contest_id query int true "contest_id"
 // @Param		submit_id query int true "Submit ID"
 // @Param		json query int false "Submit ID" default(1)
 // @Success		200	{object}	ejudge.Reply[ejudge.Submit]
@@ -671,6 +681,7 @@ type ClientPostSubmitRunInputResult struct {
 // @Tags		unprivileged submit
 // @Consume     mpfd
 // @Produce		json
+// @Param		contest_id query int true "contest_id"
 // @Param		prob_id formData string true "problem ID or short_name"
 // @Param		lang_id formData string true "language ID or short_name"
 // @Param		eoln_type formData int false "End-of-Line translation type"
@@ -708,6 +719,7 @@ type EjudgeUserProb struct {
 // @ID			client-get-get-userprob
 // @Tags		unprivileged vcs
 // @Produce		json
+// @Param		contest_id query int true "contest_id"
 // @Param		prob_id query int true "Problem ID"
 // @Param		json query int false "Submit ID" default(1)
 // @Success		200	{object}	ejudge.Reply[EjudgeUserProb]
@@ -723,6 +735,7 @@ func ClientGetGetUserprob(c *gin.Context) {
 // @ID			client-post-create-userprob
 // @Tags		unprivileged vcs
 // @Produce		json
+// @Param		contest_id query int true "contest_id"
 // @Param		prob_id query int true "Problem ID"
 // @Param		json query int false "Submit ID" default(1)
 // @Success		200	{object}	ejudge.Reply[EjudgeUserProb]
@@ -738,6 +751,7 @@ func ClientPostCreateUserprob(c *gin.Context) {
 // @ID			client-post-save-userprob
 // @Tags		unprivileged vcs
 // @Produce		json
+// @Param		contest_id query int true "contest_id"
 // @Param		serial_id query int true "Serial ID of the properties"
 // @Param		vcs_type query string true "VCS type: gitlab | github"
 // @Param		lang_name query string true "Language name"
@@ -759,6 +773,7 @@ func ClientPostSaveUserprob(c *gin.Context) {
 // @ID			client-post-remove-userprob
 // @Tags		unprivileged vcs
 // @Produce		json
+// @Param		contest_id query int true "contest_id"
 // @Param		serial_id query int true "Serial ID of the properties"
 // @Param		json query int false "Submit ID" default(1)
 // @Success		200	{object}	ejudge.BaseReply
