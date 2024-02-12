@@ -25,6 +25,23 @@ definitions:
       symbol:
         type: string
     type: object
+  ejudge.Reply-UserlistUser:
+    properties:
+      action:
+        type: string
+      error:
+        $ref: '#/definitions/ejudge.Error'
+      ok:
+        type: boolean
+      reply_id:
+        type: integer
+      request_id:
+        type: integer
+      result:
+        $ref: '#/definitions/ejudge.UserlistUser'
+      server_time:
+        type: integer
+    type: object
   ejudge.Reply-ejudge_Submit:
     properties:
       action:
@@ -423,6 +440,297 @@ definitions:
         type: integer
       user_id:
         type: integer
+    type: object
+  ejudge.UserlistCookie:
+    properties:
+      client_key:
+        type: string
+      contest_id:
+        type: integer
+      cookie:
+        type: string
+      expire:
+        type: integer
+      ip:
+        type: string
+      is_job:
+        type: boolean
+      is_ws:
+        type: boolean
+      locale_id:
+        type: integer
+      priv_level:
+        type: integer
+      recovery:
+        type: boolean
+      role:
+        type: integer
+      ssl:
+        type: boolean
+      team_login:
+        type: boolean
+      user_id:
+        type: integer
+    type: object
+  ejudge.UserlistMember:
+    properties:
+      birth_date:
+        type: integer
+      contest_id:
+        type: integer
+      copied_from:
+        type: integer
+      create_time:
+        type: integer
+      discipline:
+        type: string
+      email:
+        type: string
+      entry_date:
+        type: integer
+      fac:
+        type: string
+      fac_en:
+        type: string
+      facshort:
+        type: string
+      facshort_en:
+        type: string
+      firstname:
+        type: string
+      firstname_en:
+        type: string
+      gender:
+        type: integer
+      grade:
+        type: integer
+      graduation_date:
+        type: integer
+      group:
+        type: string
+      group_en:
+        type: string
+      homepage:
+        type: string
+      inst:
+        type: string
+      inst_en:
+        type: string
+      instshort:
+        type: string
+      instshort_en:
+        type: string
+      last_access_time:
+        type: integer
+      last_change_time:
+        type: integer
+      middlename:
+        type: string
+      middlename_en:
+        type: string
+      occupation:
+        type: string
+      occupation_en:
+        type: string
+      phone:
+        type: string
+      serial:
+        type: integer
+      status:
+        type: integer
+      surname:
+        type: string
+      surname_en:
+        type: string
+      team_role:
+        type: integer
+      user_id:
+        type: integer
+    type: object
+  ejudge.UserlistUser:
+    properties:
+      contests:
+        items:
+          $ref: '#/definitions/ejudge.UserlistUserContest'
+        type: array
+      cookies:
+        items:
+          $ref: '#/definitions/ejudge.UserlistCookie'
+        type: array
+      email:
+        type: string
+      extra1:
+        type: string
+      infos:
+        items:
+          $ref: '#/definitions/ejudge.UserlistUserInfo'
+        type: array
+      is_banned:
+        type: boolean
+      is_invisible:
+        type: boolean
+      is_locked:
+        type: boolean
+      is_privileged:
+        type: boolean
+      last_access_time:
+        type: integer
+      last_change_time:
+        type: integer
+      last_login_time:
+        type: integer
+      last_minor_change_time:
+        type: integer
+      last_pwdchange_time:
+        type: integer
+      never_clean:
+        type: boolean
+      passwd_method:
+        type: integer
+      read_only:
+        type: boolean
+      registration_time:
+        type: integer
+      show_email:
+        type: boolean
+      show_login:
+        type: boolean
+      simple_registration:
+        type: boolean
+      user_id:
+        type: integer
+      user_login:
+        type: string
+    type: object
+  ejudge.UserlistUserContest:
+    properties:
+      contest_id:
+        type: integer
+      create_time:
+        type: integer
+      is_banned:
+        type: boolean
+      is_disqualified:
+        type: boolean
+      is_incomplete:
+        type: boolean
+      is_invisible:
+        type: boolean
+      is_locked:
+        type: boolean
+      is_privileged:
+        type: boolean
+      is_reg_readonly:
+        type: boolean
+      last_change_time:
+        type: integer
+      status:
+        type: integer
+      user_id:
+        type: integer
+    type: object
+  ejudge.UserlistUserInfo:
+    properties:
+      area:
+        type: string
+      avatar_id:
+        type: string
+      avatar_store:
+        type: string
+      avatar_suffix:
+        type: string
+      city:
+        type: string
+      city_en:
+        type: string
+      cnts_read_only:
+        type: boolean
+      contest_id:
+        type: integer
+      country:
+        type: string
+      country_en:
+        type: string
+      create_time:
+        type: integer
+      exam_cypher:
+        type: string
+      exam_id:
+        type: string
+      fac:
+        type: string
+      fac_en:
+        type: string
+      facshort:
+        type: string
+      facshort_en:
+        type: string
+      field0:
+        type: string
+      field1:
+        type: string
+      field2:
+        type: string
+      field3:
+        type: string
+      field4:
+        type: string
+      field5:
+        type: string
+      field6:
+        type: string
+      field7:
+        type: string
+      field8:
+        type: string
+      field9:
+        type: string
+      homepage:
+        type: string
+      inst:
+        type: string
+      inst_en:
+        type: string
+      instnum:
+        type: integer
+      instshort:
+        type: string
+      instshort_en:
+        type: string
+      languages:
+        type: string
+      last_access_time:
+        type: integer
+      last_change_time:
+        type: integer
+      last_login_time:
+        type: integer
+      last_pwdchange_time:
+        type: integer
+      location:
+        type: string
+      members:
+        items:
+          $ref: '#/definitions/ejudge.UserlistMember'
+        type: array
+      phone:
+        type: string
+      printer_name:
+        type: string
+      region:
+        type: string
+      spelling:
+        type: string
+      street:
+        type: string
+      team_passwd_method:
+        type: integer
+      user_id:
+        type: integer
+      user_name:
+        type: string
+      zip:
+        type: string
     type: object
   main.ClientGetContestStatusJSONCompiler:
     properties:
@@ -1602,6 +1910,52 @@ paths:
       summary: Get information about a submit (privileged)
       tags:
       - privileged submit
+  /ej/api/v1/master/get-user:
+    get:
+      description: Get user info (privileged)
+      operationId: master-get-user
+      parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
+      - description: User ID to query
+        in: query
+        name: other_user_id
+        type: integer
+      - description: User Login to query
+        in: query
+        name: other_user_login
+        type: integer
+      - description: Request global (not contest-specific) info
+        in: query
+        name: global
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ejudge.Reply-UserlistUser'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ejudge.Reply-UserlistUser'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ejudge.Reply-UserlistUser'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ejudge.Reply-UserlistUser'
+      security:
+      - ApiKeyAuth: []
+      summary: Get user info (privileged)
+      tags:
+      - privileged user
   /ej/api/v1/master/list-runs-json:
     get:
       description: List the runs (privileged)

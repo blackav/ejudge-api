@@ -284,6 +284,26 @@ type MasterGetListRunsJSONResult struct {
 func MasterGetListRunsJSON(c *gin.Context) {
 }
 
+// MasterGetGetUser godoc
+//
+// @Summary		Get user info (privileged)
+// @Description	Get user info (privileged)
+// @ID			master-get-user
+// @Tags		privileged user
+// @Produce		json
+// @Param		contest_id query int true "contest_id"
+// @Param		other_user_id query int false "User ID to query"
+// @Param		other_user_login query int false "User Login to query"
+// @Param		global query bool false "Request global (not contest-specific) info"
+// @Success		200	{object}	ejudge.Reply[UserlistUser]
+// @Failure     400 {object}	ejudge.Reply[UserlistUser]
+// @Failure     404 {object}	ejudge.Reply[UserlistUser]
+// @Failure     500 {object}	ejudge.Reply[UserlistUser]
+// @Router		/ej/api/v1/master/get-user [get]
+// @Security	ApiKeyAuth
+func MasterGetGetUser(c *gin.Context) {
+}
+
 type ClientGetContestStatusJSONCompiler struct {
 	Id        int32  `json:"id"`
 	ShortName string `json:"short_name"`
@@ -800,6 +820,7 @@ func main() {
 			master.GET("/contest-status-json", MasterGetContestStatusJSON)
 			master.GET("/download-run", MasterGetDownloadRun)
 			master.GET("/get-submit", MasterGetGetSubmit)
+			master.GET("/get-user", MasterGetGetUser)
 			master.GET("/list-runs-json", MasterGetListRunsJSON)
 			master.GET("/raw-audit-log", MasterGetRawAuditLog)
 			master.GET("/raw-report", MasterGetRawReport)

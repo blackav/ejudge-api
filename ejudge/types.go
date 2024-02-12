@@ -20,11 +20,11 @@ type Submit struct {
 	Input             string `json:"input,omitempty"`
 	Output            string `json:"output,omitempty"`
 	Error             string `json:"error,omitempty"`
-        ExtUserKind       string `json:"ext_user_kind,omitempty"`
-        ExtUser           string `json:"ext_user,omitempty"`
-        NotifyDriver      int32  `json:"notify_driver,omitempty"`
-        NotifyKind        string `json:"notify_kind,omitempty"`
-        NotifyQueue       string `json:"notify_queue,omitempty"`
+	ExtUserKind       string `json:"ext_user_kind,omitempty"`
+	ExtUser           string `json:"ext_user,omitempty"`
+	NotifyDriver      int32  `json:"notify_driver,omitempty"`
+	NotifyKind        string `json:"notify_kind,omitempty"`
+	NotifyQueue       string `json:"notify_queue,omitempty"`
 }
 
 type Run struct {
@@ -85,9 +85,158 @@ type Run struct {
 	TestsPassed      *int32 `json:"tests_passed,omitempty"`
 	RawScore         *int32 `json:"raw_score,omitempty"`
 	ScoreStr         string `json:"score_str,omitempty"`
-        ExtUserKind      string `json:"ext_user_kind,omitempty"`
-        ExtUser          string `json:"ext_user,omitempty"`
-        NotifyDriver     int32  `json:"notify_driver,omitempty"`
-        NotifyKind       string `json:"notify_kind,omitempty"`
-        NotifyQueue      string `json:"notify_queue,omitempty"`
+	ExtUserKind      string `json:"ext_user_kind,omitempty"`
+	ExtUser          string `json:"ext_user,omitempty"`
+	NotifyDriver     int32  `json:"notify_driver,omitempty"`
+	NotifyKind       string `json:"notify_kind,omitempty"`
+	NotifyQueue      string `json:"notify_queue,omitempty"`
+}
+
+type UserlistMember struct {
+	UserID         int32  `json:"user_id,omitempty"`
+	ContestID      int32  `json:"contest_id,omitempty"`
+	TeamRole       int32  `json:"team_role,omitempty"`
+	Serial         int32  `json:"serial,omitempty"`
+	CopiedFrom     int32  `json:"copied_from,omitempty"`
+	Status         int32  `json:"status,omitempty"`
+	Gender         int32  `json:"gender,omitempty"`
+	Grade          int32  `json:"grade,omitempty"`
+	Firstname      string `json:"firstname,omitempty"`
+	FirstnameEn    string `json:"firstname_en,omitempty"`
+	Middlename     string `json:"middlename,omitempty"`
+	MiddlenameEn   string `json:"middlename_en,omitempty"`
+	Surname        string `json:"surname,omitempty"`
+	SurnameEn      string `json:"surname_en,omitempty"`
+	Group          string `json:"group,omitempty"`
+	GroupEn        string `json:"group_en,omitempty"`
+	Email          string `json:"email,omitempty"`
+	Homepage       string `json:"homepage,omitempty"`
+	Occupation     string `json:"occupation,omitempty"`
+	OccupationEn   string `json:"occupation_en,omitempty"`
+	Discipline     string `json:"discipline,omitempty"`
+	Inst           string `json:"inst,omitempty"`
+	InstEn         string `json:"inst_en,omitempty"`
+	Instshort      string `json:"instshort,omitempty"`
+	InstshortEn    string `json:"instshort_en,omitempty"`
+	Fac            string `json:"fac,omitempty"`
+	FacEn          string `json:"fac_en,omitempty"`
+	Facshort       string `json:"facshort,omitempty"`
+	FacshortEn     string `json:"facshort_en,omitempty"`
+	Phone          string `json:"phone,omitempty"`
+	BirthDate      int64  `json:"birth_date,omitempty"`
+	EntryDate      int64  `json:"entry_date,omitempty"`
+	GraduationDate int64  `json:"graduation_date,omitempty"`
+	CreateTime     int64  `json:"create_time,omitempty"`
+	LastChangeTime int64  `json:"last_change_time,omitempty"`
+	LastAccessTime int64  `json:"last_access_time,omitempty"`
+}
+
+type UserlistUserInfo struct {
+	UserID            int32            `json:"user_id,omitempty"`
+	ContestID         int32            `json:"contest_id,omitempty"`
+	CntsReadOnly      bool             `json:"cnts_read_only,omitempty"`
+	UserName          string           `json:"user_name,omitempty"`
+	Instnum           int32            `json:"instnum,omitempty"`
+	TeamPasswdMethod  int              `json:"team_passwd_method,omitempty"`
+	Inst              string           `json:"inst,omitempty"`
+	InstEn            string           `json:"inst_en,omitempty"`
+	Instshort         string           `json:"instshort,omitempty"`
+	InstshortEn       string           `json:"instshort_en,omitempty"`
+	Fac               string           `json:"fac,omitempty"`
+	FacEn             string           `json:"fac_en,omitempty"`
+	Facshort          string           `json:"facshort,omitempty"`
+	FacshortEn        string           `json:"facshort_en,omitempty"`
+	Homepage          string           `json:"homepage,omitempty"`
+	City              string           `json:"city,omitempty"`
+	CityEn            string           `json:"city_en,omitempty"`
+	Country           string           `json:"country,omitempty"`
+	CountryEn         string           `json:"country_en,omitempty"`
+	Region            string           `json:"region,omitempty"`
+	Area              string           `json:"area,omitempty"`
+	Zip               string           `json:"zip,omitempty"`
+	Street            string           `json:"street,omitempty"`
+	Location          string           `json:"location,omitempty"`
+	Spelling          string           `json:"spelling,omitempty"`
+	PrinterName       string           `json:"printer_name,omitempty"`
+	ExamID            string           `json:"exam_id,omitempty"`
+	ExamCypher        string           `json:"exam_cypher,omitempty"`
+	Languages         string           `json:"languages,omitempty"`
+	Phone             string           `json:"phone,omitempty"`
+	Field0            string           `json:"field0,omitempty"`
+	Field1            string           `json:"field1,omitempty"`
+	Field2            string           `json:"field2,omitempty"`
+	Field3            string           `json:"field3,omitempty"`
+	Field4            string           `json:"field4,omitempty"`
+	Field5            string           `json:"field5,omitempty"`
+	Field6            string           `json:"field6,omitempty"`
+	Field7            string           `json:"field7,omitempty"`
+	Field8            string           `json:"field8,omitempty"`
+	Field9            string           `json:"field9,omitempty"`
+	AvatarStore       string           `json:"avatar_store,omitempty"`
+	AvatarID          string           `json:"avatar_id,omitempty"`
+	AvatarSuffix      string           `json:"avatar_suffix,omitempty"`
+	CreateTime        int64            `json:"create_time,omitempty"`
+	LastLoginTime     int64            `json:"last_login_time,omitempty"`
+	LastChangeTime    int64            `json:"last_change_time,omitempty"`
+	LastAccessTime    int64            `json:"last_access_time,omitempty"`
+	LastPwdchangeTime int64            `json:"last_pwdchange_time,omitempty"`
+	Members           []UserlistMember `json:"members,omitempty"`
+}
+
+type UserlistUserContest struct {
+	UserID         int32 `json:"user_id,omitempty"`
+	ContestID      int32 `json:"contest_id,omitempty"`
+	Status         int32 `json:"status,omitempty"`
+	CreateTime     int64 `json:"create_time,omitempty"`
+	LastChangeTime int64 `json:"last_change_time,omitempty"`
+	IsInvisible    bool  `json:"is_invisible,omitempty"`
+	IsBanned       bool  `json:"is_banned,omitempty"`
+	IsLocked       bool  `json:"is_locked,omitempty"`
+	IsIncomplete   bool  `json:"is_incomplete,omitempty"`
+	IsDisqualified bool  `json:"is_disqualified,omitempty"`
+	IsPrivileged   bool  `json:"is_privileged,omitempty"`
+	IsRegReadonly  bool  `json:"is_reg_readonly,omitempty"`
+}
+
+type UserlistCookie struct {
+	IP          string `json:"ip,omitempty"`
+	Cookie      string `json:"cookie,omitempty"`
+	ClientKey   string `json:"client_key,omitempty"`
+	Expire      int64  `json:"expire,omitempty"`
+	UserID      int32  `json:"user_id,omitempty"`
+	IsSSL       bool   `json:"ssl,omitempty"`
+	ContestID   int32  `json:"contest_id,omitempty"`
+	LocaleID    int32  `json:"locale_id,omitempty"`
+	PrivLevel   int32  `json:"priv_level,omitempty"`
+	Role        int32  `json:"role,omitempty"`
+	IsRecovery  bool   `json:"recovery,omitempty"`
+	IsTeamLogin bool   `json:"team_login,omitempty"`
+	IsWS        bool   `json:"is_ws,omitempty"`
+	IsJob       bool   `json:"is_job,omitempty"`
+}
+
+type UserlistUser struct {
+	UserID              int32                 `json:"user_id,omitempty"`
+	IsPrivileged        bool                  `json:"is_privileged,omitempty"`
+	IsInvisible         bool                  `json:"is_invisible,omitempty"`
+	IsBanned            bool                  `json:"is_banned,omitempty"`
+	IsLocked            bool                  `json:"is_locked,omitempty"`
+	ShowLogin           bool                  `json:"show_login,omitempty"`
+	ShowEmail           bool                  `json:"show_email,omitempty"`
+	ReadOnly            bool                  `json:"read_only,omitempty"`
+	NeverClean          bool                  `json:"never_clean,omitempty"`
+	SimpleRegistration  bool                  `json:"simple_registration,omitempty"`
+	UserLogin           string                `json:"user_login"`
+	Email               string                `json:"email,omitempty"`
+	PasswdMethod        int                   `json:"passwd_method,omitempty"`
+	Extra1              string                `json:"extra1,omitempty"`
+	RegistrationTime    int64                 `json:"registration_time,omitempty"`
+	LastLoginTime       int64                 `json:"last_login_time,omitempty"`
+	LastMinorChangeTime int64                 `json:"last_minor_change_time,omitempty"`
+	LastChangeTime      int64                 `json:"last_change_time,omitempty"`
+	LastAccessTime      int64                 `json:"last_access_time,omitempty"`
+	LastPwdchangeTime   int64                 `json:"last_pwdchange_time,omitempty"`
+	Infos               []UserlistUserInfo    `json:"infos,omitempty"`
+	Contests            []UserlistUserContest `json:"contests,omitempty"`
+	Cookies             []UserlistCookie      `json:"cookies,omitempty"`
 }
