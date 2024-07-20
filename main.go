@@ -493,9 +493,9 @@ type MasterProblemStatusResult struct {
 // @Param		rel_time formData int false "Offset from the start of contest (s)"
 // @Param		abs_time formData int false "Absolute time (s)"
 // @Success		200	{object}	ejudge.Reply[MasterProblemStatusResult]
-// @Failure     400 {object}	ejudge.Reply[boolean]
-// @Failure     404 {object}	ejudge.Reply[boolean]
-// @Failure     500 {object}	ejudge.Reply[boolean]
+// @Failure     400 {object}	ejudge.Reply[bool]
+// @Failure     404 {object}	ejudge.Reply[bool]
+// @Failure     500 {object}	ejudge.Reply[bool]
 // @Router		/ej/api/v1/master/problem-status-json [get]
 // @Security	ApiKeyAuth
 func MasterGetProblemStatusJSON(c *gin.Context) {
