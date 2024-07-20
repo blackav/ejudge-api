@@ -816,6 +816,126 @@ const docTemplate = `{
                 }
             }
         },
+        "/ej/api/v1/master/copy-user-info": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "edit the user registration data (privileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "privileged user"
+                ],
+                "summary": "Edit the user registration data (privileged)",
+                "operationId": "master-post-change-registration",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User login to change registration",
+                        "name": "other_user_login",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "User ID to change registration",
+                        "name": "other_user_id",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Contest ID",
+                        "name": "contest_id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Operation: one of delete, insert, upsert, update",
+                        "name": "op",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "New status: one of ok, rejected, pending",
+                        "name": "status",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "New invisible flag",
+                        "name": "is_invisible",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "New banned flag",
+                        "name": "is_banned",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "New locked flag",
+                        "name": "is_locked",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "New incomplete flag",
+                        "name": "is_incomplete",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "New disqualified flag",
+                        "name": "is_disqualified",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "New privileged flag",
+                        "name": "is_privileged",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "New reg_readonly flag",
+                        "name": "is_reg_readonly",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Ignore errors",
+                        "name": "ignore",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Clear the user name",
+                        "name": "clear_name",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "New user name",
+                        "name": "name",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-bool"
+                        }
+                    }
+                }
+            }
+        },
         "/ej/api/v1/master/download-run": {
             "get": {
                 "security": [
@@ -973,6 +1093,50 @@ const docTemplate = `{
                 }
             }
         },
+        "/ej/api/v1/master/list-languages": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List available languages (privileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "privileged language"
+                ],
+                "summary": "List available languages (privileged)",
+                "operationId": "master-get-list-languages",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterListLanguagesResult"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterListLanguagesResult"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterListLanguagesResult"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterListLanguagesResult"
+                        }
+                    }
+                }
+            }
+        },
         "/ej/api/v1/master/list-runs-json": {
             "get": {
                 "security": [
@@ -1027,6 +1191,95 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/ejudge.Reply-main_MasterGetListRunsJSONResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/api/v1/master/problem-status-json": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List user's problem status (privileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "privileged contest"
+                ],
+                "summary": "List user's problem status (privileged)",
+                "operationId": "master-get-problem-status-json",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User login",
+                        "name": "other_user_login",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "other_user_id",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Contest ID",
+                        "name": "contest_id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Problem ID",
+                        "name": "prob_id",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Problem short name",
+                        "name": "prob_short",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Offset from the start of contest (s)",
+                        "name": "rel_time",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Absolute time (s)",
+                        "name": "abs_time",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterProblemStatusResult"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterProblemStatusResult"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterProblemStatusResult"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterProblemStatusResult"
                         }
                     }
                 }
@@ -1433,6 +1686,155 @@ const docTemplate = `{
                 }
             }
         },
+        "ejudge.Language": {
+            "type": "object",
+            "properties": {
+                "arch": {
+                    "type": "string"
+                },
+                "binary": {
+                    "type": "boolean"
+                },
+                "clean_up_cmd": {
+                    "type": "string"
+                },
+                "clean_up_env_file": {
+                    "type": "string"
+                },
+                "cmd": {
+                    "type": "string"
+                },
+                "compile_id": {
+                    "type": "integer"
+                },
+                "compile_real_time_limit": {
+                    "type": "integer"
+                },
+                "compile_server_id": {
+                    "type": "string"
+                },
+                "compiler_container_options": {
+                    "type": "string"
+                },
+                "compiler_env": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "container_options": {
+                    "type": "string"
+                },
+                "content_type": {
+                    "type": "string"
+                },
+                "default_disabled": {
+                    "type": "boolean"
+                },
+                "disable_auto_testing": {
+                    "type": "boolean"
+                },
+                "disable_auto_update": {
+                    "type": "boolean"
+                },
+                "disable_security": {
+                    "type": "boolean"
+                },
+                "disable_testing": {
+                    "type": "boolean"
+                },
+                "disabled": {
+                    "type": "boolean"
+                },
+                "enable_custom": {
+                    "type": "boolean"
+                },
+                "enable_ejudge_env": {
+                    "type": "boolean"
+                },
+                "enable_suid_run": {
+                    "type": "boolean"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "exe_sfx": {
+                    "type": "string"
+                },
+                "extid": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "insecure": {
+                    "type": "boolean"
+                },
+                "is_dos": {
+                    "type": "boolean"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "long_name": {
+                    "type": "string"
+                },
+                "max_file_size": {
+                    "type": "integer"
+                },
+                "max_rss_size": {
+                    "type": "integer"
+                },
+                "max_stack_size": {
+                    "type": "integer"
+                },
+                "max_vm_size": {
+                    "type": "integer"
+                },
+                "multi_header_suffix": {
+                    "type": "string"
+                },
+                "preserve_line_numbers": {
+                    "type": "boolean"
+                },
+                "priority_adjustment": {
+                    "type": "integer"
+                },
+                "run_env_file": {
+                    "type": "string"
+                },
+                "run_max_file_size": {
+                    "type": "integer"
+                },
+                "run_max_stack_size": {
+                    "type": "integer"
+                },
+                "run_max_vm_size": {
+                    "type": "integer"
+                },
+                "short_name": {
+                    "type": "string"
+                },
+                "src_sfx": {
+                    "type": "string"
+                },
+                "style_checker_cmd": {
+                    "type": "string"
+                },
+                "style_checker_env": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "super_run_dir": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
         "ejudge.Reply-UserlistUser": {
             "type": "object",
             "properties": {
@@ -1453,6 +1855,32 @@ const docTemplate = `{
                 },
                 "result": {
                     "$ref": "#/definitions/ejudge.UserlistUser"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-bool": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "type": "boolean"
                 },
                 "server_time": {
                     "type": "integer"
@@ -1745,6 +2173,32 @@ const docTemplate = `{
                 }
             }
         },
+        "ejudge.Reply-main_MasterListLanguagesResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.MasterListLanguagesResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
         "ejudge.Reply-main_MasterPostSubmitRunInputResult": {
             "type": "object",
             "properties": {
@@ -1765,6 +2219,32 @@ const docTemplate = `{
                 },
                 "result": {
                     "$ref": "#/definitions/main.MasterPostSubmitRunInputResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_MasterProblemStatusResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.MasterProblemStatusResult"
                 },
                 "server_time": {
                     "type": "integer"
@@ -3389,11 +3869,335 @@ const docTemplate = `{
                 }
             }
         },
+        "main.MasterListLanguagesEjudge": {
+            "type": "object",
+            "properties": {
+                "enable_compile_container": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "main.MasterListLanguagesGlobal": {
+            "type": "object",
+            "properties": {
+                "compile_max_file_size": {
+                    "type": "integer"
+                },
+                "compile_max_rss_size": {
+                    "type": "integer"
+                },
+                "compile_max_stack_size": {
+                    "type": "integer"
+                },
+                "compile_max_vm_size": {
+                    "type": "integer"
+                },
+                "compile_server_id": {
+                    "type": "integer"
+                },
+                "enable_language_import": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "main.MasterListLanguagesResult": {
+            "type": "object",
+            "properties": {
+                "ejudge": {
+                    "$ref": "#/definitions/main.MasterListLanguagesEjudge"
+                },
+                "global": {
+                    "$ref": "#/definitions/main.MasterListLanguagesGlobal"
+                },
+                "languages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ejudge.Language"
+                    }
+                }
+            }
+        },
         "main.MasterPostSubmitRunInputResult": {
             "type": "object",
             "properties": {
                 "submit_id": {
                     "type": "integer"
+                }
+            }
+        },
+        "main.MasterProblemStatusProblem": {
+            "type": "object",
+            "properties": {
+                "acm_run_penalty": {
+                    "type": "integer"
+                },
+                "combined_stdin": {
+                    "type": "boolean"
+                },
+                "combined_stdout": {
+                    "type": "boolean"
+                },
+                "compile_error_penalty": {
+                    "type": "integer"
+                },
+                "compilers": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "disable_auto_testing": {
+                    "type": "boolean"
+                },
+                "disable_stderr": {
+                    "type": "boolean"
+                },
+                "disable_submit_after_ok": {
+                    "type": "boolean"
+                },
+                "disable_tab": {
+                    "type": "boolean"
+                },
+                "disable_testing": {
+                    "type": "boolean"
+                },
+                "disable_user_submit": {
+                    "type": "boolean"
+                },
+                "disable_vm_size_limit": {
+                    "type": "boolean"
+                },
+                "disqualified_penalty": {
+                    "type": "integer"
+                },
+                "enable_compilation": {
+                    "type": "boolean"
+                },
+                "enable_max_stack_size": {
+                    "type": "boolean"
+                },
+                "enable_submit_after_reject": {
+                    "type": "boolean"
+                },
+                "enable_tokens": {
+                    "type": "boolean"
+                },
+                "est_stmt_size": {
+                    "type": "integer"
+                },
+                "full_score": {
+                    "type": "integer"
+                },
+                "full_user_score": {
+                    "type": "integer"
+                },
+                "hidden": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "ignore_compile_errors": {
+                    "type": "boolean"
+                },
+                "ignore_prev_ac": {
+                    "type": "boolean"
+                },
+                "input_file": {
+                    "type": "string"
+                },
+                "is_statement_avaiable": {
+                    "type": "boolean"
+                },
+                "long_name": {
+                    "type": "string"
+                },
+                "max_rss_size": {
+                    "type": "integer"
+                },
+                "max_stack_size": {
+                    "type": "integer"
+                },
+                "max_user_run_count": {
+                    "type": "integer"
+                },
+                "max_vm_size": {
+                    "type": "integer"
+                },
+                "min_score_1": {
+                    "type": "integer"
+                },
+                "min_score_2": {
+                    "type": "integer"
+                },
+                "min_tests_to_accept": {
+                    "type": "integer"
+                },
+                "ok_status": {
+                    "type": "string"
+                },
+                "output_file": {
+                    "type": "string"
+                },
+                "real_time_limit_ms": {
+                    "type": "integer"
+                },
+                "run_penalty": {
+                    "type": "integer"
+                },
+                "score_multiplier": {
+                    "type": "integer"
+                },
+                "short_name": {
+                    "type": "string"
+                },
+                "stand_column": {
+                    "type": "string"
+                },
+                "stand_hide_time": {
+                    "type": "boolean"
+                },
+                "stand_ignore_score": {
+                    "type": "boolean"
+                },
+                "stand_last_column": {
+                    "type": "boolean"
+                },
+                "stand_name": {
+                    "type": "string"
+                },
+                "start_date": {
+                    "type": "integer"
+                },
+                "team_enable_ce_view": {
+                    "type": "boolean"
+                },
+                "team_enable_rep_view": {
+                    "type": "boolean"
+                },
+                "test_score": {
+                    "type": "integer"
+                },
+                "tests_to_accept": {
+                    "type": "integer"
+                },
+                "time_limit_ms": {
+                    "type": "integer"
+                },
+                "tokens_for_user_ac": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "integer"
+                },
+                "use_ac_not_ok": {
+                    "type": "boolean"
+                },
+                "use_stdin": {
+                    "type": "boolean"
+                },
+                "use_stdout": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "main.MasterProblemStatusProblemStatus": {
+            "type": "object",
+            "properties": {
+                "all_attempts": {
+                    "type": "integer"
+                },
+                "attempts": {
+                    "type": "integer"
+                },
+                "best_run": {
+                    "type": "integer"
+                },
+                "best_score": {
+                    "type": "integer"
+                },
+                "ce_attempts": {
+                    "type": "integer"
+                },
+                "date_penalty": {
+                    "type": "integer"
+                },
+                "deadline": {
+                    "type": "integer"
+                },
+                "disqualified": {
+                    "type": "integer"
+                },
+                "eff_attempts": {
+                    "type": "integer"
+                },
+                "effective_time": {
+                    "type": "integer"
+                },
+                "is_accepted": {
+                    "type": "boolean"
+                },
+                "is_autook": {
+                    "type": "boolean"
+                },
+                "is_eff_time_needed": {
+                    "type": "boolean"
+                },
+                "is_last_untokenized": {
+                    "type": "boolean"
+                },
+                "is_marked": {
+                    "type": "boolean"
+                },
+                "is_pending": {
+                    "type": "boolean"
+                },
+                "is_pending_review": {
+                    "type": "boolean"
+                },
+                "is_rejected": {
+                    "type": "boolean"
+                },
+                "is_solved": {
+                    "type": "boolean"
+                },
+                "is_submittable": {
+                    "type": "boolean"
+                },
+                "is_tabable": {
+                    "type": "boolean"
+                },
+                "is_transient": {
+                    "type": "boolean"
+                },
+                "is_viewable": {
+                    "type": "boolean"
+                },
+                "next_soft_deadline": {
+                    "type": "integer"
+                },
+                "penalty_formula": {
+                    "type": "string"
+                },
+                "prev_successes": {
+                    "type": "integer"
+                },
+                "token_count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.MasterProblemStatusResult": {
+            "type": "object",
+            "properties": {
+                "not_started": {
+                    "type": "boolean"
+                },
+                "problem": {
+                    "$ref": "#/definitions/main.MasterProblemStatusProblem"
+                },
+                "problem_status": {
+                    "$ref": "#/definitions/main.MasterProblemStatusProblemStatus"
                 }
             }
         },
@@ -3429,6 +4233,8 @@ var SwaggerInfo = &swag.Spec{
 	Description:      "The ejudge API",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
+	LeftDelim:        "{{",
+	RightDelim:       "}}",
 }
 
 func init() {
