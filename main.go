@@ -339,6 +339,53 @@ type MasterListLanguagesResult struct {
 func MasterGetListLanguages(c *gin.Context) {
 }
 
+// MasterPostCopyUserInfo godoc
+//
+// @Summary		Copy user info from one user to another (privileged)
+// @Description	copy user info from one user to another (privileged)
+// @ID			master-post-copy-user-info
+// @Tags		privileged user
+// @Consume     x-www-form-urlencoded
+// @Produce		json
+// @Param		other_user_login formData string false "User login to copy info"
+// @Param		other_user_id formData int false "User ID to copy info"
+// @Param		from_contest_id formData int false "Source contest ID"
+// @Param		to_contest_id formData int false "Destination contest ID"
+// @Success		200	{object}	ejudge.Reply[bool]
+// @Router		/ej/api/v1/master/copy-user-info [post]
+// @Security	ApiKeyAuth
+func MasterPostCopyUserInfo(c *gin.Context) {
+}
+
+// MasterPostChangeRegistration godoc
+//
+// @Summary		Edit the user registration data (privileged)
+// @Description	edit the user registration data (privileged)
+// @ID			master-post-change-registration
+// @Tags		privileged user
+// @Consume     x-www-form-urlencoded
+// @Produce		json
+// @Param		other_user_login formData string false "User login to change registration"
+// @Param		other_user_id formData int false "User ID to change registration"
+// @Param		contest_id formData int true "Contest ID"
+// @Param		op formData string true "Operation: one of delete, insert, upsert, update"
+// @Param		status formData string false "New status: one of ok, rejected, pending"
+// @Param		is_invisible formData bool false "New invisible flag"
+// @Param		is_banned formData bool false "New banned flag"
+// @Param		is_locked formData bool false "New locked flag"
+// @Param		is_incomplete formData bool false "New incomplete flag"
+// @Param		is_disqualified formData bool false "New disqualified flag"
+// @Param		is_privileged formData bool false "New privileged flag"
+// @Param		is_reg_readonly formData bool false "New reg_readonly flag"
+// @Param		ignore formData bool false "Ignore errors"
+// @Param		clear_name formData bool false "Clear the user name"
+// @Param		name formData string false "New user name"
+// @Success		200	{object}	ejudge.Reply[interface{}]
+// @Router		/ej/api/v1/master/copy-user-info [post]
+// @Security	ApiKeyAuth
+func MasterPostChangeRegistration(c *gin.Context) {
+}
+
 type ClientGetContestStatusJSONCompiler struct {
 	Id        int32  `json:"id"`
 	ShortName string `json:"short_name"`
@@ -861,6 +908,8 @@ func main() {
 			master.GET("/raw-audit-log", MasterGetRawAuditLog)
 			master.GET("/raw-report", MasterGetRawReport)
 			master.GET("/run-status-json", MasterGetRunStatusJSON)
+			master.POST("/change-registration", MasterPostChangeRegistration)
+			master.POST("/copy-user-info", MasterPostCopyUserInfo)
 			master.POST("/submit-run", MasterPostSubmitRun)
 			master.POST("/submit-run-input", MasterPostSubmitRunInput)
 		}
