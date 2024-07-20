@@ -380,10 +380,128 @@ func MasterPostCopyUserInfo(c *gin.Context) {
 // @Param		ignore formData bool false "Ignore errors"
 // @Param		clear_name formData bool false "Clear the user name"
 // @Param		name formData string false "New user name"
-// @Success		200	{object}	ejudge.Reply[interface{}]
+// @Success		200	{object}	ejudge.Reply[bool]
 // @Router		/ej/api/v1/master/copy-user-info [post]
 // @Security	ApiKeyAuth
 func MasterPostChangeRegistration(c *gin.Context) {
+}
+
+type MasterProblemStatusProblem struct {
+	ID                      int32   `json:"id"`
+	ShortName               string  `json:"short_name,omitempty"`
+	LongName                string  `json:"long_name,omitempty"`
+	Type                    int32   `json:"type"`
+	FullScore               int32   `json:"full_score,omitempty"`
+	FullUserScore           int32   `json:"full_user_score,omitempty"`
+	MinScore1               int32   `json:"min_score_1,omitempty"`
+	MinScore2               int32   `json:"min_score_2,omitempty"`
+	UseStdin                bool    `json:"use_stdin,omitempty"`
+	UseStdout               bool    `json:"use_stdout,omitempty"`
+	CombinedStdin           bool    `json:"combined_stdin,omitempty"`
+	CombinedStdout          bool    `json:"combined_stdout,omitempty"`
+	UseACNotOk              bool    `json:"use_ac_not_ok,omitempty"`
+	IgnorePrevAC            bool    `json:"ignore_prev_ac,omitempty"`
+	TeamEnableRepView       bool    `json:"team_enable_rep_view,omitempty"`
+	TeamEnableCEView        bool    `json:"team_enable_ce_view,omitempty"`
+	IgnoreCompileErrors     bool    `json:"ignore_compile_errors,omitempty"`
+	DisableUserSubmit       bool    `json:"disable_user_submit,omitempty"`
+	DisableTab              bool    `json:"disable_tab,omitempty"`
+	EnableSubmitAfterReject bool    `json:"enable_submit_after_reject,omitempty"`
+	EnableTokens            bool    `json:"enable_tokens,omitempty"`
+	TokensForUserAC         bool    `json:"tokens_for_user_ac,omitempty"`
+	DisableSubmitAfterOk    bool    `json:"disable_submit_after_ok,omitempty"`
+	DisableTesting          bool    `json:"disable_testing,omitempty"`
+	DisableAutoTesting      bool    `json:"disable_auto_testing,omitempty"`
+	EnableCompilation       bool    `json:"enable_compilation,omitempty"`
+	Hidden                  bool    `json:"hidden,omitempty"`
+	StandHideTime           bool    `json:"stand_hide_time,omitempty"`
+	StandIgnoreScore        bool    `json:"stand_ignore_score,omitempty"`
+	StandLastColumn         bool    `json:"stand_last_column,omitempty"`
+	DisableStderr           bool    `json:"disable_stderr,omitempty"`
+	RealTimeLimitMs         int32   `json:"real_time_limit_ms"`
+	TimeLimitMs             int32   `json:"time_limit_ms"`
+	ACMRunPenalty           *int32  `json:"acm_run_penalty,omitempty"`
+	TestScore               *int32  `json:"test_score,omitempty"`
+	RunPenalty              *int32  `json:"run_penalty,omitempty"`
+	DisqualifiedPenalty     *int32  `json:"disqualified_penalty,omitempty"`
+	CompileErrorPenalty     *int32  `json:"compile_error_penalty,omitempty"`
+	TestsToAccept           *int32  `json:"tests_to_accept,omitempty"`
+	MinTestsToAccept        *int32  `json:"min_tests_to_accept,omitempty"`
+	ScoreMultiplier         int32   `json:"score_multiplier,omitempty"`
+	MaxUserRunCount         int32   `json:"max_user_run_count,omitempty"`
+	StandName               string  `json:"stand_name,omitempty"`
+	StandColumn             string  `json:"stand_column,omitempty"`
+	InputFile               string  `json:"input_file,omitempty"`
+	OutputFile              string  `json:"output_file,omitempty"`
+	OkStatus                string  `json:"ok_status,omitempty"`
+	StartDate               int64   `json:"start_date,omitempty"`
+	Compilers               []int32 `json:"compilers,omitempty"`
+	EnableMaxStackSize      bool    `json:"enable_max_stack_size,omitempty"`
+	MaxVMSize               int64   `json:"max_vm_size,omitempty"`
+	MaxStackSize            int64   `json:"max_stack_size,omitempty"`
+	MaxRSSSize              int64   `json:"max_rss_size,omitempty"`
+	DisableVmSizeLimit      bool    `json:"disable_vm_size_limit,omitempty"`
+	IsStatementAvailable    bool    `json:"is_statement_avaiable,omitempty"`
+	EstStmtSize             int64   `json:"est_stmt_size,omitempty"`
+}
+
+type MasterProblemStatusProblemStatus struct {
+	IsViewable        bool   `json:"is_viewable,omitempty"`
+	IsSubmittable     bool   `json:"is_submittable,omitempty"`
+	IsTabable         bool   `json:"is_tabable,omitempty"`
+	IsSolved          bool   `json:"is_solved,omitempty"`
+	IsAccepted        bool   `json:"is_accepted,omitempty"`
+	IsPending         bool   `json:"is_pending,omitempty"`
+	IsPendingReview   bool   `json:"is_pending_review,omitempty"`
+	IsTransient       bool   `json:"is_transient,omitempty"`
+	IsLastUntokenized bool   `json:"is_last_untokenized,omitempty"`
+	IsMarked          bool   `json:"is_marked,omitempty"`
+	IsAutoOk          bool   `json:"is_autook,omitempty"`
+	IsRejected        bool   `json:"is_rejected,omitempty"`
+	IsEffTimeNeeded   bool   `json:"is_eff_time_needed,omitempty"`
+	BestRun           *int32 `json:"best_run,omitempty"`
+	Attempts          int32  `json:"attempts,omitempty"`
+	Disqualified      int32  `json:"disqualified,omitempty"`
+	CEAttempts        int32  `json:"ce_attempts,omitempty"`
+	BestScore         int32  `json:"best_score,omitempty"`
+	PrevSuccesses     int32  `json:"prev_successes,omitempty"`
+	AllAttempts       int32  `json:"all_attempts,omitempty"`
+	EffAttempts       int32  `json:"eff_attempts,omitempty"`
+	TokenCount        int32  `json:"token_count,omitempty"`
+	Deadline          int64  `json:"deadline,omitempty"`
+	EffectiveTime     int64  `json:"effective_time,omitempty"`
+	PenaltyFormula    string `json:"penalty_formula,omitempty"`
+	DatePenalty       int    `json:"date_penalty,omitempty"`
+	NextSoftDeadline  int    `json:"next_soft_deadline,omitempty"`
+}
+
+type MasterProblemStatusResult struct {
+	NotStarted    bool                             `json:"not_started,omitempty"`
+	Problem       MasterProblemStatusProblem       `json:"problem,omitempty"`
+	ProblemStatus MasterProblemStatusProblemStatus `json:"problem_status,omitempty"`
+}
+
+// MasterGetProblemStatusJSON godoc
+//
+// @Summary		List user's problem status (privileged)
+// @Description	List user's problem status (privileged)
+// @ID			master-get-problem-status-json
+// @Tags		privileged contest
+// @Produce		json
+// @Param		other_user_login formData string false "User login"
+// @Param		other_user_id formData int false "User ID"
+// @Param		contest_id formData int true "Contest ID"
+// @Param		prob_id formData int false "Problem ID"
+// @Param		prob_short formData string false "Problem short name"
+// @Param		rel_time formData int false "Offset from the start of contest (s)"
+// @Param		abs_time formData int false "Absolute time (s)"
+// @Success		200	{object}	ejudge.Reply[MasterProblemStatusResult]
+// @Failure     400 {object}	ejudge.Reply[MasterProblemStatusResult]
+// @Failure     404 {object}	ejudge.Reply[MasterProblemStatusResult]
+// @Failure     500 {object}	ejudge.Reply[MasterProblemStatusResult]
+// @Router		/ej/api/v1/master/problem-status-json [get]
+// @Security	ApiKeyAuth
+func MasterGetProblemStatusJSON(c *gin.Context) {
 }
 
 type ClientGetContestStatusJSONCompiler struct {
@@ -905,6 +1023,7 @@ func main() {
 			master.GET("/get-user", MasterGetGetUser)
 			master.GET("/list-languages", MasterGetListLanguages)
 			master.GET("/list-runs-json", MasterGetListRunsJSON)
+			master.GET("/problem-status-json", MasterGetProblemStatusJSON)
 			master.GET("/raw-audit-log", MasterGetRawAuditLog)
 			master.GET("/raw-report", MasterGetRawReport)
 			master.GET("/run-status-json", MasterGetRunStatusJSON)
