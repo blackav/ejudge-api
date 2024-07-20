@@ -1693,7 +1693,7 @@ info:
   contact: {}
   description: The ejudge API
   title: Ejudge API
-  version: 3.10.4
+  version: 3.13-pre
 paths:
   /ej/api/v1/client/contest-status-json:
     get:
