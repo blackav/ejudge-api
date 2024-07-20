@@ -240,3 +240,52 @@ type UserlistUser struct {
 	Contests            []UserlistUserContest `json:"contests,omitempty"`
 	Cookies             []UserlistCookie      `json:"cookies,omitempty"`
 }
+
+type Language struct {
+	ID                       uint32   `json:"id"`
+	CompileID                uint32   `json:"compile_id,omitempty"`
+	Disabled                 bool     `json:"disabled,omitempty"`
+	CompileRealTimeLimit     int64    `json:"compile_real_time_limit,omitempty"`
+	Binary                   bool     `json:"binary,omitempty"`
+	PriorityAdjustment       int32    `json:"priority_adjustment,omitempty"`
+	Insecure                 bool     `json:"insecure,omitempty"`
+	DisableSecurity          bool     `json:"disable_security,omitempty"`
+	EnableSuidRun            bool     `json:"enable_suid_run,omitempty"`
+	IsDos                    bool     `json:"is_dos,omitempty"`
+	ShortName                string   `json:"short_name,omitempty"`
+	LongName                 string   `json:"long_name,omitempty"`
+	Key                      string   `json:"key,omitempty"`
+	Arch                     string   `json:"arch,omitempty"`
+	SrcSfx                   string   `json:"src_sfx,omitempty"`
+	ExeSfx                   string   `json:"exe_sfx,omitempty"`
+	ContentType              string   `json:"content_type,omitempty"`
+	Cmd                      string   `json:"cmd,omitempty"`
+	StyleCheckerCmd          string   `json:"style_checker_cmd,omitempty"`
+	StyleCheckerEnv          []string `json:"style_checker_env,omitempty"`
+	ExtID                    string   `json:"extid,omitempty"`
+	SuperRunDir              string   `json:"super_run_dir,omitempty"`
+	DisableAutoTesting       bool     `json:"disable_auto_testing,omitempty"`
+	DisableTesting           bool     `json:"disable_testing,omitempty"`
+	EnableCustom             bool     `json:"enable_custom,omitempty"`
+	EnableEjudgeEnv          bool     `json:"enable_ejudge_env,omitempty"`
+	PreserveLineNumbers      bool     `json:"preserve_line_numbers,omitempty"`
+	DefaultDisabled          bool     `json:"default_disabled,omitempty"`
+	Enabled                  bool     `json:"enabled,omitempty"`
+	DisableAutoUpdate        bool     `json:"disable_auto_update,omitempty"`
+	MaxVmSize                int64    `json:"max_vm_size,omitempty"`
+	MaxStackSize             int64    `json:"max_stack_size,omitempty"`
+	MaxFileSize              int64    `json:"max_file_size,omitempty"`
+	MaxRssSize               int64    `json:"max_rss_size,omitempty"`
+	RunMaxVmSize             int64    `json:"run_max_vm_size,omitempty"`
+	RunMaxStackSize          int64    `json:"run_max_stack_size,omitempty"`
+	RunMaxFileSize           int64    `json:"run_max_file_size,omitempty"`
+	CompilerEnv              []string `json:"compiler_env,omitempty"`
+	CompileServerID          string   `json:"compile_server_id,omitempty"`
+	MultiHeaderSuffix        string   `json:"multi_header_suffix,omitempty"`
+	ContainerOptions         string   `json:"container_options,omitempty"`
+	CompilerContainerOptions string   `json:"compiler_container_options,omitempty"`
+	CleanUpCmd               string   `json:"clean_up_cmd,omitempty"`
+	RunEnvFile               string   `json:"run_env_file,omitempty"`
+	CleanUpEnvFile           string   `json:"clean_up_env_file,omitempty"`
+	Version                  string   `json:"version,omitempty"`
+}

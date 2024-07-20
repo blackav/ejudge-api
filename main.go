@@ -304,6 +304,41 @@ func MasterGetListRunsJSON(c *gin.Context) {
 func MasterGetGetUser(c *gin.Context) {
 }
 
+type MasterListLanguagesEjudge struct {
+	EnableCompileContainer bool `json:"enable_compile_container,omitempty"`
+}
+
+type MasterListLanguagesGlobal struct {
+	EnableLanguageImport bool  `json:"enable_language_import,omitempty"`
+	CompileMaxVmSize     int64 `json:"compile_max_vm_size,omitempty"`
+	CompileMaxStackSize  int64 `json:"compile_max_stack_size,omitempty"`
+	CompileMaxRssSize    int64 `json:"compile_max_rss_size,omitempty"`
+	CompileMaxFileSize   int64 `json:"compile_max_file_size,omitempty"`
+	CompileServerID      int64 `json:"compile_server_id,omitempty"`
+}
+
+type MasterListLanguagesResult struct {
+	Ejudge    MasterListLanguagesEjudge `json:"ejudge,omitempty"`
+	Global    MasterListLanguagesGlobal `json:"global,omitempty"`
+	Languages []ejudge.Language         `json:"languages,omitempty"`
+}
+
+// MasterGetListLanguages godoc
+//
+// @Summary		List available languages (privileged)
+// @Description	List available languages (privileged)
+// @ID			master-get-list-languages
+// @Tags		privileged language
+// @Produce		json
+// @Success		200	{object}	ejudge.Reply[MasterListLanguagesResult]
+// @Failure     400 {object}	ejudge.Reply[MasterListLanguagesResult]
+// @Failure     404 {object}	ejudge.Reply[MasterListLanguagesResult]
+// @Failure     500 {object}	ejudge.Reply[MasterListLanguagesResult]
+// @Router		/ej/api/v1/master/list-languages [get]
+// @Security	ApiKeyAuth
+func MasterGetListLanguages(c *gin.Context) {
+}
+
 type ClientGetContestStatusJSONCompiler struct {
 	Id        int32  `json:"id"`
 	ShortName string `json:"short_name"`
@@ -821,6 +856,7 @@ func main() {
 			master.GET("/download-run", MasterGetDownloadRun)
 			master.GET("/get-submit", MasterGetGetSubmit)
 			master.GET("/get-user", MasterGetGetUser)
+			master.GET("/list-languages", MasterGetListLanguages)
 			master.GET("/list-runs-json", MasterGetListRunsJSON)
 			master.GET("/raw-audit-log", MasterGetRawAuditLog)
 			master.GET("/raw-report", MasterGetRawReport)
