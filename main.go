@@ -1000,7 +1000,7 @@ func ClientPostRemoveUserprob(c *gin.Context) {
 }
 
 // @title       Ejudge API
-// @version		3.10.4
+// @version		3.13-pre
 // @description	The ejudge API
 // @securityDefinitions.apikey	ApiKeyAuth
 // @in							header
