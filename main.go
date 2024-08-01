@@ -330,6 +330,7 @@ type MasterListLanguagesResult struct {
 // @ID			master-get-list-languages
 // @Tags		privileged language
 // @Produce		json
+// @Param		contest_id query int true "contest_id"
 // @Success		200	{object}	ejudge.Reply[MasterListLanguagesResult]
 // @Failure     400 {object}	ejudge.Reply[MasterListLanguagesResult]
 // @Failure     404 {object}	ejudge.Reply[MasterListLanguagesResult]
