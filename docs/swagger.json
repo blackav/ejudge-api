@@ -4,7 +4,7 @@
         "description": "The ejudge API",
         "title": "Ejudge API",
         "contact": {},
-        "version": "3.10.4"
+        "version": "3.13-pre"
     },
     "paths": {
         "/ej/api/v1/client/contest-status-json": {
@@ -772,42 +772,7 @@
                 }
             }
         },
-        "/ej/api/v1/master/contest-status-json": {
-            "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
-                "description": "Get the contest status (privileged)",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "privileged contest"
-                ],
-                "summary": "Get the contest status (privileged)",
-                "operationId": "master-get-contest-status-json",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "contest_id",
-                        "name": "contest_id",
-                        "in": "query",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/ejudge.Reply-main_MasterGetContestStatusJSONResult"
-                        }
-                    }
-                }
-            }
-        },
-        "/ej/api/v1/master/copy-user-info": {
+        "/ej/api/v1/master/change-registration": {
             "post": {
                 "security": [
                     {
@@ -819,7 +784,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "privileged user"
+                    "privileged registration"
                 ],
                 "summary": "Edit the user registration data (privileged)",
                 "operationId": "master-post-change-registration",
@@ -914,6 +879,93 @@
                         "type": "string",
                         "description": "New user name",
                         "name": "name",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-bool"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/api/v1/master/contest-status-json": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get the contest status (privileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "privileged contest"
+                ],
+                "summary": "Get the contest status (privileged)",
+                "operationId": "master-get-contest-status-json",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterGetContestStatusJSONResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/ej/api/v1/master/copy-user-info": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "copy user info from one user to another (privileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "privileged user"
+                ],
+                "summary": "Copy user info from one user to another (privileged)",
+                "operationId": "master-post-copy-user-info",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User login to copy info",
+                        "name": "other_user_login",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "User ID to copy info",
+                        "name": "other_user_id",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Source contest ID",
+                        "name": "from_contest_id",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Destination contest ID",
+                        "name": "to_contest_id",
                         "in": "formData"
                     }
                 ],
@@ -1115,24 +1167,6 @@
                         "schema": {
                             "$ref": "#/definitions/ejudge.Reply-main_MasterListLanguagesResult"
                         }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/ejudge.Reply-main_MasterListLanguagesResult"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/ejudge.Reply-main_MasterListLanguagesResult"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/ejudge.Reply-main_MasterListLanguagesResult"
-                        }
                     }
                 }
             }
@@ -1267,19 +1301,19 @@
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/ejudge.Reply-main_MasterProblemStatusResult"
+                            "$ref": "#/definitions/ejudge.Reply-bool"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/ejudge.Reply-main_MasterProblemStatusResult"
+                            "$ref": "#/definitions/ejudge.Reply-bool"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/ejudge.Reply-main_MasterProblemStatusResult"
+                            "$ref": "#/definitions/ejudge.Reply-bool"
                         }
                     }
                 }

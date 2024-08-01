@@ -332,9 +332,6 @@ type MasterListLanguagesResult struct {
 // @Produce		json
 // @Param		contest_id query int true "contest_id"
 // @Success		200	{object}	ejudge.Reply[MasterListLanguagesResult]
-// @Failure     400 {object}	ejudge.Reply[MasterListLanguagesResult]
-// @Failure     404 {object}	ejudge.Reply[MasterListLanguagesResult]
-// @Failure     500 {object}	ejudge.Reply[MasterListLanguagesResult]
 // @Router		/ej/api/v1/master/list-languages [get]
 // @Security	ApiKeyAuth
 func MasterGetListLanguages(c *gin.Context) {
@@ -363,7 +360,7 @@ func MasterPostCopyUserInfo(c *gin.Context) {
 // @Summary		Edit the user registration data (privileged)
 // @Description	edit the user registration data (privileged)
 // @ID			master-post-change-registration
-// @Tags		privileged user
+// @Tags		privileged registration
 // @Consume     x-www-form-urlencoded
 // @Produce		json
 // @Param		other_user_login formData string false "User login to change registration"
@@ -382,7 +379,7 @@ func MasterPostCopyUserInfo(c *gin.Context) {
 // @Param		clear_name formData bool false "Clear the user name"
 // @Param		name formData string false "New user name"
 // @Success		200	{object}	ejudge.Reply[bool]
-// @Router		/ej/api/v1/master/copy-user-info [post]
+// @Router		/ej/api/v1/master/change-registration [post]
 // @Security	ApiKeyAuth
 func MasterPostChangeRegistration(c *gin.Context) {
 }
@@ -497,9 +494,9 @@ type MasterProblemStatusResult struct {
 // @Param		rel_time formData int false "Offset from the start of contest (s)"
 // @Param		abs_time formData int false "Absolute time (s)"
 // @Success		200	{object}	ejudge.Reply[MasterProblemStatusResult]
-// @Failure     400 {object}	ejudge.Reply[MasterProblemStatusResult]
-// @Failure     404 {object}	ejudge.Reply[MasterProblemStatusResult]
-// @Failure     500 {object}	ejudge.Reply[MasterProblemStatusResult]
+// @Failure     400 {object}	ejudge.Reply[bool]
+// @Failure     404 {object}	ejudge.Reply[bool]
+// @Failure     500 {object}	ejudge.Reply[bool]
 // @Router		/ej/api/v1/master/problem-status-json [get]
 // @Security	ApiKeyAuth
 func MasterGetProblemStatusJSON(c *gin.Context) {
@@ -1004,7 +1001,7 @@ func ClientPostRemoveUserprob(c *gin.Context) {
 }
 
 // @title       Ejudge API
-// @version		3.10.4
+// @version		3.13-pre
 // @description	The ejudge API
 // @securityDefinitions.apikey	ApiKeyAuth
 // @in							header
