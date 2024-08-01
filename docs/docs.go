@@ -1109,6 +1109,15 @@ const docTemplate = `{
                 ],
                 "summary": "List available languages (privileged)",
                 "operationId": "master-get-list-languages",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",

@@ -2403,6 +2403,12 @@ paths:
     get:
       description: List available languages (privileged)
       operationId: master-get-list-languages
+      parameters:
+      - description: contest_id
+        in: query
+        name: contest_id
+        required: true
+        type: integer
       produces:
       - application/json
       responses:
