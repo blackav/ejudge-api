@@ -502,6 +502,31 @@ type MasterProblemStatusResult struct {
 func MasterGetProblemStatusJSON(c *gin.Context) {
 }
 
+// MasterPostCreateUserSession godoc
+//
+// @Summary		Create a new session for another user (privileged)
+// @Description	Create a new session for another user (privileged)
+// @ID			master-post-create-user-session
+// @Tags		privileged user
+// @Produce		json
+// @Param		other_user_login formData string false "User login"
+// @Param		other_user_id formData int false "User ID"
+// @Param		contest_id formData int true "Contest ID"
+// @Param		sender_ip formData string false "Fake sender IP"
+// @Param		sender_ssl_flag formData bool false "HTTPS flag"
+// @Param		locale_id formData int false "Locale ID"
+// @Param		duration formData int false "Session liveness duration"
+// @Param		create_reg formData bool false "Create user registration if he/she is not registered"
+// @Param		base_contest_id formData int false "Base Contest ID (to copy user settings from)"
+// @Success		200	{object}	ejudge.Reply[UserlistCookie]
+// @Failure     400 {object}	ejudge.Reply[bool]
+// @Failure     404 {object}	ejudge.Reply[bool]
+// @Failure     500 {object}	ejudge.Reply[bool]
+// @Router		/ej/api/v1/master/create-user-session [post]
+// @Security	ApiKeyAuth
+func MasterPostCreateUserSession(c *gin.Context) {
+}
+
 type ClientGetContestStatusJSONCompiler struct {
 	Id        int32  `json:"id"`
 	ShortName string `json:"short_name"`
@@ -1027,6 +1052,7 @@ func main() {
 			master.GET("/run-status-json", MasterGetRunStatusJSON)
 			master.POST("/change-registration", MasterPostChangeRegistration)
 			master.POST("/copy-user-info", MasterPostCopyUserInfo)
+			master.POST("/create-user-session", MasterPostCreateUserSession)
 			master.POST("/submit-run", MasterPostSubmitRun)
 			master.POST("/submit-run-input", MasterPostSubmitRunInput)
 		}

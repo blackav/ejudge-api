@@ -124,6 +124,23 @@ definitions:
       version:
         type: string
     type: object
+  ejudge.Reply-UserlistCookie:
+    properties:
+      action:
+        type: string
+      error:
+        $ref: '#/definitions/ejudge.Error'
+      ok:
+        type: boolean
+      reply_id:
+        type: integer
+      request_id:
+        type: integer
+      result:
+        $ref: '#/definitions/ejudge.UserlistCookie'
+      server_time:
+        type: integer
+    type: object
   ejudge.Reply-UserlistUser:
     properties:
       action:
@@ -2328,6 +2345,72 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: Copy user info from one user to another (privileged)
+      tags:
+      - privileged user
+  /ej/api/v1/master/create-user-session:
+    post:
+      description: Create a new session for another user (privileged)
+      operationId: master-post-create-user-session
+      parameters:
+      - description: User login
+        in: formData
+        name: other_user_login
+        type: string
+      - description: User ID
+        in: formData
+        name: other_user_id
+        type: integer
+      - description: Contest ID
+        in: formData
+        name: contest_id
+        required: true
+        type: integer
+      - description: Fake sender IP
+        in: formData
+        name: sender_ip
+        type: string
+      - description: HTTPS flag
+        in: formData
+        name: sender_ssl_flag
+        type: boolean
+      - description: Locale ID
+        in: formData
+        name: locale_id
+        type: integer
+      - description: Session liveness duration
+        in: formData
+        name: duration
+        type: integer
+      - description: Create user registration if he/she is not registered
+        in: formData
+        name: create_reg
+        type: boolean
+      - description: Base Contest ID (to copy user settings from)
+        in: formData
+        name: base_contest_id
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ejudge.Reply-UserlistCookie'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ejudge.Reply-bool'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ejudge.Reply-bool'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ejudge.Reply-bool'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new session for another user (privileged)
       tags:
       - privileged user
   /ej/api/v1/master/download-run:

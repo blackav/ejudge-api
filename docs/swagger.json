@@ -979,6 +979,107 @@
                 }
             }
         },
+        "/ej/api/v1/master/create-user-session": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Create a new session for another user (privileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "privileged user"
+                ],
+                "summary": "Create a new session for another user (privileged)",
+                "operationId": "master-post-create-user-session",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User login",
+                        "name": "other_user_login",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "other_user_id",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Contest ID",
+                        "name": "contest_id",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Fake sender IP",
+                        "name": "sender_ip",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "HTTPS flag",
+                        "name": "sender_ssl_flag",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Locale ID",
+                        "name": "locale_id",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Session liveness duration",
+                        "name": "duration",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "boolean",
+                        "description": "Create user registration if he/she is not registered",
+                        "name": "create_reg",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Base Contest ID (to copy user settings from)",
+                        "name": "base_contest_id",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-UserlistCookie"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-bool"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-bool"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-bool"
+                        }
+                    }
+                }
+            }
+        },
         "/ej/api/v1/master/download-run": {
             "get": {
                 "security": [
@@ -1866,6 +1967,32 @@
                 },
                 "version": {
                     "type": "string"
+                }
+            }
+        },
+        "ejudge.Reply-UserlistCookie": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/ejudge.UserlistCookie"
+                },
+                "server_time": {
+                    "type": "integer"
                 }
             }
         },
