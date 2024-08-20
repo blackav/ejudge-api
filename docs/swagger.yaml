@@ -379,6 +379,23 @@ definitions:
       server_time:
         type: integer
     type: object
+  ejudge.Reply-main_MasterPostChangeRegistrationsResult:
+    properties:
+      action:
+        type: string
+      error:
+        $ref: '#/definitions/ejudge.Error'
+      ok:
+        type: boolean
+      reply_id:
+        type: integer
+      request_id:
+        type: integer
+      result:
+        $ref: '#/definitions/main.MasterPostChangeRegistrationsResult'
+      server_time:
+        type: integer
+    type: object
   ejudge.Reply-main_MasterPostSubmitRunInputResult:
     properties:
       action:
@@ -1511,6 +1528,26 @@ definitions:
           $ref: '#/definitions/ejudge.Language'
         type: array
     type: object
+  main.MasterPostChangeRegistrationsResult:
+    properties:
+      items:
+        items:
+          $ref: '#/definitions/main.MasterPostChangeRegistrationsResultItem'
+        type: array
+      success_count:
+        type: integer
+      total_count:
+        type: integer
+    type: object
+  main.MasterPostChangeRegistrationsResultItem:
+    properties:
+      login:
+        type: string
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
   main.MasterPostSubmitRunInputResult:
     properties:
       submit_id:
@@ -2292,6 +2329,87 @@ paths:
       summary: Edit the user registration data (privileged)
       tags:
       - privileged registration
+  /ej/api/v1/master/change-registrations:
+    post:
+      description: Change multiple user registrations (privileged)
+      operationId: master-post-change-registrations
+      parameters:
+      - description: User IDs (space separated)
+        in: formData
+        name: new_user_id_list
+        type: string
+      - description: 'operation: one of remove-registrations,set-pending,set-status,set-ok,set-rejected,set-invisible,clear-invisible,set-banned,clear-banned,set-locked,clear-locked,set-incomplete,clear-incomplete,set-disqualified,clear-disqualified,change-flags'
+        in: formData
+        name: op
+        required: true
+        type: string
+      - description: Disqualification comment for set-disqualified
+        in: formData
+        name: disq_comment
+        type: string
+      - description: New user status for set-status
+        in: formData
+        name: new_status
+        type: integer
+      - description: Operation with BANNED flag (0 - noop, 1 - set, 2 - clear, 3 -
+          toggle)
+        in: formData
+        name: flag_0
+        type: integer
+      - description: Operation with INVISIBLE flag (0 - noop, 1 - set, 2 - clear,
+          3 - toggle)
+        in: formData
+        name: flag_1
+        type: integer
+      - description: Operation with LOCKED flag (0 - noop, 1 - set, 2 - clear, 3 -
+          toggle)
+        in: formData
+        name: flag_2
+        type: integer
+      - description: Operation with INCOMPLETE flag (0 - noop, 1 - set, 2 - clear,
+          3 - toggle)
+        in: formData
+        name: flag_3
+        type: integer
+      - description: Operation with DISQUALIFIED flag (0 - noop, 1 - set, 2 - clear,
+          3 - toggle)
+        in: formData
+        name: flag_4
+        type: integer
+      - description: Operation with PRIVILEGED flag (0 - noop, 1 - set, 2 - clear,
+          3 - toggle)
+        in: formData
+        name: flag_5
+        type: integer
+      - description: Operation with REG_READONLY flag (0 - noop, 1 - set, 2 - clear,
+          3 - toggle)
+        in: formData
+        name: flag_6
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ejudge.Reply-main_MasterPostChangeRegistrationsResult'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ejudge.Reply-bool'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ejudge.Reply-bool'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ejudge.Reply-bool'
+      security:
+      - ApiKeyAuth: []
+      summary: Change multiple user registrations (privileged)
+      tags:
+      - privileged user
   /ej/api/v1/master/contest-status-json:
     get:
       description: Get the contest status (privileged)

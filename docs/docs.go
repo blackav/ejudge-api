@@ -901,6 +901,119 @@ const docTemplate = `{
                 }
             }
         },
+        "/ej/api/v1/master/change-registrations": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Change multiple user registrations (privileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "privileged user"
+                ],
+                "summary": "Change multiple user registrations (privileged)",
+                "operationId": "master-post-change-registrations",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User IDs (space separated)",
+                        "name": "new_user_id_list",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "operation: one of remove-registrations,set-pending,set-status,set-ok,set-rejected,set-invisible,clear-invisible,set-banned,clear-banned,set-locked,clear-locked,set-incomplete,clear-incomplete,set-disqualified,clear-disqualified,change-flags",
+                        "name": "op",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Disqualification comment for set-disqualified",
+                        "name": "disq_comment",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "New user status for set-status",
+                        "name": "new_status",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Operation with BANNED flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)",
+                        "name": "flag_0",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Operation with INVISIBLE flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)",
+                        "name": "flag_1",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Operation with LOCKED flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)",
+                        "name": "flag_2",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Operation with INCOMPLETE flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)",
+                        "name": "flag_3",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Operation with DISQUALIFIED flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)",
+                        "name": "flag_4",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Operation with PRIVILEGED flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)",
+                        "name": "flag_5",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Operation with REG_READONLY flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)",
+                        "name": "flag_6",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-main_MasterPostChangeRegistrationsResult"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-bool"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-bool"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-bool"
+                        }
+                    }
+                }
+            }
+        },
         "/ej/api/v1/master/contest-status-json": {
             "get": {
                 "security": [
@@ -2363,6 +2476,32 @@ const docTemplate = `{
                 },
                 "result": {
                     "$ref": "#/definitions/main.MasterListLanguagesResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ejudge.Reply-main_MasterPostChangeRegistrationsResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.MasterPostChangeRegistrationsResult"
                 },
                 "server_time": {
                     "type": "integer"
@@ -4084,6 +4223,37 @@ const docTemplate = `{
                     "items": {
                         "$ref": "#/definitions/ejudge.Language"
                     }
+                }
+            }
+        },
+        "main.MasterPostChangeRegistrationsResult": {
+            "type": "object",
+            "properties": {
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/main.MasterPostChangeRegistrationsResultItem"
+                    }
+                },
+                "success_count": {
+                    "type": "integer"
+                },
+                "total_count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "main.MasterPostChangeRegistrationsResultItem": {
+            "type": "object",
+            "properties": {
+                "login": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
                 }
             }
         },
