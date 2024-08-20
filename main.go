@@ -527,6 +527,45 @@ func MasterGetProblemStatusJSON(c *gin.Context) {
 func MasterPostCreateUserSession(c *gin.Context) {
 }
 
+type MasterPostChangeRegistrationsResultItem struct {
+	Status  int32  `json:"status,omitempty"`
+	Login   string `json:"login,omitempty"`
+	Message string `json:"message,omitempty"`
+}
+
+type MasterPostChangeRegistrationsResult struct {
+	TotalCount   int32                                     `json:"total_count"`
+	SuccessCount int32                                     `json:"success_count"`
+	Items        []MasterPostChangeRegistrationsResultItem `json:"items,omitempty"`
+}
+
+// MasterPostChangeRegistrations godoc
+//
+// @Summary		Change multiple user registrations (privileged)
+// @Description	Change multiple user registrations (privileged)
+// @ID			master-post-change-registrations
+// @Tags		privileged user
+// @Produce		json
+// @Param		new_user_id_list formData string false "User IDs (space separated)"
+// @Param		op formData string true "operation: one of remove-registrations,set-pending,set-status,set-ok,set-rejected,set-invisible,clear-invisible,set-banned,clear-banned,set-locked,clear-locked,set-incomplete,clear-incomplete,set-disqualified,clear-disqualified,change-flags"
+// @Param		disq_comment formData string false "Disqualification comment for set-disqualified"
+// @Param		new_status formData int false "New user status for set-status"
+// @Param		flag_0 formData int false "Operation with BANNED flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)"
+// @Param		flag_1 formData int false "Operation with INVISIBLE flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)"
+// @Param		flag_2 formData int false "Operation with LOCKED flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)"
+// @Param		flag_3 formData int false "Operation with INCOMPLETE flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)"
+// @Param		flag_4 formData int false "Operation with DISQUALIFIED flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)"
+// @Param		flag_5 formData int false "Operation with PRIVILEGED flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)"
+// @Param		flag_6 formData int false "Operation with REG_READONLY flag (0 - noop, 1 - set, 2 - clear, 3 - toggle)"
+// @Success		200	{object}	ejudge.Reply[MasterPostChangeRegistrationsResult]
+// @Failure     400 {object}	ejudge.Reply[bool]
+// @Failure     404 {object}	ejudge.Reply[bool]
+// @Failure     500 {object}	ejudge.Reply[bool]
+// @Router		/ej/api/v1/master/change-registrations [post]
+// @Security	ApiKeyAuth
+func MasterPostChangeRegistrations(c *gin.Context) {
+}
+
 type ClientGetContestStatusJSONCompiler struct {
 	Id        int32  `json:"id"`
 	ShortName string `json:"short_name"`
@@ -1051,6 +1090,7 @@ func main() {
 			master.GET("/raw-report", MasterGetRawReport)
 			master.GET("/run-status-json", MasterGetRunStatusJSON)
 			master.POST("/change-registration", MasterPostChangeRegistration)
+			master.POST("/change-registrations", MasterPostChangeRegistrations)
 			master.POST("/copy-user-info", MasterPostCopyUserInfo)
 			master.POST("/create-user-session", MasterPostCreateUserSession)
 			master.POST("/submit-run", MasterPostSubmitRun)
