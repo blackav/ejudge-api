@@ -12,9 +12,9 @@ import (
 )
 
 type MasterGetGetSubmitQueryParams struct {
-	ContestID int32 `form:"contest_id"`
+	ContestId int32 `form:"contest_id"`
 	Json      int32 `form:"json"`
-	SubmitID  int64 `form:"submit_id"`
+	SubmitId  int64 `form:"submit_id"`
 }
 
 // MasterGetGetSubmit godoc
@@ -43,11 +43,11 @@ func MasterGetGetSubmit(c *gin.Context) {
 		ServerTime: time.Now().Unix(),
 		Action:     "get-submit",
 		Result: &ejudge.Submit{
-			SubmitID:  q.SubmitID,
-			ContestID: q.ContestID,
-			UserID:    1000,
-			ProbID:    25,
-			LangID:    &langID,
+			SubmitId:  q.SubmitId,
+			ContestId: q.ContestId,
+			UserId:    1000,
+			ProbId:    25,
+			LangId:    &langID,
 		},
 	}
 
@@ -1064,6 +1064,27 @@ func ClientPostSaveUserprob(c *gin.Context) {
 func ClientPostRemoveUserprob(c *gin.Context) {
 }
 
+type ServeControlPostCntsStartEditJsonResult struct {
+	Session   string `json:"session"`
+	InitTime  int64  `json:"init_time,omitempty"`
+	IsCreated bool   `json:"is_created,omitempty"`
+}
+
+// ServeControlPostCntsStartEditJson godoc
+//
+// @Summary		Start contest editing session (privileged)
+// @Description	start contest editing session (privileged)
+// @ID			serve-control-post-cnts-start-edit-json
+// @Tags		serve-control
+// @Produce		json
+// @Param		contest_id query int true "contest_id"
+// @Param		xml_only query bool false "load only contest XML file" default(false)
+// @Success		200	{object}	ejudge.Reply[ServeControlPostCntsStartEditJsonResult]
+// @Router		/serve-control/api/v1/cnts-start-edit-json [post]
+// @Security	ApiKeyAuth
+func ServeControlPostCntsStartEditJson(c *gin.Context) {
+}
+
 // @title       Ejudge API
 // @version		3.13-pre
 // @description	The ejudge API
@@ -1115,6 +1136,19 @@ func main() {
 			client.POST("/submit-run-input", ClientPostSubmitRunInput)
 		}
 	}
+
+	sc := router.Group("/serve-control/api/v1")
+
+	sc.POST("/cnts-start-edit-json", ServeControlPostCntsStartEditJson)
+	sc.POST("/cnts-forget-json", nil)
+	sc.POST("/cnts-list-session-json", nil)
+	sc.POST("/cnts-commit-json", nil)
+	sc.POST("/cnts-dry-commit-json", nil)
+	sc.POST("/cnts-check-tests-json", nil)
+	sc.POST("/cnts-get-value-json", nil)
+	sc.POST("/cnts-delete-value-json", nil)
+	sc.POST("/cnts-set-value-json", nil)
+	sc.POST("/minimize-problem-json", nil)
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	router.Run(":8889")
