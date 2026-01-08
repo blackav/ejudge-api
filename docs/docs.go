@@ -1900,6 +1900,48 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/serve-control/api/v1/cnts-start-edit-json": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "start contest editing session (privileged)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "serve-control"
+                ],
+                "summary": "Start contest editing session (privileged)",
+                "operationId": "serve-control-post-cnts-start-edit-json",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "contest_id",
+                        "name": "contest_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "load only contest XML file",
+                        "name": "xml_only",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ejudge.Reply-main_ServeControlPostCntsStartEditJsonResult"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -1961,6 +2003,9 @@ const docTemplate = `{
                 "cmd": {
                     "type": "string"
                 },
+                "compile_dir_index": {
+                    "type": "integer"
+                },
                 "compile_id": {
                     "type": "integer"
                 },
@@ -2007,6 +2052,12 @@ const docTemplate = `{
                     "type": "boolean"
                 },
                 "enable_ejudge_env": {
+                    "type": "boolean"
+                },
+                "enable_network": {
+                    "type": "boolean"
+                },
+                "enable_remote_cache": {
                     "type": "boolean"
                 },
                 "enable_suid_run": {
@@ -2061,6 +2112,9 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "run_max_file_size": {
+                    "type": "integer"
+                },
+                "run_max_rss_size": {
                     "type": "integer"
                 },
                 "run_max_stack_size": {
@@ -2586,6 +2640,32 @@ const docTemplate = `{
                 }
             }
         },
+        "ejudge.Reply-main_ServeControlPostCntsStartEditJsonResult": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "error": {
+                    "$ref": "#/definitions/ejudge.Error"
+                },
+                "ok": {
+                    "type": "boolean"
+                },
+                "reply_id": {
+                    "type": "integer"
+                },
+                "request_id": {
+                    "type": "integer"
+                },
+                "result": {
+                    "$ref": "#/definitions/main.ServeControlPostCntsStartEditJsonResult"
+                },
+                "server_time": {
+                    "type": "integer"
+                }
+            }
+        },
         "ejudge.Run": {
             "type": "object",
             "properties": {
@@ -2603,6 +2683,12 @@ const docTemplate = `{
                 },
                 "ext_user_kind": {
                     "type": "string"
+                },
+                "groupscores": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
                 },
                 "ip": {
                     "type": "string"
@@ -2692,6 +2778,7 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "run_time": {
+                    "description": "!!!",
                     "type": "integer"
                 },
                 "run_time_us": {
@@ -4548,6 +4635,20 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "run_uuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "main.ServeControlPostCntsStartEditJsonResult": {
+            "type": "object",
+            "properties": {
+                "init_time": {
+                    "type": "integer"
+                },
+                "is_created": {
+                    "type": "boolean"
+                },
+                "session": {
                     "type": "string"
                 }
             }
